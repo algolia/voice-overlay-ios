@@ -22,24 +22,17 @@ public class PermissionViewController: UIViewController {
         let rejectMicrophoneAccessButton = UIButton()
         let closeView = CloseView()
         
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        subtitleLabel.translatesAutoresizingMaskIntoConstraints = false
-        allowMicrophoneAccessButton.translatesAutoresizingMaskIntoConstraints = false
-        rejectMicrophoneAccessButton.translatesAutoresizingMaskIntoConstraints = false
-        closeView.translatesAutoresizingMaskIntoConstraints = false
+        let subViews = [titleLabel, subtitleLabel, allowMicrophoneAccessButton, rejectMicrophoneAccessButton, closeView]
         
-        view.addSubview(titleLabel)
-        view.addSubview(subtitleLabel)
-        view.addSubview(allowMicrophoneAccessButton)
-        view.addSubview(rejectMicrophoneAccessButton)
-        view.addSubview(closeView)
+        ViewHelpers.translatesAutoresizingMaskIntoConstraintsFalse(for: subViews)
+        ViewHelpers.addSubviews(for: subViews, in: view)
         
         view.backgroundColor = VoiceUIConstants.PermissionScreen.backgroundColor
-        AutoLayoutHelpers.setConstraintsForTitleLabel(titleLabel, margins, VoiceUIConstants.PermissionScreen.title)
-        AutoLayoutHelpers.setConstraintsForSubtitleLabel(subtitleLabel, titleLabel, margins, VoiceUIConstants.PermissionScreen.subtitle)
-        AutoLayoutHelpers.setConstraintsForCloseView(closeView, margins)
-        AutoLayoutHelpers.setConstraintsForAllowMicrophoneAccess(allowMicrophoneAccessButton, margins)
-        AutoLayoutHelpers.setConstraintsForRejectMicrophoneAccessButton(rejectMicrophoneAccessButton, allowMicrophoneAccessButton, margins)
+        ViewHelpers.setConstraintsForTitleLabel(titleLabel, margins, VoiceUIConstants.PermissionScreen.title)
+        ViewHelpers.setConstraintsForSubtitleLabel(subtitleLabel, titleLabel, margins, VoiceUIConstants.PermissionScreen.subtitle)
+        ViewHelpers.setConstraintsForCloseView(closeView, margins)
+        ViewHelpers.setConstraintsForAllowMicrophoneAccess(allowMicrophoneAccessButton, margins)
+        ViewHelpers.setConstraintsForRejectMicrophoneAccessButton(rejectMicrophoneAccessButton, allowMicrophoneAccessButton, margins)
         
         allowMicrophoneAccessButton.addTarget(self, action: #selector(allowMicrophoneTapped), for: .touchUpInside)
         

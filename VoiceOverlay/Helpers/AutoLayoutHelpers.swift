@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class AutoLayoutHelpers {
+class ViewHelpers {
     static func setConstraintsForTitleLabel(_ titleLabel: UILabel, _ margins: UILayoutGuide, _ text: String) {
             setDefaultSideConstraints(to: titleLabel, in: margins)
             titleLabel.topAnchor.constraint(equalTo: margins.topAnchor, constant: 100).isActive = true
@@ -80,5 +80,17 @@ class AutoLayoutHelpers {
     static func setDefaultSideConstraints(to firstView: UIView, in layoutGuide: UILayoutGuide) {
         firstView.leadingAnchor.constraint(equalTo: layoutGuide.leadingAnchor, constant: VoiceUIConstants.PermissionScreen.sideMarginConstant).isActive = true
         firstView.trailingAnchor.constraint(equalTo: layoutGuide.trailingAnchor, constant: VoiceUIConstants.PermissionScreen.sideMarginConstant).isActive = true
+    }
+    
+    static func translatesAutoresizingMaskIntoConstraintsFalse(for views: [UIView]) {
+        views.forEach {
+            $0.translatesAutoresizingMaskIntoConstraints = false
+        }
+    }
+    
+    static func addSubviews(for subViews: [UIView], in view: UIView) {
+        subViews.forEach {
+            view.addSubview($0)
+        }
     }
 }

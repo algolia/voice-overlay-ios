@@ -20,24 +20,17 @@ class RecordingViewController: UIViewController {
         let recordingButton = RecordingButton()
         let tryAgainLabel = UILabel()
         
-        closeView.translatesAutoresizingMaskIntoConstraints = false
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        subtitleLabel.translatesAutoresizingMaskIntoConstraints = false
-        recordingButton.translatesAutoresizingMaskIntoConstraints = false
-        tryAgainLabel.translatesAutoresizingMaskIntoConstraints = false
+        let subViews = [titleLabel, subtitleLabel, closeView, recordingButton, tryAgainLabel]
         
-        view.addSubview(titleLabel)
-        view.addSubview(subtitleLabel)
-        view.addSubview(closeView)
-        view.addSubview(recordingButton)
-        view.addSubview(tryAgainLabel)
+        ViewHelpers.translatesAutoresizingMaskIntoConstraintsFalse(for: subViews)
+        ViewHelpers.addSubviews(for: subViews, in: view)
         
         view.backgroundColor = VoiceUIConstants.PermissionScreen.backgroundColor
-        AutoLayoutHelpers.setConstraintsForTitleLabel(titleLabel, margins, VoiceUIConstants.RecordingScreen.titleInitial)
-        AutoLayoutHelpers.setConstraintsForSubtitleLabel(subtitleLabel, titleLabel, margins, VoiceUIConstants.RecordingScreen.subtitleInitial)
-        AutoLayoutHelpers.setConstraintsForCloseView(closeView, margins)
-        AutoLayoutHelpers.setConstraintsForRecordingButton(recordingButton, margins)
-        AutoLayoutHelpers.setConstraintsForTryAgainLabel(tryAgainLabel, recordingButton, margins, "")
+        ViewHelpers.setConstraintsForTitleLabel(titleLabel, margins, VoiceUIConstants.RecordingScreen.titleInitial)
+        ViewHelpers.setConstraintsForSubtitleLabel(subtitleLabel, titleLabel, margins, VoiceUIConstants.RecordingScreen.subtitleInitial)
+        ViewHelpers.setConstraintsForCloseView(closeView, margins)
+        ViewHelpers.setConstraintsForRecordingButton(recordingButton, margins)
+        ViewHelpers.setConstraintsForTryAgainLabel(tryAgainLabel, recordingButton, margins, "")
     
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.closeButtonTapped(_:)))
         closeView.addGestureRecognizer(tap)
