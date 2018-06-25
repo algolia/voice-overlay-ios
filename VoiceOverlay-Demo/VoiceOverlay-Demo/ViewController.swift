@@ -10,8 +10,8 @@ import UIKit
 import VoiceOverlay
 
 class ViewController: UIViewController {
-
-    let p = PermissionViewController()
+    
+    let voiceOverlayController = VoiceOverlayController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,7 +25,7 @@ class ViewController: UIViewController {
     
     @objc func buttonTapped() {
         
-        self.present(p, animated: true)
+        voiceOverlayController.start(on: self)
     }
 
 
