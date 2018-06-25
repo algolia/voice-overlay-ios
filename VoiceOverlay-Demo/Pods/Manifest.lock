@@ -1,0 +1,16 @@
+PODS:
+  - VoiceOverlay (1.0.0)
+
+DEPENDENCIES:
+  - VoiceOverlay (from `../`)
+
+EXTERNAL SOURCES:
+  VoiceOverlay:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  VoiceOverlay: 8cdafe44c13532188e049532148466fb7877a5ab
+
+PODFILE CHECKSUM: 07d98c5f077c0b18c5817fdfa1b6a66859c9616f
+
+COCOAPODS: 1.5.3

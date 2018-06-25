@@ -8,8 +8,8 @@
 
 import UIKit
 
-class PermissionViewController: UIViewController {
-    override func viewDidLoad() {
+public class PermissionViewController: UIViewController {
+    override public func viewDidLoad() {
         super.viewDidLoad()
         
         let margins = view.layoutMarginsGuide
