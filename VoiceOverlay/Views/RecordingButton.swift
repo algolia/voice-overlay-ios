@@ -59,7 +59,7 @@ class RecordingButton: UIButton {
     self.layer.insertSublayer(animation, below: mainLayer)
     animation.add(animationGroup, forKey: "pulse")
         
-    let after: DispatchTime = .now() + 0.5 //TODO: customise this shit
+    let after: DispatchTime = .now() + 0.5
     DispatchQueue.main.asyncAfter(deadline: after) { [weak self] in
       self?.handleAnimations()
     }

@@ -18,6 +18,7 @@
 		E29EEC5A20E11AD500415FCF /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29EEC5920E11AD500415FCF /* Extensions.swift */; };
 		E29EEC5E20E11EC200415FCF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E29EEC5D20E11EC200415FCF /* Assets.xcassets */; };
 		E29EEC6020E12B0200415FCF /* RecordingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29EEC5F20E12B0200415FCF /* RecordingButton.swift */; };
+		E29EEC6220E143AE00415FCF /* SpeechController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29EEC6120E143AE00415FCF /* SpeechController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		E29EEC5920E11AD500415FCF /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		E29EEC5D20E11EC200415FCF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E29EEC5F20E12B0200415FCF /* RecordingButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordingButton.swift; sourceTree = "<group>"; };
+		E29EEC6120E143AE00415FCF /* SpeechController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SpeechController.swift; path = VoiceOverlay/Controllers/SpeechController.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +93,7 @@
 				E29EEC5F20E12B0200415FCF /* RecordingButton.swift */,
 				E27D295220E0F20D00B83D4C /* CloseView.swift */,
 				E27D295320E0F20D00B83D4C /* AllowPermissionButton.swift */,
+				E29EEC6120E143AE00415FCF /* SpeechController.swift */,
 				E29EEC5D20E11EC200415FCF /* Assets.xcassets */,
 			);
 			path = Views;
@@ -195,6 +198,7 @@
 				E27D295A20E0F20D00B83D4C /* PermissionViewController.swift in Sources */,
 				E27D295820E0F20D00B83D4C /* CloseView.swift in Sources */,
 				E27D295920E0F20D00B83D4C /* AllowPermissionButton.swift in Sources */,
+				E29EEC6220E143AE00415FCF /* SpeechController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

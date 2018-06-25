@@ -65,6 +65,10 @@ class ViewHelpers {
         let bundle = Bundle(for: self)
         let recordingImage = UIImage(named: "mic-lg-active", in: bundle, compatibleWith: nil)
         recordingButton.setBackgroundImage(recordingImage, for: .normal)
+        
+        recordingButton.pulseColor = VoiceUIConstants.RecordingScreen.RecordingButton.pulseColor
+        recordingButton.pulseDuration = VoiceUIConstants.RecordingScreen.RecordingButton.pulseDuration
+        recordingButton.pulseRadius = VoiceUIConstants.RecordingScreen.RecordingButton.pulseDuration
     }
 
     static func setConstraintsForTryAgainLabel(_ tryAgainLabel: UILabel, _ recordButton: UIView, _ margins: UILayoutGuide, _ text: String) {

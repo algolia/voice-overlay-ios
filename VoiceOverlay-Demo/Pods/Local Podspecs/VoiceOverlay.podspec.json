@@ -17,10 +17,7 @@
   },
   "social_media_url": "https://twitter.com/algolia",
   "platforms": {
-    "ios": "9.0",
-    "osx": "10.10",
-    "tvos": "9.2",
-    "watchos": "3.0"
+    "ios": "10.0"
   },
   "requires_arc": true,
   "swift_version": "4.2",

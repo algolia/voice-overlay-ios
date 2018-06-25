@@ -10,6 +10,10 @@ import UIKit
 
 class RecordingViewController: UIViewController {
 
+    let speechController = SpeechController()
+    var isRecording: Bool = false
+    var searchText: String = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -34,21 +38,41 @@ class RecordingViewController: UIViewController {
     
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.closeButtonTapped(_:)))
         closeView.addGestureRecognizer(tap)
+        
+        recordingButton.addTarget(self, action: #selector(recordingButtobTapped(_:)), for: .touchUpInside)
+    }
+    
+    @objc func recordingButtobTapped(_ recordingButton: RecordingButton) {
+        toogleRecording(recordingButton)
     }
     
     @objc func closeButtonTapped(_ sender: UITapGestureRecognizer) {
         dismissMe(animated: true)
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func toogleRecording(_ recordingButton: RecordingButton) {
+        isRecording = !isRecording
+        recordingButton.animate(isRecording)
+        
+        if !isRecording {
+            speechController.stopRecording()
+            
+            return
+        }
+        
+        speechController.startRecording(textHandler: {[weak self] (text, final) in
+            self?.searchText = text
+            
+            if final {
+                self?.toogleRecording(recordingButton)
+                return
+            }
+            }, errorHandler: { [weak self] error in
+                self?.handleVoiceError(error)
+        })
     }
-    */
-
+    
+    func handleVoiceError(_ error: Error?) {
+        
+    }
 }
