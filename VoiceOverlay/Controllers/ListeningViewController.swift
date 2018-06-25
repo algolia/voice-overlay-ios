@@ -13,7 +13,23 @@ class ListeningViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = VoiceUIConstants.PermissionScreen.backgroundColor
-        // Do any additional setup after loading the view.
+        
+        let margins = view.layoutMarginsGuide
+        let closeView = CloseView()
+        
+        closeView.translatesAutoresizingMaskIntoConstraints = false
+        
+        view.addSubview(closeView)
+        
+        setConstraintsForCloseView(closeView, margins)
+    
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.closeButtonTapped(_:)))
+        closeView.addGestureRecognizer(tap)
+    }
+    
+    @objc func closeButtonTapped(_ sender: UITapGestureRecognizer) {
+        self.presentingViewController?.presentingViewController?.dismissMe(animated: true)
+        dismissMe(animated: true)
     }
     
 

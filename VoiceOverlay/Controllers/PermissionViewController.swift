@@ -39,6 +39,9 @@ public class PermissionViewController: UIViewController {
         setConstraintsForRejectMicrophoneAccessButton(rejectMicrophoneAccessButton, allowMicrophoneAccessButton, margins)
         
         allowMicrophoneAccessButton.addTarget(self, action: #selector(allowMicrophoneTapped), for: .touchUpInside)
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.closeButtonTapped(_:)))
+        closeView.addGestureRecognizer(tap)
     }
     
     @objc func allowMicrophoneTapped() {
@@ -46,5 +49,8 @@ public class PermissionViewController: UIViewController {
         self.present(listeningViewController, animated: false)
     }
     
+    @objc func closeButtonTapped(_ sender: UITapGestureRecognizer) {
+        dismissMe(animated: true)
+    }
 
 }

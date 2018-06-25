@@ -11,6 +11,8 @@ import VoiceOverlay
 
 class ViewController: UIViewController {
 
+    let p = PermissionViewController()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -22,7 +24,8 @@ class ViewController: UIViewController {
     }
     
     @objc func buttonTapped() {
-        self.present(PermissionViewController(), animated: true)
+        
+        self.present(p, animated: true)
     }
 
 

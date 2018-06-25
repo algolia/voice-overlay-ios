@@ -10,10 +10,12 @@
 		E27D294B20E0F0C900B83D4C /* VoiceOverlay.h in Headers */ = {isa = PBXBuildFile; fileRef = E27D294920E0F0C900B83D4C /* VoiceOverlay.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E27D295720E0F20D00B83D4C /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = E27D295120E0F20D00B83D4C /* Constant.swift */; };
 		E27D295820E0F20D00B83D4C /* CloseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E27D295220E0F20D00B83D4C /* CloseView.swift */; };
-		E27D295920E0F20D00B83D4C /* Gradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E27D295320E0F20D00B83D4C /* Gradient.swift */; };
+		E27D295920E0F20D00B83D4C /* AllowPermissionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E27D295320E0F20D00B83D4C /* AllowPermissionButton.swift */; };
 		E27D295A20E0F20D00B83D4C /* PermissionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E27D295420E0F20D00B83D4C /* PermissionViewController.swift */; };
 		E27D295B20E0F20D00B83D4C /* AutoLayoutHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E27D295520E0F20D00B83D4C /* AutoLayoutHelpers.swift */; };
 		E27D295C20E0F20D00B83D4C /* ListeningViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E27D295620E0F20D00B83D4C /* ListeningViewController.swift */; };
+		E29EEC5720E11A8C00415FCF /* VoiceOverlayController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29EEC5620E11A8C00415FCF /* VoiceOverlayController.swift */; };
+		E29EEC5A20E11AD500415FCF /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29EEC5920E11AD500415FCF /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,10 +24,12 @@
 		E27D294A20E0F0C900B83D4C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E27D295120E0F20D00B83D4C /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		E27D295220E0F20D00B83D4C /* CloseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloseView.swift; sourceTree = "<group>"; };
-		E27D295320E0F20D00B83D4C /* Gradient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Gradient.swift; sourceTree = "<group>"; };
+		E27D295320E0F20D00B83D4C /* AllowPermissionButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllowPermissionButton.swift; sourceTree = "<group>"; };
 		E27D295420E0F20D00B83D4C /* PermissionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PermissionViewController.swift; sourceTree = "<group>"; };
 		E27D295520E0F20D00B83D4C /* AutoLayoutHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoLayoutHelpers.swift; sourceTree = "<group>"; };
 		E27D295620E0F20D00B83D4C /* ListeningViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListeningViewController.swift; sourceTree = "<group>"; };
+		E29EEC5620E11A8C00415FCF /* VoiceOverlayController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoiceOverlayController.swift; sourceTree = "<group>"; };
+		E29EEC5920E11AD500415FCF /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,16 +62,42 @@
 		E27D294820E0F0C900B83D4C /* VoiceOverlay */ = {
 			isa = PBXGroup;
 			children = (
+				E29EEC5C20E11AE900415FCF /* Controllers */,
+				E29EEC5B20E11AE400415FCF /* Views */,
+				E29EEC5820E11A9F00415FCF /* Helpers */,
 				E27D294920E0F0C900B83D4C /* VoiceOverlay.h */,
 				E27D294A20E0F0C900B83D4C /* Info.plist */,
+			);
+			path = VoiceOverlay;
+			sourceTree = "<group>";
+		};
+		E29EEC5820E11A9F00415FCF /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
 				E27D295520E0F20D00B83D4C /* AutoLayoutHelpers.swift */,
-				E27D295220E0F20D00B83D4C /* CloseView.swift */,
 				E27D295120E0F20D00B83D4C /* Constant.swift */,
-				E27D295320E0F20D00B83D4C /* Gradient.swift */,
+				E29EEC5920E11AD500415FCF /* Extensions.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		E29EEC5B20E11AE400415FCF /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E27D295220E0F20D00B83D4C /* CloseView.swift */,
+				E27D295320E0F20D00B83D4C /* AllowPermissionButton.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		E29EEC5C20E11AE900415FCF /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				E29EEC5620E11A8C00415FCF /* VoiceOverlayController.swift */,
 				E27D295620E0F20D00B83D4C /* ListeningViewController.swift */,
 				E27D295420E0F20D00B83D4C /* PermissionViewController.swift */,
 			);
-			path = VoiceOverlay;
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -149,12 +179,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E29EEC5720E11A8C00415FCF /* VoiceOverlayController.swift in Sources */,
 				E27D295C20E0F20D00B83D4C /* ListeningViewController.swift in Sources */,
 				E27D295B20E0F20D00B83D4C /* AutoLayoutHelpers.swift in Sources */,
+				E29EEC5A20E11AD500415FCF /* Extensions.swift in Sources */,
 				E27D295720E0F20D00B83D4C /* Constant.swift in Sources */,
 				E27D295A20E0F20D00B83D4C /* PermissionViewController.swift in Sources */,
 				E27D295820E0F20D00B83D4C /* CloseView.swift in Sources */,
-				E27D295920E0F20D00B83D4C /* Gradient.swift in Sources */,
+				E27D295920E0F20D00B83D4C /* AllowPermissionButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
