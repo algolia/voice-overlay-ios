@@ -11,6 +11,8 @@ import UIKit
 
 public class VoiceOverlayController {
     
+    let permissionViewController = PermissionViewController()
+    
     public init() {}
     
     // TODO: Define datasource that will be used to give back the text from the SpeechController
@@ -18,7 +20,12 @@ public class VoiceOverlayController {
     
     public func start(on view: UIViewController) {
         // TODO: Custom logic to check whether to do the PermissionController or directly the speech controller.
-        let permissionViewController = PermissionViewController()
-        view.present(permissionViewController, animated: true)
+        
+        permissionViewController.dismissHandler = {
+            let listeningViewController = RecordingViewController()
+            view.present(listeningViewController, animated: false)
+        }
+        
+        view.present(permissionViewController, animated: false)
     }
 }

@@ -26,5 +26,6 @@
   "swift_version": "4.2",
   "source_files": [
     "VoiceOverlay/**/*.{swift}"
-  ]
+  ],
+  "resources": "VoiceOverlay/Views/Assets.xcassets"
 }

@@ -23,4 +23,5 @@ Pod::Spec.new do |s|
     s.source_files = [
         'VoiceOverlay/**/*.{swift}'
     ]
+    s.resources = "VoiceOverlay/Views/Assets.xcassets"
 end

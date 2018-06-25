@@ -9,6 +9,9 @@
 import UIKit
 
 public class PermissionViewController: UIViewController {
+    
+    var dismissHandler: (() -> Void)? = nil
+    
     override public func viewDidLoad() {
         super.viewDidLoad()
         
@@ -32,11 +35,11 @@ public class PermissionViewController: UIViewController {
         view.addSubview(closeView)
         
         view.backgroundColor = VoiceUIConstants.PermissionScreen.backgroundColor
-        setConstraintsForTitleLabel(titleLabel, margins)
-        setConstraintsForSubtitleLabel(subtitleLabel, titleLabel, margins)
-        setConstraintsForCloseView(closeView, margins)
-        setConstraintsForAllowMicrophoneAccess(allowMicrophoneAccessButton, margins)
-        setConstraintsForRejectMicrophoneAccessButton(rejectMicrophoneAccessButton, allowMicrophoneAccessButton, margins)
+        AutoLayoutHelpers.setConstraintsForTitleLabel(titleLabel, margins, VoiceUIConstants.PermissionScreen.title)
+        AutoLayoutHelpers.setConstraintsForSubtitleLabel(subtitleLabel, titleLabel, margins, VoiceUIConstants.PermissionScreen.subtitle)
+        AutoLayoutHelpers.setConstraintsForCloseView(closeView, margins)
+        AutoLayoutHelpers.setConstraintsForAllowMicrophoneAccess(allowMicrophoneAccessButton, margins)
+        AutoLayoutHelpers.setConstraintsForRejectMicrophoneAccessButton(rejectMicrophoneAccessButton, allowMicrophoneAccessButton, margins)
         
         allowMicrophoneAccessButton.addTarget(self, action: #selector(allowMicrophoneTapped), for: .touchUpInside)
         
@@ -45,8 +48,10 @@ public class PermissionViewController: UIViewController {
     }
     
     @objc func allowMicrophoneTapped() {
-        let listeningViewController = ListeningViewController()
-        self.present(listeningViewController, animated: false)
+        dismissMe(animated: false) {
+            self.dismissHandler?()
+        }
+        
     }
     
     @objc func closeButtonTapped(_ sender: UITapGestureRecognizer) {

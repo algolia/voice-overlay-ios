@@ -13,9 +13,11 @@
 		E27D295920E0F20D00B83D4C /* AllowPermissionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E27D295320E0F20D00B83D4C /* AllowPermissionButton.swift */; };
 		E27D295A20E0F20D00B83D4C /* PermissionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E27D295420E0F20D00B83D4C /* PermissionViewController.swift */; };
 		E27D295B20E0F20D00B83D4C /* AutoLayoutHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E27D295520E0F20D00B83D4C /* AutoLayoutHelpers.swift */; };
-		E27D295C20E0F20D00B83D4C /* ListeningViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E27D295620E0F20D00B83D4C /* ListeningViewController.swift */; };
+		E27D295C20E0F20D00B83D4C /* RecordingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E27D295620E0F20D00B83D4C /* RecordingViewController.swift */; };
 		E29EEC5720E11A8C00415FCF /* VoiceOverlayController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29EEC5620E11A8C00415FCF /* VoiceOverlayController.swift */; };
 		E29EEC5A20E11AD500415FCF /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29EEC5920E11AD500415FCF /* Extensions.swift */; };
+		E29EEC5E20E11EC200415FCF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E29EEC5D20E11EC200415FCF /* Assets.xcassets */; };
+		E29EEC6020E12B0200415FCF /* RecordingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29EEC5F20E12B0200415FCF /* RecordingButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,9 +29,11 @@
 		E27D295320E0F20D00B83D4C /* AllowPermissionButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllowPermissionButton.swift; sourceTree = "<group>"; };
 		E27D295420E0F20D00B83D4C /* PermissionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PermissionViewController.swift; sourceTree = "<group>"; };
 		E27D295520E0F20D00B83D4C /* AutoLayoutHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoLayoutHelpers.swift; sourceTree = "<group>"; };
-		E27D295620E0F20D00B83D4C /* ListeningViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListeningViewController.swift; sourceTree = "<group>"; };
+		E27D295620E0F20D00B83D4C /* RecordingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordingViewController.swift; sourceTree = "<group>"; };
 		E29EEC5620E11A8C00415FCF /* VoiceOverlayController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoiceOverlayController.swift; sourceTree = "<group>"; };
 		E29EEC5920E11AD500415FCF /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		E29EEC5D20E11EC200415FCF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		E29EEC5F20E12B0200415FCF /* RecordingButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordingButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,8 +88,10 @@
 		E29EEC5B20E11AE400415FCF /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				E29EEC5F20E12B0200415FCF /* RecordingButton.swift */,
 				E27D295220E0F20D00B83D4C /* CloseView.swift */,
 				E27D295320E0F20D00B83D4C /* AllowPermissionButton.swift */,
+				E29EEC5D20E11EC200415FCF /* Assets.xcassets */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -94,7 +100,7 @@
 			isa = PBXGroup;
 			children = (
 				E29EEC5620E11A8C00415FCF /* VoiceOverlayController.swift */,
-				E27D295620E0F20D00B83D4C /* ListeningViewController.swift */,
+				E27D295620E0F20D00B83D4C /* RecordingViewController.swift */,
 				E27D295420E0F20D00B83D4C /* PermissionViewController.swift */,
 			);
 			path = Controllers;
@@ -169,6 +175,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E29EEC5E20E11EC200415FCF /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -180,8 +187,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				E29EEC5720E11A8C00415FCF /* VoiceOverlayController.swift in Sources */,
-				E27D295C20E0F20D00B83D4C /* ListeningViewController.swift in Sources */,
+				E27D295C20E0F20D00B83D4C /* RecordingViewController.swift in Sources */,
 				E27D295B20E0F20D00B83D4C /* AutoLayoutHelpers.swift in Sources */,
+				E29EEC6020E12B0200415FCF /* RecordingButton.swift in Sources */,
 				E29EEC5A20E11AD500415FCF /* Extensions.swift in Sources */,
 				E27D295720E0F20D00B83D4C /* Constant.swift in Sources */,
 				E27D295A20E0F20D00B83D4C /* PermissionViewController.swift in Sources */,
