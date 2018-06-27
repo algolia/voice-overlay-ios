@@ -13,6 +13,7 @@ class RecordingViewController: UIViewController {
     var speechController: SpeechController!
     var isRecording: Bool = false
     var searchText: String = ""
+    weak var delegate: VoiceOverlayDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,20 +61,20 @@ class RecordingViewController: UIViewController {
         
         if !isRecording {
             speechController.stopRecording()
-            
+            dismissMe(animated: true)
             return
         }
         
         speechController.startRecording(textHandler: {[weak self] (text, final) in
+            self?.delegate?.recording(text: text, final: final, error: nil)
             self?.searchText = text
-            print("text \(text)")
-            print("final \(final)")
             
             if final {
                 self?.toogleRecording(recordingButton)
                 return
             }
             }, errorHandler: { [weak self] error in
+                self?.delegate?.recording(text: nil, final: nil, error: error)
                 self?.handleVoiceError(error)
         })
     }

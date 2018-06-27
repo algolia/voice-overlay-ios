@@ -14,11 +14,12 @@ public class VoiceOverlayController {
     
     let permissionViewController = PermissionViewController()
     let speechController = SpeechController()
+    public weak var delegate: VoiceOverlayDelegate?
     
     public init() {}
     
     // TODO: Define datasource that will be used to give back the text from the SpeechController
-    var datasource: Any? = nil
+    public var datasource: Any? = nil
     
     fileprivate func redirect(_ view: UIViewController) {
         // TODO: Custom logic to check whether to do the PermissionController or directly the speech controller.
@@ -27,6 +28,7 @@ public class VoiceOverlayController {
         switch authorizationStatus {
         case .authorized:
             let recordingViewController = RecordingViewController()
+            recordingViewController.delegate = delegate
             recordingViewController.speechController = self.speechController
             view.present(recordingViewController, animated: true)
         case .denied, .restricted:
@@ -45,4 +47,8 @@ public class VoiceOverlayController {
         }
         
     }
+}
+
+public protocol VoiceOverlayDelegate: class {
+    func recording(text: String?, final: Bool?, error: Error?)
 }
