@@ -12,15 +12,17 @@ import VoiceOverlay
 class ViewController: UIViewController {
     
     let voiceOverlayController = VoiceOverlayController()
+    let button = UIButton(frame: CGRect(x: 100, y: 100, width: 200, height: 50))
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        let button = UIButton(frame: CGRect(x: 100, y: 100, width: 200, height: 50))
+        
         button.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
         button.setTitle("Voice Button", for: .normal)
         button.setTitleColor(.red, for: .normal)
         self.view.addSubview(button)
+        
     }
     
     @objc func buttonTapped() {

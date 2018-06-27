@@ -10,7 +10,7 @@ import UIKit
 
 class RecordingViewController: UIViewController {
 
-    let speechController = SpeechController()
+    var speechController: SpeechController!
     var isRecording: Bool = false
     var searchText: String = ""
     
@@ -53,6 +53,10 @@ class RecordingViewController: UIViewController {
     func toogleRecording(_ recordingButton: RecordingButton) {
         isRecording = !isRecording
         recordingButton.animate(isRecording)
+        recordingButton.setimage(isRecording)
+        
+        // TODO: Playing sound is crashing. probably because we re not stopping play, or interfering with speech controller, or setActive true/false in playSound
+        //recordingButton.playSound(with: isRecording ? .startRecording : .endRecording)
         
         if !isRecording {
             speechController.stopRecording()
@@ -62,6 +66,8 @@ class RecordingViewController: UIViewController {
         
         speechController.startRecording(textHandler: {[weak self] (text, final) in
             self?.searchText = text
+            print("text \(text)")
+            print("final \(final)")
             
             if final {
                 self?.toogleRecording(recordingButton)

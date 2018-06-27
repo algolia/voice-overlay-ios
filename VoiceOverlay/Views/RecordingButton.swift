@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 @IBDesignable
 class RecordingButton: UIButton {
@@ -14,6 +15,7 @@ class RecordingButton: UIButton {
   @IBInspectable public var pulseColor: UIColor = UIColor.blue
   @IBInspectable public var pulseDuration: CGFloat = 1.0
   @IBInspectable public var pulseRadius: CGFloat = 10.0
+  var player: AVAudioPlayer?
   
   private lazy var mainLayer: CAShapeLayer = { [unowned self] in
     let layer = CAShapeLayer()
@@ -93,4 +95,46 @@ class RecordingButton: UIButton {
     animation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
     return animation
   }
+}
+
+enum RecordingStatus {
+    case startRecording, endRecording, error
+}
+
+extension RecordingButton {
+    func setimage(_ isRecording: Bool) {
+        let imageName = isRecording ? "mic-lg-active" : "mic-lg-inactive"
+        let recordingImage = UIImage(named: imageName, in: Bundle(for: type(of: self)), compatibleWith: nil)
+        setBackgroundImage(recordingImage, for: .normal)
+    }
+    
+    func playSound(with recordingStatus: RecordingStatus){
+        var fileName: String = "siri_start"
+        
+        switch recordingStatus {
+        case .startRecording: fileName = "siri_start"
+        case .endRecording: fileName = "siri_end"
+        case .error : fileName = "siri_error"
+        }
+        
+        guard let url = Bundle(for: type(of: self)).url(forResource: fileName, withExtension: "mp3") else { return }
+        
+        do {
+            try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)
+            try AVAudioSession.sharedInstance().setActive(true)
+            
+            /* The following line is required for the player to work on iOS 11. Change the file type accordingly*/
+            player = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileType.mp3.rawValue)
+            
+            /* iOS 10 and earlier require the following line:
+             player = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileTypeMPEGLayer3) */
+            
+            guard let player = player else { return }
+            
+            player.play()
+            
+        } catch let error {
+            print(error.localizedDescription)
+        }
+    }
 }

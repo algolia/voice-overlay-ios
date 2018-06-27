@@ -8,24 +8,41 @@
 
 import Foundation
 import UIKit
+import Speech
 
 public class VoiceOverlayController {
     
     let permissionViewController = PermissionViewController()
+    let speechController = SpeechController()
     
     public init() {}
     
     // TODO: Define datasource that will be used to give back the text from the SpeechController
     var datasource: Any? = nil
     
-    public func start(on view: UIViewController) {
+    fileprivate func redirect(_ view: UIViewController) {
         // TODO: Custom logic to check whether to do the PermissionController or directly the speech controller.
         
+        let authorizationStatus = SFSpeechRecognizer.authorizationStatus()
+        switch authorizationStatus {
+        case .authorized:
+            let recordingViewController = RecordingViewController()
+            recordingViewController.speechController = self.speechController
+            view.present(recordingViewController, animated: true)
+        case .denied, .restricted:
+            print("Launch the error ViewController")
+        case .notDetermined:
+            permissionViewController.speechController = speechController
+            view.present(permissionViewController, animated: true)
+        }
+    }
+    
+    public func start(on view: UIViewController) {
+        redirect(view)
+        
         permissionViewController.dismissHandler = {
-            let listeningViewController = RecordingViewController()
-            view.present(listeningViewController, animated: false)
+            self.redirect(view)
         }
         
-        view.present(permissionViewController, animated: false)
     }
 }

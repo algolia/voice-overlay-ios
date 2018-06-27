@@ -9,7 +9,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  VoiceOverlay: 5a7babee0db0827daf24b614bbd59ea38ecf6c5b
+  VoiceOverlay: 5c1df35d07b603cf4f03d31f31741b2a92f3d39a
 
 PODFILE CHECKSUM: 07d98c5f077c0b18c5817fdfa1b6a66859c9616f
 

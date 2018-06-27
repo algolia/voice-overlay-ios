@@ -55,6 +55,7 @@ public typealias SpeechErrorHandler = (Error?) -> Void
   
   /// Helper to request authorization for voice search
   public func requestAuthorization(_ statusHandler: @escaping (Bool) -> Void) {
+    
     SFSpeechRecognizer.requestAuthorization { (authStatus) in
       switch authStatus {
       case .authorized:

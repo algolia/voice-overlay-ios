@@ -24,5 +24,8 @@
   "source_files": [
     "VoiceOverlay/**/*.{swift}"
   ],
-  "resources": "VoiceOverlay/Views/Assets.xcassets"
+  "resources": [
+    "VoiceOverlay/Views/Assets.xcassets",
+    "VoiceOverlay/Sound/*"
+  ]
 }

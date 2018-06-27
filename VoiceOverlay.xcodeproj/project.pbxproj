@@ -19,6 +19,9 @@
 		E29EEC5E20E11EC200415FCF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E29EEC5D20E11EC200415FCF /* Assets.xcassets */; };
 		E29EEC6020E12B0200415FCF /* RecordingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29EEC5F20E12B0200415FCF /* RecordingButton.swift */; };
 		E29EEC6220E143AE00415FCF /* SpeechController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29EEC6120E143AE00415FCF /* SpeechController.swift */; };
+		E29EEC8C20E3B1B600415FCF /* siri_start.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E29EEC8920E3B1B600415FCF /* siri_start.mp3 */; };
+		E29EEC8D20E3B1B600415FCF /* siri_end.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E29EEC8A20E3B1B600415FCF /* siri_end.mp3 */; };
+		E29EEC8E20E3B1B600415FCF /* siri_error.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E29EEC8B20E3B1B600415FCF /* siri_error.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +39,9 @@
 		E29EEC5D20E11EC200415FCF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E29EEC5F20E12B0200415FCF /* RecordingButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordingButton.swift; sourceTree = "<group>"; };
 		E29EEC6120E143AE00415FCF /* SpeechController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SpeechController.swift; path = VoiceOverlay/Controllers/SpeechController.swift; sourceTree = SOURCE_ROOT; };
+		E29EEC8920E3B1B600415FCF /* siri_start.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = siri_start.mp3; sourceTree = "<group>"; };
+		E29EEC8A20E3B1B600415FCF /* siri_end.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = siri_end.mp3; sourceTree = "<group>"; };
+		E29EEC8B20E3B1B600415FCF /* siri_error.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = siri_error.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +74,7 @@
 		E27D294820E0F0C900B83D4C /* VoiceOverlay */ = {
 			isa = PBXGroup;
 			children = (
+				E29EEC8820E3B1AB00415FCF /* Sound */,
 				E29EEC5C20E11AE900415FCF /* Controllers */,
 				E29EEC5B20E11AE400415FCF /* Views */,
 				E29EEC5820E11A9F00415FCF /* Helpers */,
@@ -107,6 +114,16 @@
 				E27D295420E0F20D00B83D4C /* PermissionViewController.swift */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		E29EEC8820E3B1AB00415FCF /* Sound */ = {
+			isa = PBXGroup;
+			children = (
+				E29EEC8A20E3B1B600415FCF /* siri_end.mp3 */,
+				E29EEC8B20E3B1B600415FCF /* siri_error.mp3 */,
+				E29EEC8920E3B1B600415FCF /* siri_start.mp3 */,
+			);
+			path = Sound;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -178,6 +195,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E29EEC8E20E3B1B600415FCF /* siri_error.mp3 in Resources */,
+				E29EEC8D20E3B1B600415FCF /* siri_end.mp3 in Resources */,
+				E29EEC8C20E3B1B600415FCF /* siri_start.mp3 in Resources */,
 				E29EEC5E20E11EC200415FCF /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

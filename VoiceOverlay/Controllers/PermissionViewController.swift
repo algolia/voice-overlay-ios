@@ -10,7 +10,8 @@ import UIKit
 
 public class PermissionViewController: UIViewController {
     
-    var dismissHandler: (() -> Void)? = nil
+    var dismissHandler: (() -> ())? = nil
+    var speechController: SpeechController!
     
     override public func viewDidLoad() {
         super.viewDidLoad()
@@ -35,16 +36,23 @@ public class PermissionViewController: UIViewController {
         ViewHelpers.setConstraintsForRejectMicrophoneAccessButton(rejectMicrophoneAccessButton, allowMicrophoneAccessButton, margins)
         
         allowMicrophoneAccessButton.addTarget(self, action: #selector(allowMicrophoneTapped), for: .touchUpInside)
+        rejectMicrophoneAccessButton.addTarget(self, action: #selector(rejectMicrophoneTapped), for: .touchUpInside)
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.closeButtonTapped(_:)))
         closeView.addGestureRecognizer(tap)
     }
     
     @objc func allowMicrophoneTapped() {
-        dismissMe(animated: false) {
-            self.dismissHandler?()
-        }
         
+        speechController.requestAuthorization { _ in
+            self.dismissMe(animated: true) {
+                self.dismissHandler?()
+            }
+        }
+    }
+    
+    @objc func rejectMicrophoneTapped() {
+        dismissMe(animated: true)
     }
     
     @objc func closeButtonTapped(_ sender: UITapGestureRecognizer) {

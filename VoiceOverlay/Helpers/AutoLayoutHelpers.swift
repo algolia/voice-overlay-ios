@@ -35,6 +35,7 @@ class ViewHelpers {
         closeView.heightAnchor.constraint(equalToConstant: 30).isActive = true
         closeView.centerXAnchor.constraint(equalTo: margins.centerXAnchor).isActive = true
         closeView.bottomAnchor.constraint(equalTo: margins.bottomAnchor, constant: -30).isActive = true
+        closeView.backgroundColor = VoiceUIConstants.PermissionScreen.backgroundColor
     }
 
     static func setConstraintsForAllowMicrophoneAccess(_ allowMicrophoneAccessButton: AllowPermissionButton, _ margins: UILayoutGuide) {
@@ -63,7 +64,7 @@ class ViewHelpers {
         recordingButton.heightAnchor.constraint(equalToConstant: 75).isActive = true
         recordingButton.widthAnchor.constraint(equalToConstant: 75).isActive = true
         let bundle = Bundle(for: self)
-        let recordingImage = UIImage(named: "mic-lg-active", in: bundle, compatibleWith: nil)
+        let recordingImage = UIImage(named: "mic-lg-inactive", in: bundle, compatibleWith: nil)
         recordingButton.setBackgroundImage(recordingImage, for: .normal)
         
         recordingButton.pulseColor = VoiceUIConstants.RecordingScreen.RecordingButton.pulseColor

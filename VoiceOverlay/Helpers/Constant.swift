@@ -35,7 +35,7 @@ public struct VoiceUIConstants {
         
         public struct RecordingButton {
             public static let pulseColor = UIColor(red: 51/255, green: 74/255, blue: 97/255, alpha: 1)
-            public static let pulseDuration: CGFloat = 5
+            public static let pulseDuration: CGFloat = 4
             public static let pulseRadius: CGFloat = 100
         }
     }
