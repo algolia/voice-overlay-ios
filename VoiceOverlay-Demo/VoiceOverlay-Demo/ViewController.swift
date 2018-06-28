@@ -26,12 +26,12 @@ class ViewController: UIViewController, VoiceOverlayDelegate {
         self.view.addSubview(label)
         self.view.addSubview(button)
         voiceOverlayController.delegate = self
-        // If you want to start recording as soon as modal view pops up
-        VoiceUIConstants.RecordingScreen.instantStart = true
+        
+        // If you want to start recording as soon as modal view pops up, change to true
+        VoiceUIConstants.RecordingScreen.instantStart = false
     }
     
     @objc func buttonTapped() {
-    
         // First way to listen to recording through callbacks
         voiceOverlayController.start(on: self, textHandler: { (text, final) in
             print("callback: getting \(String(describing: text))")

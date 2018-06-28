@@ -11,7 +11,20 @@ import CoreGraphics
 import UIKit
 
 // we have to have this class or else when using autolayout, the gradient won't redraw itself.
-public class AllowPermissionButton: UIButton {
+public class FirstPermissionButton: UIButton {
+    
+    var startColor: UIColor = .white
+    var endColor: UIColor = .white
+    
+    init(startColor: UIColor, endColor: UIColor) {
+        self.startColor = startColor
+        self.endColor = endColor
+        super.init(frame: .zero)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
     
     private let gradient : CAGradientLayer = CAGradientLayer()
     
@@ -22,8 +35,6 @@ public class AllowPermissionButton: UIButton {
     
     override public func draw(_ rect: CGRect) {
         self.gradient.frame = self.bounds
-        let startColor = VoiceUIConstants.PermissionScreen.startGradientColor
-        let endColor = VoiceUIConstants.PermissionScreen.endGradientColor
         self.gradient.colors = [startColor.cgColor, endColor.cgColor]
         self.gradient.startPoint = CGPoint.init(x: 0, y: 1)
         self.gradient.endPoint = CGPoint.init(x: 1, y: 1)

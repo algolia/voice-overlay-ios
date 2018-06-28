@@ -38,24 +38,24 @@ class ViewHelpers {
         closeView.backgroundColor = VoiceUIConstants.PermissionScreen.backgroundColor
     }
 
-    static func setConstraintsForAllowMicrophoneAccess(_ allowMicrophoneAccessButton: AllowPermissionButton, _ margins: UILayoutGuide) {
-        setDefaultSideConstraints(to: allowMicrophoneAccessButton, in: margins)
-        allowMicrophoneAccessButton.centerYAnchor.constraint(equalTo: margins.centerYAnchor, constant: 50).isActive = true
-        allowMicrophoneAccessButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        allowMicrophoneAccessButton.setTitle(VoiceUIConstants.PermissionScreen.allowMicrophoneAccessText, for: .normal)
-        allowMicrophoneAccessButton.setTitleColor(VoiceUIConstants.PermissionScreen.textColor, for: .normal)
+    static func setConstraintsForFirstButton(_ firstButton: FirstPermissionButton, _ margins: UILayoutGuide, _ text: String) {
+        setDefaultSideConstraints(to: firstButton, in: margins)
+        firstButton.centerYAnchor.constraint(equalTo: margins.centerYAnchor, constant: 50).isActive = true
+        firstButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        firstButton.setTitle(text, for: .normal)
+        firstButton.setTitleColor(VoiceUIConstants.PermissionScreen.textColor, for: .normal)
     }
 
-    static func setConstraintsForRejectMicrophoneAccessButton(_ rejectMicrophoneAccessButton: UIButton, _ allowMicrophoneAccessButton: AllowPermissionButton, _ margins: UILayoutGuide) {
-        setDefaultSideConstraints(to: rejectMicrophoneAccessButton, in: margins)
-        rejectMicrophoneAccessButton.topAnchor.constraint(equalTo: allowMicrophoneAccessButton.bottomAnchor, constant: 15).isActive = true
-        rejectMicrophoneAccessButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        rejectMicrophoneAccessButton.setTitle(VoiceUIConstants.PermissionScreen.rejectMicrophoneAccessText, for: .normal)
-        rejectMicrophoneAccessButton.setTitleColor(VoiceUIConstants.PermissionScreen.textColor, for: .normal)
-        rejectMicrophoneAccessButton.backgroundColor = .clear
-        rejectMicrophoneAccessButton.layer.cornerRadius = 7
-        rejectMicrophoneAccessButton.layer.borderWidth = 1
-        rejectMicrophoneAccessButton.layer.borderColor = VoiceUIConstants.PermissionScreen.textColor.cgColor
+    static func setConstraintsForSecondButton(_ secondButton: UIButton, _ firstButton: FirstPermissionButton, _ margins: UILayoutGuide, _ text: String) {
+        setDefaultSideConstraints(to: secondButton, in: margins)
+        secondButton.topAnchor.constraint(equalTo: firstButton.bottomAnchor, constant: 15).isActive = true
+        secondButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        secondButton.setTitle(text, for: .normal)
+        secondButton.setTitleColor(VoiceUIConstants.PermissionScreen.textColor, for: .normal)
+        secondButton.backgroundColor = .clear
+        secondButton.layer.cornerRadius = 7
+        secondButton.layer.borderWidth = 1
+        secondButton.layer.borderColor = VoiceUIConstants.PermissionScreen.textColor.cgColor
     }
     
     static func setConstraintsForRecordingButton(_ recordingButton: RecordingButton, _ margins: UILayoutGuide) {

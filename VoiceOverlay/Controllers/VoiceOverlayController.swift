@@ -13,6 +13,7 @@ import Speech
 public class VoiceOverlayController {
     
     let permissionViewController = PermissionViewController()
+    let noPermissionViewController = NoPermissionViewController()
     let speechController = SpeechController()
     public weak var delegate: VoiceOverlayDelegate?
     var speechTextHandler: SpeechTextHandler?
@@ -23,36 +24,66 @@ public class VoiceOverlayController {
     // TODO: Define datasource that will be used to give back the text from the SpeechController
     public var datasource: Any? = nil
     
-    fileprivate func redirect(_ view: UIViewController) {
-        // TODO: Custom logic to check whether to do the PermissionController or directly the speech controller.
-        
-        let authorizationStatus = SFSpeechRecognizer.authorizationStatus()
-        switch authorizationStatus {
-        case .authorized:
-            let recordingViewController = RecordingViewController()
-            recordingViewController.delegate = delegate
-            recordingViewController.speechTextHandler = speechTextHandler
-            recordingViewController.speechErrorHandler = speechErrorHandler
-            recordingViewController.speechController = self.speechController
-            view.present(recordingViewController, animated: true)
-        case .denied, .restricted:
-            print("Launch the error ViewController")
-        case .notDetermined:
-            permissionViewController.speechController = speechController
-            view.present(permissionViewController, animated: true)
-        }
-    }
-    
     public func start(on view: UIViewController, textHandler: @escaping SpeechTextHandler, errorHandler: @escaping SpeechErrorHandler) {
         self.speechTextHandler = textHandler
         self.speechErrorHandler = errorHandler
         
-        redirect(view)
+        checkPermissionsAndRedirectToCorrectScreen(view)
         
         permissionViewController.dismissHandler = { [weak self] in
-            self?.redirect(view)
+            self?.checkPermissionsAndRedirectToCorrectScreen(view)
         }
         
+        noPermissionViewController.dismissHandler = { [weak self] in
+            if SFSpeechRecognizer.authorizationStatus() == .authorized {
+                self?.checkPermissionsAndRedirectToCorrectScreen(view)
+            }
+        }
+    }
+    
+    fileprivate func checkPermissionsAndRedirectToCorrectScreen(_ view: UIViewController) {
+        
+        // Audio/Record permissions
+        switch AVAudioSession.sharedInstance().recordPermission {
+        case AVAudioSession.RecordPermission.granted:
+            // If audio/record permission is granted, we need to check for the speech permission next
+            checkSpeechAuthorizationStatusAndRedirectToCorrectScreen(view)
+        case AVAudioSession.RecordPermission.denied:
+            showNoPermissionScreen(view)
+        case AVAudioSession.RecordPermission.undetermined:
+            showPermissionScreen(view)
+        }
+    }
+    
+    func checkSpeechAuthorizationStatusAndRedirectToCorrectScreen(_ view: UIViewController) {
+        
+        // speech permissions
+        switch SFSpeechRecognizer.authorizationStatus() {
+        case .authorized:
+            showRecordingScreen(view)
+        case .denied, .restricted:
+            showNoPermissionScreen(view)
+        case .notDetermined:
+            showPermissionScreen(view)
+        }
+    }
+    
+    fileprivate func showPermissionScreen(_ view: UIViewController) {
+        permissionViewController.speechController = speechController
+        view.present(permissionViewController, animated: true)
+    }
+    
+    fileprivate func showNoPermissionScreen(_ view: UIViewController) {
+        view.present(noPermissionViewController, animated: true)
+    }
+    
+    fileprivate func showRecordingScreen(_ view: UIViewController) {
+        let recordingViewController = RecordingViewController()
+        recordingViewController.delegate = delegate
+        recordingViewController.speechTextHandler = speechTextHandler
+        recordingViewController.speechErrorHandler = speechErrorHandler
+        recordingViewController.speechController = self.speechController
+        view.present(recordingViewController, animated: true)
     }
 }
 

@@ -41,14 +41,15 @@ class RecordingViewController: UIViewController {
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.closeButtonTapped(_:)))
         closeView.addGestureRecognizer(tap)
         
-        recordingButton.addTarget(self, action: #selector(recordingButtobTapped(_:)), for: .touchUpInside)
+        recordingButton.addTarget(self, action: #selector(recordingButtonTapped(_:)), for: .touchUpInside)
         
         if VoiceUIConstants.RecordingScreen.instantStart {
+            titleLabel.text = VoiceUIConstants.RecordingScreen.titleListening
             toogleRecording(recordingButton)
         }
     }
     
-    @objc func recordingButtobTapped(_ recordingButton: RecordingButton) {
+    @objc func recordingButtonTapped(_ recordingButton: RecordingButton) {
         toogleRecording(recordingButton)
     }
     
@@ -56,17 +57,25 @@ class RecordingViewController: UIViewController {
         dismissMe(animated: true)
     }
     
-    func toogleRecording(_ recordingButton: RecordingButton) {
+    func toogleRecording(_ recordingButton: RecordingButton, dismiss: Bool = true) {
         isRecording = !isRecording
         recordingButton.animate(isRecording)
         recordingButton.setimage(isRecording)
+        
+        if isRecording {
+            titleLabel.text = VoiceUIConstants.RecordingScreen.titleListening
+            subtitleLabel.text = VoiceUIConstants.RecordingScreen.subtitleInitial
+            tryAgainLabel.text = ""
+        }
         
         // TODO: Playing sound is crashing. probably because we re not stopping play, or interfering with speech controller, or setActive true/false in playSound
         //recordingButton.playSound(with: isRecording ? .startRecording : .endRecording)
         
         if !isRecording {
             speechController.stopRecording()
-            dismissMe(animated: true)
+            if dismiss {
+                dismissMe(animated: true)
+            }
             return
         }
         
@@ -87,6 +96,9 @@ class RecordingViewController: UIViewController {
     }
     
     func handleVoiceError(_ error: Error?) {
-        
+        titleLabel.text = VoiceUIConstants.RecordingScreen.titleError
+        subtitleLabel.text = VoiceUIConstants.RecordingScreen.subtitleError
+        tryAgainLabel.text = VoiceUIConstants.RecordingScreen.tryAgainText
+        toogleRecording(recordingButton, dismiss: false)
     }
 }
