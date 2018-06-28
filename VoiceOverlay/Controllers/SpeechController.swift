@@ -118,10 +118,10 @@ public typealias SpeechErrorHandler = (Error?) -> Void
   /// Method which will stop the recording
   public func stopRecording() {
     if audioEngine.isRunning {
+      speechRequest?.endAudio()
       audioEngine.stop()
       audioEngine.inputNode.removeTap(onBus: 0)
       speechTask?.cancel()
-      speechRequest?.endAudio()
     }
     speechTask = nil
     speechRequest = nil

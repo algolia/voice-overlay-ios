@@ -15,6 +15,7 @@ public class VoiceOverlayController {
     let permissionViewController = PermissionViewController()
     let speechController = SpeechController()
     public weak var delegate: VoiceOverlayDelegate?
+    var voiceOverlayHandler: VoiceOverlayHandler?
     
     public init() {}
     
@@ -29,6 +30,7 @@ public class VoiceOverlayController {
         case .authorized:
             let recordingViewController = RecordingViewController()
             recordingViewController.delegate = delegate
+            recordingViewController.voiceOverlayHandler = voiceOverlayHandler
             recordingViewController.speechController = self.speechController
             view.present(recordingViewController, animated: true)
         case .denied, .restricted:
@@ -39,7 +41,8 @@ public class VoiceOverlayController {
         }
     }
     
-    public func start(on view: UIViewController) {
+    public func start(on view: UIViewController, voiceOverlayHandler: @escaping VoiceOverlayHandler) {
+        self.voiceOverlayHandler = voiceOverlayHandler
         redirect(view)
         
         permissionViewController.dismissHandler = {

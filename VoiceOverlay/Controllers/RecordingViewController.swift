@@ -8,12 +8,15 @@
 
 import UIKit
 
+public typealias VoiceOverlayHandler = (_ text: String?, _ final: Bool?, _ error: Error?) -> Void
+
 class RecordingViewController: UIViewController {
 
     var speechController: SpeechController!
     var isRecording: Bool = false
     var searchText: String = ""
     weak var delegate: VoiceOverlayDelegate?
+    var voiceOverlayHandler: VoiceOverlayHandler?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -67,6 +70,7 @@ class RecordingViewController: UIViewController {
         
         speechController.startRecording(textHandler: {[weak self] (text, final) in
             self?.delegate?.recording(text: text, final: final, error: nil)
+            self?.voiceOverlayHandler?(text, final, nil)
             self?.searchText = text
             
             if final {
@@ -75,6 +79,7 @@ class RecordingViewController: UIViewController {
             }
             }, errorHandler: { [weak self] error in
                 self?.delegate?.recording(text: nil, final: nil, error: error)
+                self?.voiceOverlayHandler?(nil, nil, error)
                 self?.handleVoiceError(error)
         })
     }

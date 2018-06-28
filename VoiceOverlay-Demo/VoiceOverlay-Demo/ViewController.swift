@@ -11,12 +11,6 @@ import VoiceOverlay
 
 class ViewController: UIViewController, VoiceOverlayDelegate {
     
-    func recording(text: String?, final: Bool?, error: Error?) {
-        if error == nil {
-            label.text = text
-        }
-    }
-    
     let voiceOverlayController = VoiceOverlayController()
     let button = UIButton(frame: CGRect(x: 100, y: 100, width: 200, height: 50))
     let label = UILabel(frame: CGRect(x: 100, y: 400, width: 400, height: 50))
@@ -28,17 +22,34 @@ class ViewController: UIViewController, VoiceOverlayDelegate {
         button.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
         button.setTitle("Voice Button", for: .normal)
         button.setTitleColor(.red, for: .normal)
-        label.text = "asd"
+        label.text = "text that is filled by delegate method"
         self.view.addSubview(label)
         self.view.addSubview(button)
         voiceOverlayController.delegate = self
-        
-        
     }
     
     @objc func buttonTapped() {
+    
+    
+    voiceOverlayController.start(on: self) { (text, final, error) in
+            // First way to listen to recording through handler
+        if let error = error {
+            print("callback: error \(error)")
+        }
+        print("callback: getting \(String(describing: text))")
+        print("callback: is it final? \(String(describing: final))")
+        }
+    }
+    
+    // Second way to listen to recording through delegate
+    func recording(text: String?, final: Bool?, error: Error?) {
+        if let error = error {
+            print("delegate: error \(error)")
+        }
         
-        voiceOverlayController.start(on: self)
+        if error == nil {
+            label.text = text
+        }
     }
 
 
