@@ -22,25 +22,24 @@ class ViewController: UIViewController, VoiceOverlayDelegate {
         button.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
         button.setTitle("Voice Button", for: .normal)
         button.setTitleColor(.red, for: .normal)
-        label.text = "text that is filled by delegate method"
+        label.text = "text filled by delegate method"
         self.view.addSubview(label)
         self.view.addSubview(button)
         voiceOverlayController.delegate = self
+        // If you want to start recording as soon as modal view pops up
+        VoiceUIConstants.RecordingScreen.instantStart = true
     }
     
     @objc func buttonTapped() {
     
-    
-    voiceOverlayController.start(on: self) { (text, final, error) in
-            // First way to listen to recording through handler
-        if let error = error {
-            print("callback: error \(error)")
-        }
-        print("callback: getting \(String(describing: text))")
-        print("callback: is it final? \(String(describing: final))")
+        // First way to listen to recording through callbacks
+        voiceOverlayController.start(on: self, textHandler: { (text, final) in
+            print("callback: getting \(String(describing: text))")
+            print("callback: is it final? \(String(describing: final))")
+        }) { (error) in
+            print("callback: error \(String(describing: error))")
         }
     }
-    
     // Second way to listen to recording through delegate
     func recording(text: String?, final: Bool?, error: Error?) {
         if let error = error {

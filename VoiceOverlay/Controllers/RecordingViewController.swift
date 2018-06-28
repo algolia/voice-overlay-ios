@@ -8,26 +8,24 @@
 
 import UIKit
 
-public typealias VoiceOverlayHandler = (_ text: String?, _ final: Bool?, _ error: Error?) -> Void
-
 class RecordingViewController: UIViewController {
 
     var speechController: SpeechController!
     var isRecording: Bool = false
-    var searchText: String = ""
     weak var delegate: VoiceOverlayDelegate?
-    var voiceOverlayHandler: VoiceOverlayHandler?
+    var speechTextHandler: SpeechTextHandler?
+    var speechErrorHandler: SpeechErrorHandler?
+    
+    let titleLabel = UILabel()
+    let subtitleLabel = UILabel()
+    let closeView = CloseView()
+    let recordingButton = RecordingButton()
+    let tryAgainLabel = UILabel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         let margins = view.layoutMarginsGuide
-        let titleLabel = UILabel()
-        let subtitleLabel = UILabel()
-        let closeView = CloseView()
-        let recordingButton = RecordingButton()
-        let tryAgainLabel = UILabel()
-        
         let subViews = [titleLabel, subtitleLabel, closeView, recordingButton, tryAgainLabel]
         
         ViewHelpers.translatesAutoresizingMaskIntoConstraintsFalse(for: subViews)
@@ -44,6 +42,10 @@ class RecordingViewController: UIViewController {
         closeView.addGestureRecognizer(tap)
         
         recordingButton.addTarget(self, action: #selector(recordingButtobTapped(_:)), for: .touchUpInside)
+        
+        if VoiceUIConstants.RecordingScreen.instantStart {
+            toogleRecording(recordingButton)
+        }
     }
     
     @objc func recordingButtobTapped(_ recordingButton: RecordingButton) {
@@ -70,8 +72,8 @@ class RecordingViewController: UIViewController {
         
         speechController.startRecording(textHandler: {[weak self] (text, final) in
             self?.delegate?.recording(text: text, final: final, error: nil)
-            self?.voiceOverlayHandler?(text, final, nil)
-            self?.searchText = text
+            self?.speechTextHandler?(text, final)
+            self?.subtitleLabel.text = text
             
             if final {
                 self?.toogleRecording(recordingButton)
@@ -79,7 +81,7 @@ class RecordingViewController: UIViewController {
             }
             }, errorHandler: { [weak self] error in
                 self?.delegate?.recording(text: nil, final: nil, error: error)
-                self?.voiceOverlayHandler?(nil, nil, error)
+                self?.speechErrorHandler?(error)
                 self?.handleVoiceError(error)
         })
     }

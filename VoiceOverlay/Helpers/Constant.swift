@@ -12,31 +12,32 @@ import UIKit
 
 public struct VoiceUIConstants {
     public struct PermissionScreen {
-        public static let title = "You can use voice search to find products"
-        public static let subtitle = "May we access your device's microphone to enable voice search?"
-        public static let allowMicrophoneAccessText = "Allow microphone access"
-        public static let rejectMicrophoneAccessText = "No"
+        public static var title = "You can use voice search to find products"
+        public static var subtitle = "May we access your device's microphone to enable voice search?"
+        public static var allowMicrophoneAccessText = "Allow microphone access"
+        public static var rejectMicrophoneAccessText = "No"
         
-        public static let sideMarginConstant: CGFloat = 5
-        public static let textColor: UIColor = .white
-        public static let backgroundColor: UIColor = UIColor(red: 50/255, green: 50/255, blue: 50/255, alpha: 1)
-        public static let startGradientColor = UIColor(red: 73/255, green: 171/255, blue: 248/255, alpha: 1)
-        public static let endGradientColor = UIColor(red: 67/255, green: 102/255, blue: 222/255, alpha: 1)
+        public static var sideMarginConstant: CGFloat = 5
+        public static var textColor: UIColor = .white
+        public static var backgroundColor: UIColor = UIColor(red: 50/255, green: 50/255, blue: 50/255, alpha: 1)
+        public static var startGradientColor = UIColor(red: 73/255, green: 171/255, blue: 248/255, alpha: 1)
+        public static var endGradientColor = UIColor(red: 67/255, green: 102/255, blue: 222/255, alpha: 1)
         
     }
     
     public struct RecordingScreen {
-        public static let titleInitial = "Listening..."
-        public static let subtitleInitial = "Say something like \"iphone case\""
-        public static let titleInProgress = "Searching for:"
-        public static let titleError = "Sorry, we didn't quite get that"
-        public static let subtitleError = "Try repeating your request."
-        public static let tryAgainText = "Try Again"
+        public static var titleInitial = "Listening..."
+        public static var subtitleInitial = "Say something like \"iphone case\""
+        public static var titleInProgress = "Searching for:"
+        public static var titleError = "Sorry, we didn't quite get that"
+        public static var subtitleError = "Try repeating your request."
+        public static var tryAgainText = "Try Again"
+        public static var instantStart = false
         
         public struct RecordingButton {
-            public static let pulseColor = UIColor(red: 51/255, green: 74/255, blue: 97/255, alpha: 1)
-            public static let pulseDuration: CGFloat = 4
-            public static let pulseRadius: CGFloat = 100
+            public static var pulseColor = UIColor(red: 51/255, green: 74/255, blue: 97/255, alpha: 1)
+            public static var pulseDuration: CGFloat = 4
+            public static var pulseRadius: CGFloat = 100
         }
     }
 }
