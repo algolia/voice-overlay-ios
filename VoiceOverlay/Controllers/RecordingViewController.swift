@@ -54,6 +54,10 @@ class RecordingViewController: UIViewController {
     }
     
     @objc func closeButtonTapped(_ sender: UITapGestureRecognizer) {
+        if speechController.isRecording() {
+            toogleRecording(recordingButton)
+        }
+        
         dismissMe(animated: true)
     }
     
