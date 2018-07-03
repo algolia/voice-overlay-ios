@@ -10,7 +10,7 @@ import UIKit
 import AVFoundation
 
 @IBDesignable
-class RecordingButton: UIButton {
+public class RecordingButton: UIButton {
   
   @IBInspectable public var pulseColor: UIColor = UIColor.blue
   @IBInspectable public var pulseDuration: CGFloat = 1.0
