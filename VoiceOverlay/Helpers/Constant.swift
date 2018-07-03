@@ -47,9 +47,9 @@ public struct VoiceUIConstants {
         public static var titleError = "Sorry, we didn't quite get that"
         public static var subtitleError = "Try repeating your request."
         public static var tryAgainText = "Try Again"
-        public static var instantStart = false
-        public static var instantStop = true
-        public static var instantStopTimeout: TimeInterval = 2
+        public static var autoStart = false
+        public static var autoStop = true
+        public static var autoStopTimeout: TimeInterval = 2
         
         public struct RecordingButton {
             public static var pulseColor = UIColor(red: 51/255, green: 74/255, blue: 97/255, alpha: 1)

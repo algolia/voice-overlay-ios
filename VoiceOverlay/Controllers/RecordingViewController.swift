@@ -23,7 +23,10 @@ class RecordingViewController: UIViewController {
     let tryAgainLabel = UILabel()
     
     var isRecording: Bool = false
-    var instantStopTimer: Timer = Timer()
+    var autoStopTimer: Timer = Timer()
+    
+    var speechText: String?
+    var speechError: Error?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,7 +49,7 @@ class RecordingViewController: UIViewController {
         
         recordingButton.addTarget(self, action: #selector(recordingButtonTapped(_:)), for: .touchUpInside)
         
-        if VoiceUIConstants.RecordingScreen.instantStart {
+        if VoiceUIConstants.RecordingScreen.autoStart {
             titleLabel.text = VoiceUIConstants.RecordingScreen.titleListening
             toggleRecording(recordingButton)
         }
@@ -73,20 +76,27 @@ class RecordingViewController: UIViewController {
             titleLabel.text = VoiceUIConstants.RecordingScreen.titleListening
             subtitleLabel.text = VoiceUIConstants.RecordingScreen.subtitleInitial
             tryAgainLabel.text = ""
-        }
-        
-        // TODO: Playing sound is crashing. probably because we re not stopping play, or interfering with speech controller, or setActive true/false in playSound
-        //recordingButton.playSound(with: isRecording ? .startRecording : .endRecording)
-        
-        if !isRecording {
+        } else {
             speechController.stopRecording()
+            self.delegate?.recording(text: self.speechText, final: true, error: self.speechError)
+            
+            if let speechText = self.speechText {
+                self.speechTextHandler?(speechText, true)
+            } else {
+                self.speechErrorHandler?(self.speechError)
+            }
             if dismiss {
                 dismissMe(animated: true)
             }
             return
         }
         
+        // TODO: Playing sound is crashing. probably because we re not stopping play, or interfering with speech controller, or setActive true/false in playSound
+        //recordingButton.playSound(with: isRecording ? .startRecording : .endRecording)
+        
         speechController.startRecording(textHandler: {[weak self] (text, final) in
+            self?.speechText = text
+            self?.speechError = nil
             self?.delegate?.recording(text: text, final: final, error: nil)
             self?.speechTextHandler?(text, final)
             self?.subtitleLabel.text = text
@@ -96,14 +106,16 @@ class RecordingViewController: UIViewController {
                 return
             }
             
-            if VoiceUIConstants.RecordingScreen.instantStop && !text.isEmpty {
-                self?.instantStopTimer.invalidate()
-                self?.instantStopTimer = Timer.scheduledTimer(withTimeInterval: VoiceUIConstants.RecordingScreen.instantStopTimeout, repeats: false, block: { (_) in
+            if VoiceUIConstants.RecordingScreen.autoStop && !text.isEmpty {
+                self?.autoStopTimer.invalidate()
+                self?.autoStopTimer = Timer.scheduledTimer(withTimeInterval: VoiceUIConstants.RecordingScreen.autoStopTimeout, repeats: false, block: { (_) in
                     self?.toggleRecording(recordingButton)
                 })
             }
             
             }, errorHandler: { [weak self] error in
+                self?.speechText = nil
+                self?.speechError = error
                 self?.delegate?.recording(text: nil, final: nil, error: error)
                 self?.speechErrorHandler?(error)
                 self?.handleVoiceError(error)
