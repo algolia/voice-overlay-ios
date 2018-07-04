@@ -77,12 +77,12 @@ public class VoiceOverlayController {
         view.present(noPermissionViewController, animated: true)
     }
     
-    fileprivate func showRecordingScreen(_ view: UIViewController) {
+  fileprivate func showRecordingScreen(_ view: UIViewController) {
         let recordingViewController = RecordingViewController()
         recordingViewController.delegate = delegate
         recordingViewController.speechTextHandler = speechTextHandler
         recordingViewController.speechErrorHandler = speechErrorHandler
-        recordingViewController.speechController = self.speechController
+        recordingViewController.speechController = SpeechController()
         view.present(recordingViewController, animated: true)
     }
 }
