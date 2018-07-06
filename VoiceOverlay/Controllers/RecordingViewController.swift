@@ -47,7 +47,7 @@ class RecordingViewController: UIViewController {
     let tap = UITapGestureRecognizer(target: self, action: #selector(self.closeButtonTapped(_:)))
     closeView.addGestureRecognizer(tap)
     
-    recordingButton.addTarget(self, action: #selector(recordingButtonTapped(_:)), for: .touchUpInside)
+    recordingButton.addTarget(self, action: #selector(recordingButtonTapped), for: .touchUpInside)
     
     if VoiceUIConstants.RecordingScreen.autoStart {
       titleLabel.text = VoiceUIConstants.RecordingScreen.titleListening
@@ -55,7 +55,7 @@ class RecordingViewController: UIViewController {
     }
   }
   
-  @objc func recordingButtonTapped(_ recordingButton: RecordingButton) {
+  @objc func recordingButtonTapped() {
     if isRecording {
       speechController.stopRecording()
     } else {
@@ -64,10 +64,10 @@ class RecordingViewController: UIViewController {
   }
   
   @objc func closeButtonTapped(_ sender: UITapGestureRecognizer) {
-    if speechController.isRecording() {
-      toggleRecording(recordingButton)
-    }
-    
+    self.delegate = nil
+    self.speechTextHandler = nil
+    self.speechErrorHandler = nil
+    speechController.stopRecording()
     dismissMe(animated: true)
   }
 
@@ -98,7 +98,7 @@ class RecordingViewController: UIViewController {
     // TODO: Playing sound is crashing. probably because we re not stopping play, or interfering with speech controller, or setActive true/false in playSound
     //recordingButton.playSound(with: isRecording ? .startRecording : .endRecording)
     
-    speechController.startRecording(textHandler: {[weak self](text, final) in
+    speechController.startRecording(textHandler: {[weak self] (text, final) in
       self?.speechText = text
       self?.speechError = nil
       self?.subtitleLabel.text = text
@@ -115,7 +115,7 @@ class RecordingViewController: UIViewController {
       if VoiceUIConstants.RecordingScreen.autoStop && !text.isEmpty {
         self?.autoStopTimer.invalidate()
         self?.autoStopTimer = Timer.scheduledTimer(withTimeInterval: VoiceUIConstants.RecordingScreen.autoStopTimeout, repeats: false, block: { (_) in
-          self?.toggleRecording(recordingButton)
+          self?.recordingButtonTapped()
         })
       }
       

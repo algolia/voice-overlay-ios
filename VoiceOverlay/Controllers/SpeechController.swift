@@ -72,7 +72,7 @@ public typealias SpeechErrorHandler = (Error?) -> Void
   
   /// The method is going to give an infinite stream of speech-to-text until `stopRecording` is called or an error is encounter
   public func startRecording(textHandler: @escaping SpeechTextHandler, errorHandler: @escaping SpeechErrorHandler) {
-    requestAuthorization { (authStatus) in
+    requestAuthorization {[unowned self] (authStatus) in
       if authStatus {
         if !self.audioEngine.isRunning {
             self.record(textHandler: textHandler, errorHandler: errorHandler)
