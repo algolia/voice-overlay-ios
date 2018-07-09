@@ -82,7 +82,7 @@ public class VoiceOverlayController {
         recordingViewController.delegate = delegate
         recordingViewController.speechTextHandler = speechTextHandler
         recordingViewController.speechErrorHandler = speechErrorHandler
-        recordingViewController.speechController = self.speechController //SpeechController()
+        recordingViewController.speechController = SpeechController()
         view.present(recordingViewController, animated: true)
     }
 }

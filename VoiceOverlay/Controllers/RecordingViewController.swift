@@ -115,7 +115,7 @@ class RecordingViewController: UIViewController {
       if VoiceUIConstants.RecordingScreen.autoStop && !text.isEmpty {
         self?.autoStopTimer.invalidate()
         self?.autoStopTimer = Timer.scheduledTimer(withTimeInterval: VoiceUIConstants.RecordingScreen.autoStopTimeout, repeats: false, block: { (_) in
-          self?.recordingButtonTapped()
+          self?.toggleRecording(recordingButton)
         })
       }
       
