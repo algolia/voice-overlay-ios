@@ -14,14 +14,17 @@ public class VoiceUISettings {
   
   public var autoStart = false
   public var autoStop = true
+  public var showResultScreen = false
   public var autoStopTimeout: TimeInterval = 2
   public var layout: Layout = Layout()
+  
   
   public class Layout {
     
     public var permissionScreen = PermissionScreenConstants()
     public var noPermissionScreen = NoPermissionScreenConstants()
     public var recordingScreen = RecordingScreenConstants()
+    public var resultScreen = ResultScreenConstants()
   }
 }
 
@@ -64,6 +67,15 @@ public class RecordingScreenConstants {
   
   public var textColor: UIColor = .white
   public var backgroundColor: UIColor = UIColor(red: 50/255, green: 50/255, blue: 50/255, alpha: 1)
+}
+
+public class ResultScreenConstants {
+  public var title = "Processing Resuts..."
+  public var subtitle = "Please wait a few seconds while we process your input"
+  public var startAgainText = "Start Again"
+  
+  public var textColor: UIColor = .white
+  public var backgroundColor: UIColor = UIColor(red: 51/255, green: 74/255, blue: 97/255, alpha: 1)
 }
 
 public class RecordingButtonConstants {

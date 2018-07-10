@@ -38,7 +38,7 @@ class ViewHelpers {
         closeView.backgroundColor = backgroundColor
     }
 
-    static func setConstraintsForFirstButton(_ firstButton: FirstPermissionButton, _ margins: UILayoutGuide, _ text: String, _ textColor: UIColor) {
+    static func setConstraintsForFirstButton(_ firstButton: UIButton, _ margins: UILayoutGuide, _ text: String, _ textColor: UIColor) {
       setDefaultSideConstraints(to: firstButton, in: margins)
         firstButton.centerYAnchor.constraint(equalTo: margins.centerYAnchor, constant: 50).isActive = true
         firstButton.heightAnchor.constraint(equalToConstant: 50).isActive = true

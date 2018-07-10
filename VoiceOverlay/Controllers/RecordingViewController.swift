@@ -31,6 +31,8 @@ class RecordingViewController: UIViewController {
   var constants: RecordingScreenConstants!
   var settings: VoiceUISettings!
   
+  var dismissHandler: (() -> ())? = nil
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     
@@ -93,7 +95,11 @@ class RecordingViewController: UIViewController {
         self.speechErrorHandler?(self.speechError)
       }
       if dismiss {
-        dismissMe(animated: true)
+        if settings.showResultScreen {
+          self.dismissHandler?()
+        } else {
+          dismissMe(animated: true)
+        }
       }
       return
     }
