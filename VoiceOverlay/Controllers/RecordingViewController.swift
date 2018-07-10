@@ -31,7 +31,7 @@ class RecordingViewController: UIViewController {
   var constants: RecordingScreenConstants!
   var settings: VoiceUISettings!
   
-  var dismissHandler: (() -> ())? = nil
+  let resultViewController = ResultViewController()
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -96,7 +96,13 @@ class RecordingViewController: UIViewController {
       }
       if dismiss {
         if settings.showResultScreen {
-          self.dismissHandler?()
+          resultViewController.constants = self.settings.layout.resultScreen
+          self.present(resultViewController, animated: false)
+          Timer.scheduledTimer(withTimeInterval: self.settings.showResultScreenTime, repeats: false, block: { (_) in
+            self.resultViewController.dismissMe(animated: false) {
+              self.dismissMe(animated: false)
+            }
+          })
         } else {
           dismissMe(animated: true)
         }
@@ -128,7 +134,6 @@ class RecordingViewController: UIViewController {
         strongSelf.autoStopTimer.invalidate()
         strongSelf.autoStopTimer = Timer.scheduledTimer(withTimeInterval: strongSelf.settings.autoStopTimeout, repeats: false, block: { (_) in
           strongSelf.toggleRecording(recordingButton)
-
         })
       }
       

@@ -15,6 +15,7 @@ public class VoiceUISettings {
   public var autoStart = false
   public var autoStop = true
   public var showResultScreen = false
+  public var showResultScreenTime: TimeInterval = 4
   public var autoStopTimeout: TimeInterval = 2
   public var layout: Layout = Layout()
   
@@ -71,6 +72,7 @@ public class RecordingScreenConstants {
 
 public class ResultScreenConstants {
   public var title = "Processing Resuts..."
+  public var titleProcessed = "Searching for:"
   public var subtitle = "Please wait a few seconds while we process your input"
   public var startAgainText = "Start Again"
   

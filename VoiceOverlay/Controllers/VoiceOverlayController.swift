@@ -89,17 +89,6 @@ public class VoiceOverlayController {
         recordingViewController.speechController = SpeechController()
         recordingViewController.constants = settings.layout.recordingScreen
         recordingViewController.settings = settings
-    
-        recordingViewController.dismissHandler = { [weak self] in
-          let resultViewController = ResultViewController()
-          resultViewController.constants = self?.settings.layout.resultScreen
-          recordingViewController.present(resultViewController, animated: false)
-          Timer.scheduledTimer(withTimeInterval: 2.0, repeats: false, block: { (_) in
-            resultViewController.dismissMe(animated: false) {
-              recordingViewController.dismissMe(animated: false)
-            }
-          })
-        }
 
         view.present(recordingViewController, animated: true)
     }
