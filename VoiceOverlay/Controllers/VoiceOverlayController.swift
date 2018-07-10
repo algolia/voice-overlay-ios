@@ -18,6 +18,8 @@ public class VoiceOverlayController {
     public weak var delegate: VoiceOverlayDelegate?
     var speechTextHandler: SpeechTextHandler?
     var speechErrorHandler: SpeechErrorHandler?
+  
+    public var settings: VoiceUISettings = VoiceUISettings()
     
     public init() {}
     
@@ -70,10 +72,12 @@ public class VoiceOverlayController {
     
     fileprivate func showPermissionScreen(_ view: UIViewController) {
         permissionViewController.speechController = speechController
+        permissionViewController.constants = settings.layout.permissionScreen
         view.present(permissionViewController, animated: true)
     }
     
     fileprivate func showNoPermissionScreen(_ view: UIViewController) {
+        noPermissionViewController.constants = settings.layout.noPermissionScreen
         view.present(noPermissionViewController, animated: true)
     }
     
@@ -83,6 +87,9 @@ public class VoiceOverlayController {
         recordingViewController.speechTextHandler = speechTextHandler
         recordingViewController.speechErrorHandler = speechErrorHandler
         recordingViewController.speechController = SpeechController()
+        recordingViewController.constants = settings.layout.recordingScreen
+        recordingViewController.settings = settings
+
         view.present(recordingViewController, animated: true)
     }
 }

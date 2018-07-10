@@ -10,51 +10,68 @@ import Foundation
 import CoreGraphics
 import UIKit
 
-public struct VoiceUIConstants {
-    public struct PermissionScreen {
-        public static var title = "You can use voice search to find products"
-        public static var subtitle = "May we access your device's microphone to enable voice search?"
-        public static var allowMicrophoneAccessText = "Allow microphone access"
-        public static var rejectMicrophoneAccessText = "No"
-        
-        public static var sideMarginConstant: CGFloat = 5
-        public static var textColor: UIColor = .white
-        public static var backgroundColor: UIColor = UIColor(red: 50/255, green: 50/255, blue: 50/255, alpha: 1)
-        public static var startGradientColor = UIColor(red: 73/255, green: 171/255, blue: 248/255, alpha: 1)
-        public static var endGradientColor = UIColor(red: 67/255, green: 102/255, blue: 222/255, alpha: 1)
-        
-    }
+public class VoiceUISettings {
+  
+  public var autoStart = false
+  public var autoStop = true
+  public var autoStopTimeout: TimeInterval = 2
+  public var layout: Layout = Layout()
+  
+  public class Layout {
     
-    public struct NoPermissionScreen {
-        public static var title = "You don't have the right permissions"
-        public static var subtitle = "In order to enable voice search, you need to enable it in your setting's app."
-        public static var goToSettingsText = "Go to settings"
-        public static var doneText = "Done"
-        
-        public static var sideMarginConstant: CGFloat = 5
-        public static var textColor: UIColor = .white
-        public static var backgroundColor: UIColor = UIColor(red: 50/255, green: 50/255, blue: 50/255, alpha: 1)
-        public static var startGradientColor = UIColor(red: 27/255, green: 70/255, blue: 151/255, alpha: 1)
-        public static var endGradientColor = UIColor(red: 70/255, green: 160/255, blue: 190/255, alpha: 1)
-        
-    }
-    
-    public struct RecordingScreen {
-        public static var titleInitial = "Press the button to start"
-        public static var titleListening = "Listening..."
-        public static var subtitleInitial = "Say something like \"iphone case\""
-        public static var titleInProgress = "Searching for:"
-        public static var titleError = "Sorry, we didn't quite get that"
-        public static var subtitleError = "Try repeating your request."
-        public static var tryAgainText = "Try Again"
-        public static var autoStart = false
-        public static var autoStop = true
-        public static var autoStopTimeout: TimeInterval = 2
-        
-        public struct RecordingButton {
-            public static var pulseColor = UIColor(red: 51/255, green: 74/255, blue: 97/255, alpha: 1)
-            public static var pulseDuration: CGFloat = 4
-            public static var pulseRadius: CGFloat = 100
-        }
-    }
+    public var permissionScreen = PermissionScreenConstants()
+    public var noPermissionScreen = NoPermissionScreenConstants()
+    public var recordingScreen = RecordingScreenConstants()
+  }
+}
+
+public class PermissionScreenConstants {
+  public var title = "You can use voice search to find products"
+  public var subtitle = "May we access your device's microphone to enable voice search?"
+  public var allowMicrophoneAccessText = "Allow microphone access"
+  public var rejectMicrophoneAccessText = "No"
+  
+  public var textColor: UIColor = .white
+  public var backgroundColor: UIColor = UIColor(red: 50/255, green: 50/255, blue: 50/255, alpha: 1)
+  public var startGradientColor = UIColor(red: 73/255, green: 171/255, blue: 248/255, alpha: 1)
+  public var endGradientColor = UIColor(red: 67/255, green: 102/255, blue: 222/255, alpha: 1)
+  
+}
+
+public class NoPermissionScreenConstants {
+  public var title = "You don't have the right permissions"
+  public var subtitle = "In order to enable voice search, you need to enable it in your setting's app."
+  public var goToSettingsText = "Go to settings"
+  public var doneText = "Done"
+  
+  public var textColor: UIColor = .white
+  public var backgroundColor: UIColor = UIColor(red: 50/255, green: 50/255, blue: 50/255, alpha: 1)
+  public var startGradientColor = UIColor(red: 27/255, green: 70/255, blue: 151/255, alpha: 1)
+  public var endGradientColor = UIColor(red: 70/255, green: 160/255, blue: 190/255, alpha: 1)
+  
+}
+
+public class RecordingScreenConstants {
+  public var titleInitial = "Press the button to start"
+  public var titleListening = "Listening..."
+  public var subtitleInitial = "Say something like \"iphone case\""
+  public var titleInProgress = "Searching for:"
+  public var titleError = "Sorry, we didn't quite get that"
+  public var subtitleError = "Try repeating your request."
+  public var tryAgainText = "Try Again"
+  public var recordingButtonConstants = RecordingButtonConstants()
+  
+  
+  public var textColor: UIColor = .white
+  public var backgroundColor: UIColor = UIColor(red: 50/255, green: 50/255, blue: 50/255, alpha: 1)
+}
+
+public class RecordingButtonConstants {
+  public var pulseColor = UIColor(red: 51/255, green: 74/255, blue: 97/255, alpha: 1)
+  public var pulseDuration: CGFloat = 4
+  public var pulseRadius: CGFloat = 100
+}
+
+struct VoiceUIInternalConstants {
+    public static var sideMarginConstant: CGFloat = 5
 }

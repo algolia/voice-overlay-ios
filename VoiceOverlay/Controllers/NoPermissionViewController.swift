@@ -11,6 +11,7 @@ import UIKit
 public class NoPermissionViewController: UIViewController {
     
     var dismissHandler: (() -> ())? = nil
+    var constants: NoPermissionScreenConstants!
     
     override public func viewDidLoad() {
         super.viewDidLoad()
@@ -18,7 +19,7 @@ public class NoPermissionViewController: UIViewController {
         let margins = view.layoutMarginsGuide
         let titleLabel = UILabel()
         let subtitleLabel = UILabel()
-        let goToSettingsButton = FirstPermissionButton(startColor: VoiceUIConstants.NoPermissionScreen.startGradientColor, endColor: VoiceUIConstants.NoPermissionScreen.endGradientColor)
+        let goToSettingsButton = FirstPermissionButton(startColor: constants.startGradientColor, endColor: constants.endGradientColor)
         let doneWithSettingsButton = UIButton()
         let closeView = CloseView()
         
@@ -27,12 +28,12 @@ public class NoPermissionViewController: UIViewController {
         ViewHelpers.translatesAutoresizingMaskIntoConstraintsFalse(for: subViews)
         ViewHelpers.addSubviews(for: subViews, in: view)
         
-        view.backgroundColor = VoiceUIConstants.NoPermissionScreen.backgroundColor
-        ViewHelpers.setConstraintsForTitleLabel(titleLabel, margins, VoiceUIConstants.NoPermissionScreen.title)
-        ViewHelpers.setConstraintsForSubtitleLabel(subtitleLabel, titleLabel, margins, VoiceUIConstants.NoPermissionScreen.subtitle)
-        ViewHelpers.setConstraintsForCloseView(closeView, margins)
-        ViewHelpers.setConstraintsForFirstButton(goToSettingsButton, margins, VoiceUIConstants.NoPermissionScreen.goToSettingsText)
-        ViewHelpers.setConstraintsForSecondButton(doneWithSettingsButton, goToSettingsButton, margins, VoiceUIConstants.NoPermissionScreen.doneText)
+        view.backgroundColor = constants.backgroundColor
+        ViewHelpers.setConstraintsForTitleLabel(titleLabel, margins, constants.title, constants.textColor)
+        ViewHelpers.setConstraintsForSubtitleLabel(subtitleLabel, titleLabel, margins, constants.subtitle, constants.textColor)
+        ViewHelpers.setConstraintsForCloseView(closeView, margins, backgroundColor: constants.backgroundColor)
+        ViewHelpers.setConstraintsForFirstButton(goToSettingsButton, margins, constants.goToSettingsText, constants.textColor)
+        ViewHelpers.setConstraintsForSecondButton(doneWithSettingsButton, goToSettingsButton, margins, constants.doneText, constants.textColor)
         
         goToSettingsButton.addTarget(self, action: #selector(goToSettingsTapped), for: .touchUpInside)
         doneWithSettingsButton.addTarget(self, action: #selector(doneWithSettingsTapped), for: .touchUpInside)

@@ -13,6 +13,8 @@ public class PermissionViewController: UIViewController {
     
     var dismissHandler: (() -> ())? = nil
     var speechController: SpeechController!
+  
+    var constants: PermissionScreenConstants!
     
     override public func viewDidLoad() {
         super.viewDidLoad()
@@ -20,7 +22,7 @@ public class PermissionViewController: UIViewController {
         let margins = view.layoutMarginsGuide
         let titleLabel = UILabel()
         let subtitleLabel = UILabel()
-        let allowMicrophoneAccessButton = FirstPermissionButton(startColor: VoiceUIConstants.PermissionScreen.startGradientColor, endColor: VoiceUIConstants.PermissionScreen.endGradientColor)
+        let allowMicrophoneAccessButton = FirstPermissionButton(startColor: constants.startGradientColor, endColor: constants.endGradientColor)
         let rejectMicrophoneAccessButton = UIButton()
         let closeView = CloseView()
         
@@ -29,12 +31,12 @@ public class PermissionViewController: UIViewController {
         ViewHelpers.translatesAutoresizingMaskIntoConstraintsFalse(for: subViews)
         ViewHelpers.addSubviews(for: subViews, in: view)
         
-        view.backgroundColor = VoiceUIConstants.PermissionScreen.backgroundColor
-        ViewHelpers.setConstraintsForTitleLabel(titleLabel, margins, VoiceUIConstants.PermissionScreen.title)
-        ViewHelpers.setConstraintsForSubtitleLabel(subtitleLabel, titleLabel, margins, VoiceUIConstants.PermissionScreen.subtitle)
-        ViewHelpers.setConstraintsForCloseView(closeView, margins)
-        ViewHelpers.setConstraintsForFirstButton(allowMicrophoneAccessButton, margins, VoiceUIConstants.PermissionScreen.allowMicrophoneAccessText)
-        ViewHelpers.setConstraintsForSecondButton(rejectMicrophoneAccessButton, allowMicrophoneAccessButton, margins, VoiceUIConstants.PermissionScreen.rejectMicrophoneAccessText)
+        view.backgroundColor = constants.backgroundColor
+        ViewHelpers.setConstraintsForTitleLabel(titleLabel, margins, constants.title, constants.textColor)
+        ViewHelpers.setConstraintsForSubtitleLabel(subtitleLabel, titleLabel, margins, constants.subtitle, constants.textColor)
+        ViewHelpers.setConstraintsForCloseView(closeView, margins, backgroundColor: constants.backgroundColor)
+        ViewHelpers.setConstraintsForFirstButton(allowMicrophoneAccessButton, margins, constants.allowMicrophoneAccessText, constants.textColor)
+        ViewHelpers.setConstraintsForSecondButton(rejectMicrophoneAccessButton, allowMicrophoneAccessButton, margins, constants.rejectMicrophoneAccessText, constants.textColor)
         
         allowMicrophoneAccessButton.addTarget(self, action: #selector(allowMicrophoneTapped), for: .touchUpInside)
         rejectMicrophoneAccessButton.addTarget(self, action: #selector(rejectMicrophoneTapped), for: .touchUpInside)
