@@ -72,4 +72,10 @@ public class CloseView: UIView
         
         layer.addSublayer(rightCrossShapeLayer)
     }
+  
+  override public func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
+    let frame = self.bounds.insetBy(dx: -30, dy: -30);
+    return frame.contains(point) ? self : nil;
+  }
+
 }
