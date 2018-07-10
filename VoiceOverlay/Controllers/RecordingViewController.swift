@@ -107,6 +107,7 @@ class RecordingViewController: UIViewController {
       strongSelf.speechText = text
       strongSelf.speechError = nil
       strongSelf.subtitleLabel.text = text
+      strongSelf.titleLabel.text = text.isEmpty ? strongSelf.constants.titleListening : strongSelf.constants.titleInProgress
       
       if final {
         strongSelf.autoStopTimer.invalidate()

@@ -28,8 +28,10 @@ class ViewController: UIViewController, VoiceOverlayDelegate {
         voiceOverlayController.delegate = self
         
         // If you want to start recording as soon as modal view pops up, change to true
-        voiceOverlayController.settings.autoStart = false
+        voiceOverlayController.settings.autoStart = true
         voiceOverlayController.settings.autoStop = true
+        //voiceOverlayController.settings.layout.recordingScreen.titleListening = "custom title when listening"
+      
     }
     
     @objc func buttonTapped() {
