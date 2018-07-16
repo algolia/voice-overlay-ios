@@ -31,7 +31,10 @@ class RecordingViewController: UIViewController {
   var constants: RecordingScreenConstants!
   var settings: VoiceUISettings!
   
-  let resultViewController = ResultViewController()
+  var resultViewController: ResultViewController?
+  
+  var dismissHandler: ((Bool) -> ())? = nil
+  var resultScreentimer: Timer?
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -54,9 +57,29 @@ class RecordingViewController: UIViewController {
     
     recordingButton.addTarget(self, action: #selector(recordingButtonTapped), for: .touchUpInside)
     
+    NotificationCenter.default.addObserver(self, selector: #selector(self.resultScreenTextReceived(_:)), name: NSNotification.Name(rawValue: "resultScreenTextNotification"), object: nil)
+
+    
     if settings.autoStart {
       titleLabel.text = constants.titleListening
       toggleRecording(recordingButton)
+    }
+  }
+  
+  // handle notification
+  @objc func resultScreenTextReceived(_ notification: NSNotification) {
+    
+    if let resultScreenText = notification.userInfo?["resultScreenText"] as? NSAttributedString {
+      guard let resultViewController = resultViewController else { return }
+      resultScreentimer?.invalidate()
+      resultViewController.voiceOutputText = resultScreenText
+      resultScreentimer = Timer.scheduledTimer(withTimeInterval: self.settings.showResultScreenTime, repeats: false, block: { (_) in
+        self.resultViewController?.dismissMe(animated: false) {
+          self.dismissMe(animated: false) {
+            self.dismissHandler?(false)
+          }
+        }
+      })
     }
   }
   
@@ -73,7 +96,9 @@ class RecordingViewController: UIViewController {
     self.speechTextHandler = nil
     self.speechErrorHandler = nil
     speechController.stopRecording()
-    dismissMe(animated: true)
+    dismissMe(animated: true) {
+      self.dismissHandler?(false)
+    }
   }
 
   func toggleRecording(_ recordingButton: RecordingButton, dismiss: Bool = true) {
@@ -96,15 +121,29 @@ class RecordingViewController: UIViewController {
       }
       if dismiss {
         if settings.showResultScreen {
+          resultViewController = ResultViewController()
+          guard let resultViewController = resultViewController else { return }
+          resultViewController.dismissHandler = { [unowned self] (retry) in
+            self.resultScreentimer?.invalidate()
+            self.resultViewController?.dismissMe(animated: false) {
+              self.dismissMe(animated: false) {
+                self.dismissHandler?(true)
+              }
+            }
+          }
           resultViewController.constants = self.settings.layout.resultScreen
           self.present(resultViewController, animated: false)
-          Timer.scheduledTimer(withTimeInterval: self.settings.showResultScreenTime, repeats: false, block: { (_) in
-            self.resultViewController.dismissMe(animated: false) {
-              self.dismissMe(animated: false)
+          resultScreentimer = Timer.scheduledTimer(withTimeInterval: self.settings.showResultScreenTimeout, repeats: false, block: { (_) in
+            self.resultViewController?.dismissMe(animated: false) {
+              self.dismissMe(animated: false) {
+                self.dismissHandler?(false)
+              }
             }
           })
         } else {
-          dismissMe(animated: true)
+          dismissMe(animated: true) {
+            self.dismissHandler?(false)
+          }
         }
       }
       return
@@ -126,8 +165,10 @@ class RecordingViewController: UIViewController {
         strongSelf.toggleRecording(recordingButton)
         return
       } else {
-        strongSelf.delegate?.recording(text: text, final: final, error: nil)
-        strongSelf.speechTextHandler?(text, final)
+        if strongSelf.isRecording {
+          strongSelf.delegate?.recording(text: text, final: final, error: nil)
+          strongSelf.speechTextHandler?(text, final)
+        }
       }
 
       if strongSelf.settings.autoStop && !text.isEmpty {

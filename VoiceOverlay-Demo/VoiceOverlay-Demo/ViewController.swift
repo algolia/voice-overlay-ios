@@ -30,7 +30,7 @@ class ViewController: UIViewController, VoiceOverlayDelegate {
         // If you want to start recording as soon as modal view pops up, change to true
         voiceOverlayController.settings.autoStart = true
         voiceOverlayController.settings.autoStop = true
-        voiceOverlayController.settings.showResultScreen = true
+        voiceOverlayController.settings.showResultScreen = false
         //voiceOverlayController.settings.layout.recordingScreen.titleListening = "custom title when listening"
       
     }
@@ -40,6 +40,17 @@ class ViewController: UIViewController, VoiceOverlayDelegate {
         voiceOverlayController.start(on: self, textHandler: { (text, final) in
             print("callback: getting \(String(describing: text))")
             print("callback: is it final? \(String(describing: final))")
+          
+          if final {
+            // here can process the result to post in a result screen
+            Timer.scheduledTimer(withTimeInterval: 1.5, repeats: false, block: { (_) in
+              let myString = text
+              let myAttribute = [ NSAttributedString.Key.foregroundColor: UIColor.red ]
+              let myAttrString = NSAttributedString(string: myString, attributes: myAttribute)
+              
+              self.voiceOverlayController.settings.resultScreenText = myAttrString
+            })
+          }
         }) { (error) in
             print("callback: error \(String(describing: error))")
         }

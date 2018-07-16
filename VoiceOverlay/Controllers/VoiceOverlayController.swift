@@ -20,6 +20,8 @@ public class VoiceOverlayController {
     var speechErrorHandler: SpeechErrorHandler?
   
     public var settings: VoiceUISettings = VoiceUISettings()
+    var recordingViewController: RecordingViewController? = RecordingViewController()
+  
     
     public init() {}
     
@@ -82,13 +84,21 @@ public class VoiceOverlayController {
     }
     
   fileprivate func showRecordingScreen(_ view: UIViewController) {
-        let recordingViewController = RecordingViewController()
+        recordingViewController = RecordingViewController()
+        guard let recordingViewController = recordingViewController else { return }
         recordingViewController.delegate = delegate
         recordingViewController.speechTextHandler = speechTextHandler
         recordingViewController.speechErrorHandler = speechErrorHandler
         recordingViewController.speechController = SpeechController()
         recordingViewController.constants = settings.layout.recordingScreen
         recordingViewController.settings = settings
+    
+        recordingViewController.dismissHandler = { [unowned self] (retry) in
+          self.recordingViewController = nil
+          if retry {
+            self.showRecordingScreen(view)
+          }
+        }
 
         view.present(recordingViewController, animated: true)
     }

@@ -15,10 +15,17 @@ public class VoiceUISettings {
   public var autoStart = false
   public var autoStop = true
   public var showResultScreen = false
+  public var showResultScreenTimeout: TimeInterval = 2
   public var showResultScreenTime: TimeInterval = 4
   public var autoStopTimeout: TimeInterval = 2
   public var layout: Layout = Layout()
-  
+  public var resultScreenText: NSAttributedString? {
+    didSet {
+      if let resultScreenText = resultScreenText {
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "resultScreenTextNotification"), object: nil, userInfo: ["resultScreenText": resultScreenText])
+      }
+    }
+  }
   
   public class Layout {
     
