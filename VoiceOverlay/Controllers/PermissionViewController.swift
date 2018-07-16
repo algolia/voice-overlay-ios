@@ -9,7 +9,7 @@
 import UIKit
 import AVFoundation
 
-public class PermissionViewController: UIViewController {
+class PermissionViewController: UIViewController {
     
     var dismissHandler: (() -> ())? = nil
     var speechController: SpeechController!

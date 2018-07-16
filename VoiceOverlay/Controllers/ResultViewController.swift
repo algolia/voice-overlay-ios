@@ -18,6 +18,7 @@ public class ResultViewController: UIViewController {
   let subtitleLabel = UILabel()
   let startAgainButton = UIButton()
   
+  // The bool specifies whether we dismiss with retry or not
   var dismissHandler: ((Bool) -> ())? = nil
   
   var voiceOutputText: NSAttributedString? {

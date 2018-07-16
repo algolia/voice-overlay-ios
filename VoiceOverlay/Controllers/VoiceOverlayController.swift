@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 import Speech
 
+/// Controller that takes care of launching a voice overlay and providing handlers to listen to text and error events.
 public class VoiceOverlayController {
     
     let permissionViewController = PermissionViewController()
@@ -22,11 +23,9 @@ public class VoiceOverlayController {
     public var settings: VoiceUISettings = VoiceUISettings()
     var recordingViewController: RecordingViewController? = RecordingViewController()
   
-    
-    public init() {}
-    
-    // TODO: Define datasource that will be used to give back the text from the SpeechController
     public var datasource: Any? = nil
+  
+    public init() {}
     
     public func start(on view: UIViewController, textHandler: @escaping SpeechTextHandler, errorHandler: @escaping SpeechErrorHandler) {
         self.speechTextHandler = textHandler
@@ -59,7 +58,7 @@ public class VoiceOverlayController {
         }
     }
     
-    func checkSpeechAuthorizationStatusAndRedirectToCorrectScreen(_ view: UIViewController) {
+    fileprivate func checkSpeechAuthorizationStatusAndRedirectToCorrectScreen(_ view: UIViewController) {
         
         // speech permissions
         switch SFSpeechRecognizer.authorizationStatus() {

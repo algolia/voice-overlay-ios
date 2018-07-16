@@ -10,15 +10,28 @@ import Foundation
 import CoreGraphics
 import UIKit
 
+/// Customisation Settings for the Voice Overlay
 public class VoiceUISettings {
   
-  public var autoStart = false
+  /// Specifies whether the overlay directly starts recording (true), or if it requires the user to click the mic (false).
+  public var autoStart = true
+  
+  /// Specifies whether the overlay stops recording after the user stops talking for `autoStopTimeout` seconds (true), or if it requires the user to click the mic (false).
   public var autoStop = true
-  public var showResultScreen = false
-  public var showResultScreenTimeout: TimeInterval = 2
-  public var showResultScreenTime: TimeInterval = 4
+  
+  /// when autoStop is set to true, autoStopTimeout determines the amount of silence time before the user stops talking.
   public var autoStopTimeout: TimeInterval = 2
-  public var layout: Layout = Layout()
+  
+  /// Whether or not to show a result screen after the recording is finished.
+  public var showResultScreen = false
+  
+  /// Timeout for showing the result screen in case no resultScreenText is provided on time.
+  public var showResultScreenTimeout: TimeInterval = 2
+  
+  /// Time for showing the result screen with the provided resultScreenText.
+  public var showResultScreenTime: TimeInterval = 4
+  
+  /// The processed result screen text that should be appear in the result screen.
   public var resultScreenText: NSAttributedString? {
     didSet {
       if let resultScreenText = resultScreenText {
@@ -26,6 +39,9 @@ public class VoiceUISettings {
       }
     }
   }
+  
+  /// The layout and style of all screens of the voice overlay.
+  public var layout: Layout = Layout()
   
   public class Layout {
     

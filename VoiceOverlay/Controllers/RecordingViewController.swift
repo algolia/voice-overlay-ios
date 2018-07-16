@@ -66,9 +66,7 @@ class RecordingViewController: UIViewController {
     }
   }
   
-  // handle notification
   @objc func resultScreenTextReceived(_ notification: NSNotification) {
-    
     if let resultScreenText = notification.userInfo?["resultScreenText"] as? NSAttributedString {
       guard let resultViewController = resultViewController else { return }
       resultScreentimer?.invalidate()
@@ -100,7 +98,7 @@ class RecordingViewController: UIViewController {
       self.dismissHandler?(false)
     }
   }
-
+  
   func toggleRecording(_ recordingButton: RecordingButton, dismiss: Bool = true) {
     isRecording = !isRecording
     recordingButton.animate(isRecording)
@@ -122,24 +120,7 @@ class RecordingViewController: UIViewController {
       if dismiss {
         if settings.showResultScreen {
           resultViewController = ResultViewController()
-          guard let resultViewController = resultViewController else { return }
-          resultViewController.dismissHandler = { [unowned self] (retry) in
-            self.resultScreentimer?.invalidate()
-            self.resultViewController?.dismissMe(animated: false) {
-              self.dismissMe(animated: false) {
-                self.dismissHandler?(true)
-              }
-            }
-          }
-          resultViewController.constants = self.settings.layout.resultScreen
-          self.present(resultViewController, animated: false)
-          resultScreentimer = Timer.scheduledTimer(withTimeInterval: self.settings.showResultScreenTimeout, repeats: false, block: { (_) in
-            self.resultViewController?.dismissMe(animated: false) {
-              self.dismissMe(animated: false) {
-                self.dismissHandler?(false)
-              }
-            }
-          })
+          setup(resultViewController!)
         } else {
           dismissMe(animated: true) {
             self.dismissHandler?(false)
@@ -186,6 +167,26 @@ class RecordingViewController: UIViewController {
         strongSelf.delegate?.recording(text: nil, final: nil, error: error)
         strongSelf.speechErrorHandler?(error)
         strongSelf.handleVoiceError(error)
+    })
+  }
+  
+  fileprivate func setup(_ resultViewController: ResultViewController) {
+    resultViewController.dismissHandler = { [unowned self] (retry) in
+      self.resultScreentimer?.invalidate()
+      self.resultViewController?.dismissMe(animated: false) {
+        self.dismissMe(animated: false) {
+          self.dismissHandler?(true)
+        }
+      }
+    }
+    resultViewController.constants = self.settings.layout.resultScreen
+    self.present(resultViewController, animated: false)
+    resultScreentimer = Timer.scheduledTimer(withTimeInterval: self.settings.showResultScreenTimeout, repeats: false, block: { (_) in
+      self.resultViewController?.dismissMe(animated: false) {
+        self.dismissMe(animated: false) {
+          self.dismissHandler?(false)
+        }
+      }
     })
   }
   
