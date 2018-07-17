@@ -49,6 +49,7 @@ class ViewController: UIViewController, VoiceOverlayDelegate {
               let myAttrString = NSAttributedString(string: myString, attributes: myAttribute)
               
               self.voiceOverlayController.settings.resultScreenText = myAttrString
+              self.voiceOverlayController.settings.layout.resultScreen.titleProcessed = "BLA BLA"
             })
           }
         }) { (error) in

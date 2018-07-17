@@ -95,7 +95,13 @@ public class RecordingScreenConstants {
 
 public class ResultScreenConstants {
   public var title = "Processing Resuts..."
-  public var titleProcessed = "Searching for:"
+  
+  public var titleProcessed: String = "Searching for:" {
+    didSet {
+      NotificationCenter.default.post(name: NSNotification.Name(rawValue: "titleProcessedNotification"), object: nil, userInfo: ["titleProcessed": titleProcessed])
+    }
+  }
+  
   public var subtitle = "Please wait a few seconds while we process your input"
   public var startAgainText = "Start Again"
   

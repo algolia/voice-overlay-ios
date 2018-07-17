@@ -40,6 +40,7 @@ public typealias SpeechErrorHandler = (Error?) -> Void
       fatalError("Locale not supported. Check SpeechController.supportedLocales() or  SpeechController.localeSupported(locale: Locale)")
     }
     self.speechRecognizer = speechRecognizer
+    self.speechRecognizer.defaultTaskHint = .search
     super.init()
   }
   

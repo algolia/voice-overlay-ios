@@ -32,6 +32,8 @@ public class ResultViewController: UIViewController {
     super.viewDidLoad()
     let margins = view.layoutMarginsGuide
     
+    NotificationCenter.default.addObserver(self, selector: #selector(self.titleProcessedReceived(_:)), name: NSNotification.Name(rawValue: "titleProcessedNotification"), object: nil)
+    
     let subViews = [titleLabel, subtitleLabel, startAgainButton]
     
     ViewHelpers.translatesAutoresizingMaskIntoConstraintsFalse(for: subViews)
@@ -51,5 +53,11 @@ public class ResultViewController: UIViewController {
   
   @objc func startAgainTapped() {
     dismissHandler?(true)
+  }
+  
+  @objc func titleProcessedReceived(_ notification: NSNotification) {
+    if let titleProcessed = notification.userInfo?["titleProcessed"] as? String {
+      titleLabel.text = titleProcessed
+    }
   }
 }
