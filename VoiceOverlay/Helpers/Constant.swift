@@ -19,7 +19,7 @@ public class VoiceUISettings {
   /// Specifies whether the overlay stops recording after the user stops talking for `autoStopTimeout` seconds (true), or if it requires the user to click the mic (false).
   public var autoStop = true
   
-  /// when autoStop is set to true, autoStopTimeout determines the amount of silence time before the user stops talking.
+  /// When autoStop is set to true, autoStopTimeout determines the amount of silence time of the user that causes the recording to stop.
   public var autoStopTimeout: TimeInterval = 2
   
   /// Whether or not to show a result screen after the recording is finished.

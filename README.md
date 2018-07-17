@@ -4,11 +4,13 @@ A beautiful customizable voice overlay widget that records the user's voice inpu
 
 # Demo
 
-![Voice Overlay demo](https://raw.githubusercontent.com/algolia/voice-overlay-ios/master/Resources/voiceoverlay_speech_happy_path.gif)
+<img src="./Resources/voiceoverlay_speech_happy_path.gif" width="200">
 
 # Installation
 
-VoiceOverlay is available through [CocoaPods](http://cocoapods.org). To install
+#### CocoaPods
+
+`InstantSearchVoiceOverlay` is available through [CocoaPods](http://cocoapods.org). To install
 it, simply add the following line to your Podfile:
 
 Swift 4:
@@ -17,16 +19,32 @@ Swift 4:
 pod 'InstantSearchVoiceOverlay'
 ```
 
+### Carthage
+
+
+[Carthage](https://github.com/Carthage/Carthage) is a simple, decentralized dependency manager for Cocoa.
+
+To install InstantSearch, simply add the following line to your Cartfile:
+
+```ruby
+github "algolia/instantsearch-ios" ~> 2.0 # for access to everything
+# github "algolia/voice-overlay-ios"
+```
+
 # Usage
 
-1- In info.plist, add these 2 string properties along with the description
+1- In `Info.plist`, add these 2 string properties along with the description
 
-- `Privacy - Microphone Usage Description` `some description like Need the mic for audio to text`
-- `Privacy - Speech Recognition Usage Description` `some description like Need the speech recognition capabilities`
+- `Privacy - Microphone Usage Description` with a description like: `Need the mic for audio to text`
+- `Privacy - Speech Recognition Usage Description` some description like: `Need the speech recognition capabilities for searching tags`
+
+<img src="./Resources/infoplist.png" width="700">
 
 2- Start the Voice Overlay and listen to the text output
 
 ```swift
+import InstantSearchVoiceOverlay
+
 class ViewController: UIViewController {
     
     let voiceOverlayController = VoiceOverlayController()
@@ -47,81 +65,80 @@ class ViewController: UIViewController {
 You can customize your voice overlay by modifying the `settings` property of the voiceOverlayController:
 
 ```swift
-  /// Specifies whether the overlay directly starts recording (true), or if it requires the user to click the mic (false).
-  voiceOverlayController.settings.autoStart = true
-  
-  /// Specifies whether the overlay stops recording after the user stops talking for `autoStopTimeout` seconds (true), or if it requires the user to click the mic (false).
-  voiceOverlayController.settings.autoStop = true
-  
-  /// when autoStop is set to true, autoStopTimeout determines the amount of silence time before the user stops talking.
-  voiceOverlayController.settings.autoStopTimeout = 2
-  
-  /// Whether or not to show a result screen after the recording is finished.
-  voiceOverlayController.settings.showResultScreen = false
-  
-  /// Timeout for showing the result screen in case no resultScreenText is provided on time.
-  voiceOverlayController.settings.showResultScreenTimeout = 2
-  
-  /// Time for showing the result screen with the provided resultScreenText.
-  voiceOverlayController.settings.showResultScreenTime = 4
-  
-  /// The processed result screen text that should be appear in the result screen.
-  voiceOverlayController.settings.resultScreenText = NSAttributedString(string: myString, attributes: myAttributes)
-  
-  /// The layout and style of all screens of the voice overlay.
-  voiceOverlayController.settings.layout
-  // Change the title of the recording screen when the recording is ongoing.
-  voiceOverlayController.settings.layout.recordingScreen.titleListening = "my custom title"
-  // Change the background color of the permission screen
-  voiceOverlayController.settings.layout.permissionScreen.backgroundColor = UIColor.red
-```
+` /// Specifies whether the overlay directly starts recording (true), or if it requires the user to click the mic (false).
+voiceOverlayController.settings.autoStart = true
 
-<img src="https://raw.githubusercontent.com/taglia3/CircularSlider/master/Images/storyboardRender.png" width="300">
-<img src="https://raw.githubusercontent.com/taglia3/CircularSlider/master/Images/attributeInspector.png" width="300">
+/// Specifies whether the overlay stops recording after the user stops talking for `autoStopTimeout` seconds (true), or if it requires the user to click the mic (false).
+voiceOverlayController.settings.autoStop = true
+
+/// When autoStop is set to true, autoStopTimeout determines the amount of silence time of the user that causes the recording to stop.
+voiceOverlayController.settings.autoStopTimeout = 2
+
+/// Whether or not to show a result screen after the recording is finished.
+voiceOverlayController.settings.showResultScreen = false
+
+/// Timeout for showing the result screen in case no resultScreenText is provided on time.
+voiceOverlayController.settings.showResultScreenTimeout = 2
+
+/// Time for showing the result screen with the provided resultScreenText.
+voiceOverlayController.settings.showResultScreenTime = 4
+
+/// The processed result screen text that should be appear in the result screen.
+voiceOverlayController.settings.resultScreenText = NSAttributedString(string: myString, attributes: myAttributes)
+
+/// The layout and style of all screens of the voice overlay.
+voiceOverlayController.settings.layout
+// Change the title of the recording screen when the recording is ongoing.
+voiceOverlayController.settings.layout.recordingScreen.titleListening = "my custom title"
+// Change the background color of the permission screen
+voiceOverlayController.settings.layout.permissionScreen.backgroundColor = UIColor.red`
+```
 
 
 ## Delegate
-Optionally you can conforms to the methods of the CircularSliderDelegate protocol.
-
-If you want to admit only certain values you can implement this methods:
-```swift
-optional func circularSlider(circularSlider: CircularSlider, valueForValue value: Float) -> Float
-```
-With this method you override the actual slider value before the slider is updated.
-Example: you want only rounded values:
+Optionally, to listen to text and error events, you can conform to the method of the `VoiceOverlayDelegate` protocol.
 
 ```swift
-func circularSlider(circularSlider: CircularSlider, valueForValue value: Float) -> Float {
-return floorf(value)
+// Second way to listen to recording through delegate
+func recording(text: String?, final: Bool?, error: Error?) {
+    if let error = error {
+        print("delegate: error \(error)")
+    }
+    
+    if error == nil {
+        print("delegate: text \(text)")
+    }
 }
 ```
 
-The other methods you can implement are:
+## How Voice Overlay Handles Errors and No Permissions
 
-```swift
-optional func circularSlider(circularSlider: CircularSlider, didBeginEditing textfield: UITextField)
-optional func circularSlider(circularSlider: CircularSlider, didEndEditing textfield: UITextField)
-```
+<img src="./Resources/voiceoverlay_permission_denied.gif" width="200">
+
+<img src="./Resources/voiceoverlay_speech_error.gif" width="200">
+
+When there are missing permissions, the voice overlay will guide the user to the correct section of the settings app. (GIF on the left)
+
+When there are errors, the voice overlay will detect them and let the user try again.
+
+## Adding Result Screen
+
+`voiceOverlayController.settings.showResultScreen` will determine whether a result screen appears or not.
+TODO: GIF of result screen
+
+## Getting Help
+
+- **Need help**? Ask a question to the [Algolia Community](https://discourse.algolia.com/) or on [Stack Overflow](http://stackoverflow.com/questions/tagged/algolia).
+- **Found a bug?** You can open a [GitHub issue](https://github.com/algolia/instantsearch-ios-insights).
+- **Questions about Algolia?** You can search our [FAQ in our website](https://www.algolia.com/doc/faq/).
 
 
-## Author
+## Getting involved
 
-taglia3, matteo.tagliafico@gmail.com
-
-[LinkedIn](https://www.linkedin.com/in/matteo-tagliafico-ba6985a3), Matteo Tagliafico
+* If you **want to contribute** please feel free to **submit pull requests**.
+* If you **have a feature request** please **open an issue**.
+* If you use **InstantSearch** in your app, we would love to hear about it! Drop us a line on [discourse](https://discourse.algolia.com/) or [twitter](https://twitter.com/algolia).
 
 ## License
 
-CircularSpinner is available under the MIT license. See the LICENSE file for more info.
-
-
-# voice-overlay-ios
-
-Getting started:
-
-In info.plist, add these 2 string properties along with the description
-
-- `Privacy - Microphone Usage Description` `some description like Need the mic for audio to text`
-- `Privacy - Speech Recognition Usage Description` `some description like Need the speech recognition capabilities`
-
-Customise with `VoiceUIConstants`
+InstantSearchVoiceOverlay is available under the MIT license. See the LICENSE file for more info.
