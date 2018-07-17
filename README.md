@@ -121,11 +121,6 @@ When there are missing permissions, the voice overlay will guide the user to the
 
 When there are errors, the voice overlay will detect them and let the user try again.
 
-## Adding Result Screen
-
-`voiceOverlayController.settings.showResultScreen` will determine whether a result screen appears or not.
-TODO: GIF of result screen
-
 ## Getting Help
 
 - **Need help**? Ask a question to the [Algolia Community](https://discourse.algolia.com/) or on [Stack Overflow](http://stackoverflow.com/questions/tagged/algolia).
