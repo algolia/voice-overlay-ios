@@ -27,8 +27,7 @@ pod 'InstantSearchVoiceOverlay'
 To install InstantSearch, simply add the following line to your Cartfile:
 
 ```ruby
-github "algolia/instantsearch-ios" ~> 2.0 # for access to everything
-# github "algolia/voice-overlay-ios"
+github "algolia/voice-overlay-ios"
 ```
 
 # Usage
