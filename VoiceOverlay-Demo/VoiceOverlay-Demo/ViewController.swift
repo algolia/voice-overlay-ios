@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import VoiceOverlay
+import InstantSearchVoiceOverlay
 
 class ViewController: UIViewController, VoiceOverlayDelegate {
     

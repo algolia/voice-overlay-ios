@@ -4,12 +4,12 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>Pods-VoiceOverlay-Demo.xcscheme</key>
+		<key>InstantSearchVoiceOverlay.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>VoiceOverlay.xcscheme</key>
+		<key>Pods-VoiceOverlay-Demo.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>

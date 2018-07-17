@@ -29,7 +29,7 @@
 /* Begin PBXFileReference section */
 		E236003420F4EA4300F42359 /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
 		E264699E20E512C600ABD287 /* NoPermissionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoPermissionViewController.swift; sourceTree = "<group>"; };
-		E27D294620E0F0C900B83D4C /* VoiceOverlay.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = VoiceOverlay.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E27D294620E0F0C900B83D4C /* InstantSearchVoiceOverlay.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = InstantSearchVoiceOverlay.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E27D294920E0F0C900B83D4C /* VoiceOverlay.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VoiceOverlay.h; sourceTree = "<group>"; };
 		E27D294A20E0F0C900B83D4C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E27D295120E0F20D00B83D4C /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
@@ -70,7 +70,7 @@
 		E27D294720E0F0C900B83D4C /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				E27D294620E0F0C900B83D4C /* VoiceOverlay.framework */,
+				E27D294620E0F0C900B83D4C /* InstantSearchVoiceOverlay.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -161,7 +161,7 @@
 			);
 			name = VoiceOverlay;
 			productName = VoiceOverlay;
-			productReference = E27D294620E0F0C900B83D4C /* VoiceOverlay.framework */;
+			productReference = E27D294620E0F0C900B83D4C /* InstantSearchVoiceOverlay.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -372,7 +372,7 @@
 					"@loader_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.algolia.VoiceOverlay;
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = InstantSearchVoiceOverlay;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
@@ -399,7 +399,7 @@
 					"@loader_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.algolia.VoiceOverlay;
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = InstantSearchVoiceOverlay;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";

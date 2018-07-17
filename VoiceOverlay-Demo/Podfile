@@ -6,6 +6,6 @@ target 'VoiceOverlay-Demo' do
   use_frameworks!
 
   # Pods for VoiceOverlay-Demo
-  pod 'VoiceOverlay', :path => '../'
+  pod 'InstantSearchVoiceOverlay', :path => '../'
 
 end
