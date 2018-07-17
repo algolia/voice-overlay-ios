@@ -10,7 +10,7 @@ import UIKit
 
 class RecordingViewController: UIViewController {
   
-  var speechController: SpeechController!
+  var speechController: SpeechController?
   
   var speechTextHandler: SpeechTextHandler?
   var speechErrorHandler: SpeechErrorHandler?
@@ -83,7 +83,7 @@ class RecordingViewController: UIViewController {
   
   @objc func recordingButtonTapped() {
     if isRecording {
-      speechController.stopRecording()
+      speechController?.stopRecording()
     } else {
       toggleRecording(recordingButton)
     }
@@ -93,7 +93,7 @@ class RecordingViewController: UIViewController {
     self.delegate = nil
     self.speechTextHandler = nil
     self.speechErrorHandler = nil
-    speechController.stopRecording()
+    speechController?.stopRecording()
     dismissMe(animated: true) {
       self.dismissHandler?(false)
     }
@@ -109,7 +109,7 @@ class RecordingViewController: UIViewController {
       subtitleLabel.text = constants.subtitleInitial
       tryAgainLabel.text = ""
     } else {
-      speechController.stopRecording()
+      speechController?.stopRecording()
       self.delegate?.recording(text: self.speechText, final: true, error: self.speechError)
       
       if let speechText = self.speechText {
@@ -119,6 +119,7 @@ class RecordingViewController: UIViewController {
       }
       if dismiss {
         if settings.showResultScreen {
+          speechController = nil
           resultViewController = ResultViewController()
           setup(resultViewController!)
         } else {
@@ -133,7 +134,7 @@ class RecordingViewController: UIViewController {
     // TODO: Playing sound is crashing. probably because we re not stopping play, or interfering with speech controller, or setActive true/false in playSound
     //recordingButton.playSound(with: isRecording ? .startRecording : .endRecording)
     
-    speechController.startRecording(textHandler: {[weak self] (text, final) in
+    speechController?.startRecording(textHandler: {[weak self] (text, final) in
       guard let strongSelf = self else { return }
       
       strongSelf.speechText = text
