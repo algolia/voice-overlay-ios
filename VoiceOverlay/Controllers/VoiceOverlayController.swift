@@ -11,7 +11,7 @@ import UIKit
 import Speech
 
 /// Controller that takes care of launching a voice overlay and providing handlers to listen to text and error events.
-public class VoiceOverlayController {
+@objc public class VoiceOverlayController: NSObject {
     
     let permissionViewController = PermissionViewController()
     let noPermissionViewController = NoPermissionViewController()
@@ -26,9 +26,11 @@ public class VoiceOverlayController {
   
     public var datasource: Any? = nil
   
-    public init() {}
+    public override init() {
+        super.init()
+    }
     
-    public func start(on view: UIViewController, textHandler: @escaping SpeechTextHandler, errorHandler: @escaping SpeechErrorHandler, resultScreenHandler: SpeechResultScreenHandler? = nil) {
+    @objc public func start(on view: UIViewController, textHandler: @escaping SpeechTextHandler, errorHandler: @escaping SpeechErrorHandler, resultScreenHandler: SpeechResultScreenHandler? = nil) {
         self.speechTextHandler = textHandler
         self.speechErrorHandler = errorHandler
         self.speechResultScreenHandler = resultScreenHandler
