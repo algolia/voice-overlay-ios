@@ -19,6 +19,7 @@ public class VoiceOverlayController {
     public weak var delegate: VoiceOverlayDelegate?
     var speechTextHandler: SpeechTextHandler?
     var speechErrorHandler: SpeechErrorHandler?
+    var speechResultScreenHandler: SpeechResultScreenHandler?
   
     public var settings: VoiceUISettings = VoiceUISettings()
     var recordingViewController: RecordingViewController? = RecordingViewController()
@@ -27,9 +28,10 @@ public class VoiceOverlayController {
   
     public init() {}
     
-    public func start(on view: UIViewController, textHandler: @escaping SpeechTextHandler, errorHandler: @escaping SpeechErrorHandler) {
+    public func start(on view: UIViewController, textHandler: @escaping SpeechTextHandler, errorHandler: @escaping SpeechErrorHandler, resultScreenHandler: SpeechResultScreenHandler? = nil) {
         self.speechTextHandler = textHandler
         self.speechErrorHandler = errorHandler
+        self.speechResultScreenHandler = resultScreenHandler
         
         checkPermissionsAndRedirectToCorrectScreen(view)
         
@@ -88,6 +90,7 @@ public class VoiceOverlayController {
         recordingViewController.delegate = delegate
         recordingViewController.speechTextHandler = speechTextHandler
         recordingViewController.speechErrorHandler = speechErrorHandler
+        recordingViewController.speechResultScreenHandler = speechResultScreenHandler
         recordingViewController.speechController = SpeechController()
         recordingViewController.constants = settings.layout.recordingScreen
         recordingViewController.settings = settings

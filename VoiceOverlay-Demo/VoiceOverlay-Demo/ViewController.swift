@@ -52,9 +52,12 @@ class ViewController: UIViewController, VoiceOverlayDelegate {
               self.voiceOverlayController.settings.layout.resultScreen.titleProcessed = "BLA BLA"
             })
           }
-        }) { (error) in
+        }, errorHandler: { (error) in
             print("callback: error \(String(describing: error))")
+        }, resultScreenHandler: { (text) in
+          print("Result Screen: \(text)")
         }
+      )
     }
     // Second way to listen to recording through delegate
     func recording(text: String?, final: Bool?, error: Error?) {

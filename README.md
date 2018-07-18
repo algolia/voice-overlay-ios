@@ -53,9 +53,9 @@ class ViewController: UIViewController {
         voiceOverlayController.start(on: self, textHandler: { (text, final) in
             print("voice output: \(String(describing: text))")
             print("voice output: is it final? \(String(describing: final))")
-        }) { (error) in
+        }, errorHandler: { (error) in
             print("voice output: error \(String(describing: error))")
-        }
+        })
     }
 ```
 
@@ -119,6 +119,35 @@ When there are missing permissions, the voice overlay will guide the user to the
 <img src="./Resources/voiceoverlay_speech_error.gif" width="200">
 
 When there are errors, the voice overlay will detect them and let the user try again.
+
+## Result Screen
+
+<img src="./Resources/voiceoverlay_result_screen.gif" width="200">
+
+The result screen appears when `showResultScreen` is set to true. The widget provides a `resultScreenHandler` for when the result screen is dismissed without the "Start again" button being clicked. The handler provides the text that has been set in `resultScreenText` beforehand.
+
+```swift
+voiceOverlayController.start(on: self, textHandler: { (text, final) in
+    print("getting \(String(describing: text))")
+    print("is it final? \(String(describing: final))")
+
+    if final {
+        // Process the result to post in the result screen.
+        // The timer here simulates a network processing call that took 1.5 seconds.
+        Timer.scheduledTimer(withTimeInterval: 1.5, repeats: false, block: { (_) in
+            let myString = text
+            let myAttribute = [ NSAttributedString.Key.foregroundColor: UIColor.red ]
+            let myAttrString = NSAttributedString(string: myString, attributes: myAttribute)
+
+            self.voiceOverlayController.settings.resultScreenText = myAttrString
+        })
+    }
+}, errorHandler: { (error) in
+    print("error \(String(describing: error))")
+}, resultScreenHandler: { (text) in
+    print("Result Screen: \(text)")
+})
+```
 
 ## Getting Help
 

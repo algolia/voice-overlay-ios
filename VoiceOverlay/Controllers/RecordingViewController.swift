@@ -14,6 +14,7 @@ class RecordingViewController: UIViewController {
   
   var speechTextHandler: SpeechTextHandler?
   var speechErrorHandler: SpeechErrorHandler?
+  var speechResultScreenHandler: SpeechResultScreenHandler?
   weak var delegate: VoiceOverlayDelegate?
   
   let titleLabel = UILabel()
@@ -72,6 +73,7 @@ class RecordingViewController: UIViewController {
       resultScreentimer?.invalidate()
       resultViewController.voiceOutputText = resultScreenText
       resultScreentimer = Timer.scheduledTimer(withTimeInterval: self.settings.showResultScreenTime, repeats: false, block: { (_) in
+        self.speechResultScreenHandler?(resultScreenText.string)
         self.resultViewController?.dismissMe(animated: false) {
           self.dismissMe(animated: false) {
             self.dismissHandler?(false)
@@ -93,6 +95,7 @@ class RecordingViewController: UIViewController {
     self.delegate = nil
     self.speechTextHandler = nil
     self.speechErrorHandler = nil
+    self.speechResultScreenHandler = nil
     speechController?.stopRecording()
     dismissMe(animated: true) {
       self.dismissHandler?(false)

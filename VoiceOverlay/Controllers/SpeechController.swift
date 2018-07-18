@@ -9,6 +9,7 @@ import UIKit
 import Speech
 
 public typealias SpeechTextHandler = (String, Bool) -> Void
+public typealias SpeechResultScreenHandler = (String) -> Void
 public typealias SpeechErrorHandler = (Error?) -> Void
 
 /// A controller object that manages the speech recognition to text
