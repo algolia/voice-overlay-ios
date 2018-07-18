@@ -64,7 +64,7 @@ class ViewController: UIViewController {
 You can customize your voice overlay by modifying the `settings` property of the voiceOverlayController:
 
 ```swift
-` /// Specifies whether the overlay directly starts recording (true), or if it requires the user to click the mic (false).
+/// Specifies whether the overlay directly starts recording (true), or if it requires the user to click the mic (false).
 voiceOverlayController.settings.autoStart = true
 
 /// Specifies whether the overlay stops recording after the user stops talking for `autoStopTimeout` seconds (true), or if it requires the user to click the mic (false).
