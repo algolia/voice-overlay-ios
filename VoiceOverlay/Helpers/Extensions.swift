@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 extension UIViewController {
-    func dismissMe(animated: Bool, completion: (()->())? = nil) {
+    public func dismissMe(animated: Bool, completion: (()->())? = nil) {
         var count = 0
         if let c = self.navigationController?.viewControllers.count {
             count = c

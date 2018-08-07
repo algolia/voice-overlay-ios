@@ -7,6 +7,7 @@
 
 import UIKit
 import Speech
+import AVFoundation
 
 public typealias SpeechTextHandler = (String, Bool) -> Void
 public typealias SpeechResultScreenHandler = (String) -> Void
@@ -87,6 +88,14 @@ public typealias SpeechErrorHandler = (Error?) -> Void
   }
   
   private func record(textHandler: @escaping SpeechTextHandler, errorHandler: @escaping SpeechErrorHandler) {
+    
+    do{
+      try AVAudioSession.sharedInstance().setCategory(.record, mode: .default)
+      try AVAudioSession.sharedInstance().setActive(true)
+    }
+    catch{
+      print(error.localizedDescription)
+    }
     
     let node = audioEngine.inputNode
     let recordingFormat = node.outputFormat(forBus: 0)

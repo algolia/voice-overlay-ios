@@ -32,7 +32,7 @@ class RecordingViewController: UIViewController {
   var constants: RecordingScreenConstants!
   var settings: VoiceUISettings!
   
-  var resultViewController: ResultViewController?
+  //var resultViewController: ResultViewController?
   
   var dismissHandler: ((Bool) -> ())? = nil
   var resultScreentimer: Timer?
@@ -58,7 +58,7 @@ class RecordingViewController: UIViewController {
     
     recordingButton.addTarget(self, action: #selector(recordingButtonTapped), for: .touchUpInside)
     
-    NotificationCenter.default.addObserver(self, selector: #selector(self.resultScreenTextReceived(_:)), name: NSNotification.Name(rawValue: "resultScreenTextNotification"), object: nil)
+//    NotificationCenter.default.addObserver(self, selector: #selector(self.resultScreenTextReceived(_:)), name: NSNotification.Name(rawValue: "resultScreenTextNotification"), object: nil)
 
     
     if settings.autoStart {
@@ -67,21 +67,21 @@ class RecordingViewController: UIViewController {
     }
   }
   
-  @objc func resultScreenTextReceived(_ notification: NSNotification) {
-    if let resultScreenText = notification.userInfo?["resultScreenText"] as? NSAttributedString {
-      guard let resultViewController = resultViewController else { return }
-      resultScreentimer?.invalidate()
-      resultViewController.voiceOutputText = resultScreenText
-      resultScreentimer = Timer.scheduledTimer(withTimeInterval: self.settings.showResultScreenTime, repeats: false, block: { (_) in
-        self.speechResultScreenHandler?(resultScreenText.string)
-        self.resultViewController?.dismissMe(animated: false) {
-          self.dismissMe(animated: false) {
-            self.dismissHandler?(false)
-          }
-        }
-      })
-    }
-  }
+//  @objc func resultScreenTextReceived(_ notification: NSNotification) {
+//    if let resultScreenText = notification.userInfo?["resultScreenText"] as? NSAttributedString {
+//      guard let resultViewController = resultViewController else { return }
+//      resultScreentimer?.invalidate()
+//      resultViewController.voiceOutputText = resultScreenText
+//      resultScreentimer = Timer.scheduledTimer(withTimeInterval: self.settings.showResultScreenTime, repeats: false, block: { (_) in
+//        self.speechResultScreenHandler?(resultScreenText.string)
+//        self.resultViewController?.dismissMe(animated: false) {
+//          self.dismissMe(animated: false) {
+//            self.dismissHandler?(false)
+//          }
+//        }
+//      })
+//    }
+//  }
   
   @objc func recordingButtonTapped() {
     if isRecording {
@@ -123,8 +123,8 @@ class RecordingViewController: UIViewController {
       if dismiss {
         if settings.showResultScreen {
           speechController = nil
-          resultViewController = ResultViewController()
-          setup(resultViewController!)
+//          resultViewController = ResultViewController()
+//          setup(resultViewController!)
         } else {
           dismissMe(animated: true) {
             self.dismissHandler?(false)
@@ -174,25 +174,25 @@ class RecordingViewController: UIViewController {
     })
   }
   
-  fileprivate func setup(_ resultViewController: ResultViewController) {
-    resultViewController.dismissHandler = { [unowned self] (retry) in
-      self.resultScreentimer?.invalidate()
-      self.resultViewController?.dismissMe(animated: false) {
-        self.dismissMe(animated: false) {
-          self.dismissHandler?(true)
-        }
-      }
-    }
-    resultViewController.constants = self.settings.layout.resultScreen
-    self.present(resultViewController, animated: false)
-    resultScreentimer = Timer.scheduledTimer(withTimeInterval: self.settings.showResultScreenTimeout, repeats: false, block: { (_) in
-      self.resultViewController?.dismissMe(animated: false) {
-        self.dismissMe(animated: false) {
-          self.dismissHandler?(false)
-        }
-      }
-    })
-  }
+//  fileprivate func setup(_ resultViewController: ResultViewController) {
+//    resultViewController.dismissHandler = { [unowned self] (retry) in
+//      self.resultScreentimer?.invalidate()
+//      self.resultViewController?.dismissMe(animated: false) {
+//        self.dismissMe(animated: false) {
+//          self.dismissHandler?(true)
+//        }
+//      }
+//    }
+//    resultViewController.constants = self.settings.layout.resultScreen
+//    self.present(resultViewController, animated: false)
+//    resultScreentimer = Timer.scheduledTimer(withTimeInterval: self.settings.showResultScreenTimeout, repeats: false, block: { (_) in
+//      self.resultViewController?.dismissMe(animated: false) {
+//        self.dismissMe(animated: false) {
+//          self.dismissHandler?(false)
+//        }
+//      }
+//    })
+//  }
   
   func handleVoiceError(_ error: Error?) {
     titleLabel.text = constants.titleError

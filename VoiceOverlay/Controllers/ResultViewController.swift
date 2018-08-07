@@ -12,14 +12,16 @@ import UIKit
 
 public class ResultViewController: UIViewController {
   
-  var constants: ResultScreenConstants!
+  public var constants: ResultScreenConstants!
   
-  let titleLabel = UILabel()
-  let subtitleLabel = UILabel()
-  let startAgainButton = UIButton()
+  public let titleLabel = UILabel()
+  public let subtitleLabel = UILabel()
+  public let startAgainButton = UIButton()
   
   // The bool specifies whether we dismiss with retry or not
-  var dismissHandler: ((Bool) -> ())? = nil
+  public var dismissHandler: ((Bool) -> ())? = nil
+  public var timerTimer: TimeInterval = 3
+  public var timer = Timer()
   
   var voiceOutputText: NSAttributedString? {
     didSet {
@@ -30,6 +32,9 @@ public class ResultViewController: UIViewController {
   
   override public func viewDidLoad() {
     super.viewDidLoad()
+    timer = Timer.scheduledTimer(withTimeInterval: timerTimer, repeats: false, block: {[weak self] _  in
+      self?.dismissHandler?(false)
+    })
     let margins = view.layoutMarginsGuide
     
     NotificationCenter.default.addObserver(self, selector: #selector(self.titleProcessedReceived(_:)), name: NSNotification.Name(rawValue: "titleProcessedNotification"), object: nil)
@@ -52,6 +57,7 @@ public class ResultViewController: UIViewController {
   }
   
   @objc func startAgainTapped() {
+    timer.invalidate()
     dismissHandler?(true)
   }
   
