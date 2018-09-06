@@ -90,7 +90,7 @@ voiceOverlayController.settings.layout
 // Change the title of the recording screen when the recording is ongoing.
 voiceOverlayController.settings.layout.recordingScreen.titleListening = "my custom title"
 // Change the background color of the permission screen
-voiceOverlayController.settings.layout.permissionScreen.backgroundColor = UIColor.red`
+voiceOverlayController.settings.layout.permissionScreen.backgroundColor = UIColor.red
 ```
 
 
