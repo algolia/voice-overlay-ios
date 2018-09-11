@@ -33,6 +33,9 @@ class ViewHelpers {
   static func setConstraintsForSubtitleBulletLabel(_ subtitleBulletLabel: UILabel, _ subtitleLabel: UILabel, _ margins: UILayoutGuide, _ text: [String], _ textColor: UIColor) {
     setDefaultSideConstraints(to: subtitleBulletLabel, in: margins, multiplier: 2)
     subtitleBulletLabel.topAnchor.constraint(equalTo: subtitleLabel.bottomAnchor, constant: 10).isActive = true
+    
+    // This is a temp fix for labels not always showing the current intrinsic multiline height
+    subtitleBulletLabel.heightAnchor.constraint(equalToConstant: CGFloat(36 * text.count)).isActive = true
     subtitleBulletLabel.font = UIFont.boldSystemFont(ofSize: 16)
     subtitleBulletLabel.attributedText = ViewHelpers.add(stringList: text, font: subtitleBulletLabel.font)
     subtitleBulletLabel.textColor = textColor
@@ -45,7 +48,7 @@ class ViewHelpers {
         closeView.heightAnchor.constraint(equalToConstant: 30).isActive = true
         closeView.centerXAnchor.constraint(equalTo: margins.centerXAnchor).isActive = true
         closeView.bottomAnchor.constraint(equalTo: margins.bottomAnchor, constant: -30).isActive = true
-        closeView.backgroundColor = backgroundColor
+        closeView.backgroundColor = .clear
     }
 
     static func setConstraintsForFirstButton(_ firstButton: UIButton, _ margins: UILayoutGuide, _ text: String, _ textColor: UIColor) {

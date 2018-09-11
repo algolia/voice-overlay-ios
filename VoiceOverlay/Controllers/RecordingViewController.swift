@@ -85,11 +85,11 @@ class InputViewController: UIViewController {
 //    }
 //  }
   
+  // This is a fix for labels not always showing the current intrinsic multiline height
   public override func viewDidLayoutSubviews() {
     super.viewDidLayoutSubviews()
     titleLabel.preferredMaxLayoutWidth = self.view.frame.width - VoiceUIInternalConstants.sideMarginConstant * 2
     subtitleLabel.preferredMaxLayoutWidth = self.view.frame.width - VoiceUIInternalConstants.sideMarginConstant * 2
-    subtitleBulletLabel.preferredMaxLayoutWidth = self.view.frame.width - VoiceUIInternalConstants.sideMarginConstant * 2
     self.view.layoutIfNeeded()
   }
   
@@ -209,6 +209,7 @@ class InputViewController: UIViewController {
   func handleVoiceError(_ error: Error?) {
     titleLabel.text = constants.titleError
     subtitleLabel.text = constants.subtitleError
+    subtitleBulletLabel.attributedText = nil
     tryAgainLabel.text = constants.errorHint
     toggleRecording(recordingButton, dismiss: false)
   }

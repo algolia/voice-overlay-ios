@@ -59,7 +59,7 @@ public class PermissionScreenConstants {
   public var rejectText = "No"
   
   public var textColor: UIColor = .white
-  public var backgroundColor: UIColor = UIColor(red: 50/255, green: 50/255, blue: 50/255, alpha: 1)
+  public var backgroundColor: UIColor = UIColor(red: 50/255, green: 50/255, blue: 50/255, alpha: 0.95)
   public var startGradientColor = UIColor(red: 73/255, green: 171/255, blue: 248/255, alpha: 1)
   public var endGradientColor = UIColor(red: 67/255, green: 102/255, blue: 222/255, alpha: 1)
   
@@ -72,7 +72,7 @@ public class NoPermissionScreenConstants {
   public var doneText = "Done"
   
   public var textColor: UIColor = .white
-  public var backgroundColor: UIColor = UIColor(red: 50/255, green: 50/255, blue: 50/255, alpha: 1)
+  public var backgroundColor: UIColor = UIColor(red: 50/255, green: 50/255, blue: 50/255, alpha: 0.95)
   public var startGradientColor = UIColor(red: 27/255, green: 70/255, blue: 151/255, alpha: 1)
   public var endGradientColor = UIColor(red: 70/255, green: 160/255, blue: 190/255, alpha: 1)
   
@@ -92,7 +92,7 @@ public class InputScreenConstants {
   
   
   public var textColor: UIColor = .white
-  public var backgroundColor: UIColor = UIColor(red: 50/255, green: 50/255, blue: 50/255, alpha: 1)
+  public var backgroundColor: UIColor = UIColor(red: 50/255, green: 50/255, blue: 50/255, alpha: 0.95)
 }
 
 public class ResultScreenConstants {

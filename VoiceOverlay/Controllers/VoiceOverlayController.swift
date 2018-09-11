@@ -104,6 +104,8 @@ import Speech
           }
         }
 
+    
+        inputViewController.modalPresentationStyle = .overCurrentContext
         view.present(inputViewController, animated: true)
     }
 }
