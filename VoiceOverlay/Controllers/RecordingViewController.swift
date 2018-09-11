@@ -19,6 +19,7 @@ class InputViewController: UIViewController {
   
   let titleLabel = UILabel()
   let subtitleLabel = UILabel()
+  let subtitleBulletLabel = UILabel()
   let closeView = CloseView()
   let recordingButton = RecordingButton()
   let tryAgainLabel = UILabel()
@@ -41,7 +42,7 @@ class InputViewController: UIViewController {
     super.viewDidLoad()
     
     let margins = view.layoutMarginsGuide
-    let subViews = [titleLabel, subtitleLabel, closeView, recordingButton, tryAgainLabel]
+    let subViews = [titleLabel, subtitleLabel, subtitleBulletLabel, closeView, recordingButton, tryAgainLabel]
     
     ViewHelpers.translatesAutoresizingMaskIntoConstraintsFalse(for: subViews)
     ViewHelpers.addSubviews(for: subViews, in: view)
@@ -49,6 +50,7 @@ class InputViewController: UIViewController {
     view.backgroundColor = constants.backgroundColor
     ViewHelpers.setConstraintsForTitleLabel(titleLabel, margins, constants.titleInitial, constants.textColor)
     ViewHelpers.setConstraintsForSubtitleLabel(subtitleLabel, titleLabel, margins, constants.subtitleInitial, constants.textColor)
+    ViewHelpers.setConstraintsForSubtitleBulletLabel(subtitleBulletLabel, subtitleLabel, margins, constants.subtitleBulletList, constants.textColor)
     ViewHelpers.setConstraintsForCloseView(closeView, margins, backgroundColor: constants.backgroundColor)
     ViewHelpers.setConstraintsForRecordingButton(recordingButton, margins, recordingButtonConstants: constants.inputButtonConstants)
     ViewHelpers.setConstraintsForTryAgainLabel(tryAgainLabel, recordingButton, margins, "", constants.textColor)
@@ -87,6 +89,7 @@ class InputViewController: UIViewController {
     super.viewDidLayoutSubviews()
     titleLabel.preferredMaxLayoutWidth = self.view.frame.width - VoiceUIInternalConstants.sideMarginConstant * 2
     subtitleLabel.preferredMaxLayoutWidth = self.view.frame.width - VoiceUIInternalConstants.sideMarginConstant * 2
+    subtitleBulletLabel.preferredMaxLayoutWidth = self.view.frame.width - VoiceUIInternalConstants.sideMarginConstant * 2
     self.view.layoutIfNeeded()
   }
   
@@ -117,6 +120,7 @@ class InputViewController: UIViewController {
     if isRecording {
       titleLabel.text = constants.titleListening
       subtitleLabel.text = constants.subtitleInitial
+      subtitleBulletLabel.attributedText = ViewHelpers.add(stringList: constants.subtitleBulletList, font: subtitleBulletLabel.font, bullet: constants.subtitleBullet)
       tryAgainLabel.text = ""
     } else {
       speechController?.stopRecording()
@@ -150,6 +154,7 @@ class InputViewController: UIViewController {
       strongSelf.speechText = text
       strongSelf.speechError = nil
       strongSelf.subtitleLabel.text = text
+      strongSelf.subtitleBulletLabel.text = ""
       strongSelf.titleLabel.text = text.isEmpty ? strongSelf.constants.titleListening : strongSelf.constants.titleInProgress
       
       if final {

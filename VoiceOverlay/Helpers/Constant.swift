@@ -81,7 +81,9 @@ public class NoPermissionScreenConstants {
 public class InputScreenConstants {
   public var titleInitial = "Press the button to start"
   public var titleListening = "Listening..."
-  public var subtitleInitial = "Say something like \"iphone case\""
+  public var subtitleInitial = "Say something like:"
+  public var subtitleBullet = "\u{2022}"
+  public var subtitleBulletList = ["\"iphone case\"", "\"Running shoes\""]
   public var titleInProgress = "Searching for:"
   public var titleError = "Sorry, we didn't quite get that"
   public var subtitleError = "Try repeating your request."
