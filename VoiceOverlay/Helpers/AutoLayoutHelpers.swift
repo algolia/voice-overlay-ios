@@ -10,15 +10,15 @@ import Foundation
 import UIKit
 
 class ViewHelpers {
-  static func setConstraintsForTitleLabel(_ titleLabel: UILabel, _ margins: UILayoutGuide, _ text: String, _ textColor: UIColor) {
-            setDefaultSideConstraints(to: titleLabel, in: margins)
-            titleLabel.topAnchor.constraint(equalTo: margins.topAnchor, constant: 100).isActive = true
-            titleLabel.text = text
-            titleLabel.font = UIFont.boldSystemFont(ofSize: 25.0)
-            titleLabel.textColor = textColor
-            titleLabel.lineBreakMode = .byWordWrapping
-            titleLabel.numberOfLines = 0
-        }
+    static func setConstraintsForTitleLabel(_ titleLabel: UILabel, _ margins: UILayoutGuide, _ text: String, _ textColor: UIColor) {
+        setDefaultSideConstraints(to: titleLabel, in: margins)
+        titleLabel.topAnchor.constraint(equalTo: margins.topAnchor, constant: 100).isActive = true
+        titleLabel.text = text
+        titleLabel.font = UIFont.boldSystemFont(ofSize: 25.0)
+        titleLabel.textColor = textColor
+        titleLabel.lineBreakMode = .byWordWrapping
+        titleLabel.numberOfLines = 0
+      }
     
     static func setConstraintsForSubtitleLabel(_ subtitleLabel: UILabel, _ titleLabel: UILabel, _ margins: UILayoutGuide, _ text: String, _ textColor: UIColor) {
         setDefaultSideConstraints(to: subtitleLabel, in: margins)

@@ -83,6 +83,13 @@ class RecordingViewController: UIViewController {
 //    }
 //  }
   
+  public override func viewDidLayoutSubviews() {
+    super.viewDidLayoutSubviews()
+    titleLabel.preferredMaxLayoutWidth = self.view.frame.width - VoiceUIInternalConstants.sideMarginConstant * 2
+    subtitleLabel.preferredMaxLayoutWidth = self.view.frame.width - VoiceUIInternalConstants.sideMarginConstant * 2
+    self.view.layoutIfNeeded()
+  }
+  
   @objc func recordingButtonTapped() {
     if isRecording {
       speechController?.stopRecording()

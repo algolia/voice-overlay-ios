@@ -30,7 +30,7 @@ class ViewController: UIViewController, VoiceOverlayDelegate {
         // If you want to start recording as soon as modal view pops up, change to true
         voiceOverlayController.settings.autoStart = true
         voiceOverlayController.settings.autoStop = true
-        voiceOverlayController.settings.showResultScreen = true
+        voiceOverlayController.settings.showResultScreen = false
         //voiceOverlayController.settings.layout.recordingScreen.titleListening = "custom title when listening"
       
     }

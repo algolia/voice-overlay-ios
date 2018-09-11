@@ -15,13 +15,14 @@ class PermissionViewController: UIViewController {
     var speechController: SpeechController!
   
     var constants: PermissionScreenConstants!
+    let titleLabel = UILabel()
+    let subtitleLabel = UILabel()
     
     override public func viewDidLoad() {
         super.viewDidLoad()
         
         let margins = view.layoutMarginsGuide
-        let titleLabel = UILabel()
-        let subtitleLabel = UILabel()
+
         let allowMicrophoneAccessButton = FirstPermissionButton(startColor: constants.startGradientColor, endColor: constants.endGradientColor)
         let rejectMicrophoneAccessButton = UIButton()
         let closeView = CloseView()
@@ -54,6 +55,13 @@ class PermissionViewController: UIViewController {
                 }
             })
         }
+    }
+  
+    public override func viewDidLayoutSubviews() {
+      super.viewDidLayoutSubviews()
+      titleLabel.preferredMaxLayoutWidth = self.view.frame.width - VoiceUIInternalConstants.sideMarginConstant * 2
+      subtitleLabel.preferredMaxLayoutWidth = self.view.frame.width - VoiceUIInternalConstants.sideMarginConstant * 2
+      self.view.layoutIfNeeded()
     }
     
     @objc func rejectMicrophoneTapped() {

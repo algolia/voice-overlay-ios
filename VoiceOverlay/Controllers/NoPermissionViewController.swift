@@ -12,13 +12,15 @@ public class NoPermissionViewController: UIViewController {
     
     var dismissHandler: (() -> ())? = nil
     var constants: NoPermissionScreenConstants!
-    
+    let titleLabel = UILabel()
+    let subtitleLabel = UILabel()
+  
+  
     override public func viewDidLoad() {
         super.viewDidLoad()
         
         let margins = view.layoutMarginsGuide
-        let titleLabel = UILabel()
-        let subtitleLabel = UILabel()
+
         let goToSettingsButton = FirstPermissionButton(startColor: constants.startGradientColor, endColor: constants.endGradientColor)
         let doneWithSettingsButton = UIButton()
         let closeView = CloseView()
@@ -40,6 +42,13 @@ public class NoPermissionViewController: UIViewController {
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.closeButtonTapped(_:)))
         closeView.addGestureRecognizer(tap)
+    }
+  
+    public override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        titleLabel.preferredMaxLayoutWidth = self.view.frame.width - VoiceUIInternalConstants.sideMarginConstant * 2
+        subtitleLabel.preferredMaxLayoutWidth = self.view.frame.width - VoiceUIInternalConstants.sideMarginConstant * 2
+        self.view.layoutIfNeeded()
     }
     
     @objc func goToSettingsTapped() {
