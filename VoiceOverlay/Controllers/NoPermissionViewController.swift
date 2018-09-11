@@ -34,7 +34,7 @@ public class NoPermissionViewController: UIViewController {
         ViewHelpers.setConstraintsForTitleLabel(titleLabel, margins, constants.title, constants.textColor)
         ViewHelpers.setConstraintsForSubtitleLabel(subtitleLabel, titleLabel, margins, constants.subtitle, constants.textColor)
         ViewHelpers.setConstraintsForCloseView(closeView, margins, backgroundColor: constants.backgroundColor)
-        ViewHelpers.setConstraintsForFirstButton(goToSettingsButton, margins, constants.goToSettingsText, constants.textColor)
+        ViewHelpers.setConstraintsForFirstButton(goToSettingsButton, margins, constants.permissionEnableText, constants.textColor)
         ViewHelpers.setConstraintsForSecondButton(doneWithSettingsButton, goToSettingsButton, margins, constants.doneText, constants.textColor)
         
         goToSettingsButton.addTarget(self, action: #selector(goToSettingsTapped), for: .touchUpInside)

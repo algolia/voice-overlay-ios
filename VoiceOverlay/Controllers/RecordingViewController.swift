@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RecordingViewController: UIViewController {
+class InputViewController: UIViewController {
   
   var speechController: SpeechController?
   
@@ -29,7 +29,7 @@ class RecordingViewController: UIViewController {
   var speechText: String?
   var speechError: Error?
   
-  var constants: RecordingScreenConstants!
+  var constants: InputScreenConstants!
   var settings: VoiceUISettings!
   
   //var resultViewController: ResultViewController?
@@ -50,7 +50,7 @@ class RecordingViewController: UIViewController {
     ViewHelpers.setConstraintsForTitleLabel(titleLabel, margins, constants.titleInitial, constants.textColor)
     ViewHelpers.setConstraintsForSubtitleLabel(subtitleLabel, titleLabel, margins, constants.subtitleInitial, constants.textColor)
     ViewHelpers.setConstraintsForCloseView(closeView, margins, backgroundColor: constants.backgroundColor)
-    ViewHelpers.setConstraintsForRecordingButton(recordingButton, margins, recordingButtonConstants: constants.recordingButtonConstants)
+    ViewHelpers.setConstraintsForRecordingButton(recordingButton, margins, recordingButtonConstants: constants.inputButtonConstants)
     ViewHelpers.setConstraintsForTryAgainLabel(tryAgainLabel, recordingButton, margins, "", constants.textColor)
     
     let tap = UITapGestureRecognizer(target: self, action: #selector(self.closeButtonTapped(_:)))
@@ -204,7 +204,7 @@ class RecordingViewController: UIViewController {
   func handleVoiceError(_ error: Error?) {
     titleLabel.text = constants.titleError
     subtitleLabel.text = constants.subtitleError
-    tryAgainLabel.text = constants.tryAgainText
+    tryAgainLabel.text = constants.errorHint
     toggleRecording(recordingButton, dismiss: false)
   }
 }

@@ -58,7 +58,7 @@ class ViewHelpers {
         secondButton.layer.borderColor = textColor.cgColor
     }
     
-  static func setConstraintsForRecordingButton(_ recordingButton: RecordingButton, _ margins: UILayoutGuide, recordingButtonConstants: RecordingButtonConstants) {
+  static func setConstraintsForRecordingButton(_ recordingButton: RecordingButton, _ margins: UILayoutGuide, recordingButtonConstants: InputButtonConstants) {
         recordingButton.centerYAnchor.constraint(equalTo: margins.centerYAnchor, constant: 50).isActive = true
         recordingButton.centerXAnchor.constraint(equalTo: margins.centerXAnchor).isActive = true
         recordingButton.heightAnchor.constraint(equalToConstant: 75).isActive = true

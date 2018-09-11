@@ -47,7 +47,7 @@ public class VoiceUISettings {
     
     public var permissionScreen = PermissionScreenConstants()
     public var noPermissionScreen = NoPermissionScreenConstants()
-    public var recordingScreen = RecordingScreenConstants()
+    public var inputScreen = InputScreenConstants()
     public var resultScreen = ResultScreenConstants()
   }
 }
@@ -55,8 +55,8 @@ public class VoiceUISettings {
 public class PermissionScreenConstants {
   public var title = "You can use voice search to find products"
   public var subtitle = "May we access your device's microphone to enable voice search?"
-  public var allowMicrophoneAccessText = "Allow microphone access"
-  public var rejectMicrophoneAccessText = "No"
+  public var allowText = "Allow microphone access"
+  public var rejectText = "No"
   
   public var textColor: UIColor = .white
   public var backgroundColor: UIColor = UIColor(red: 50/255, green: 50/255, blue: 50/255, alpha: 1)
@@ -68,7 +68,7 @@ public class PermissionScreenConstants {
 public class NoPermissionScreenConstants {
   public var title = "You don't have the right permissions"
   public var subtitle = "In order to enable voice search, you need to enable it in your setting's app."
-  public var goToSettingsText = "Go to settings"
+  public var permissionEnableText = "Give Permissions"
   public var doneText = "Done"
   
   public var textColor: UIColor = .white
@@ -78,15 +78,15 @@ public class NoPermissionScreenConstants {
   
 }
 
-public class RecordingScreenConstants {
+public class InputScreenConstants {
   public var titleInitial = "Press the button to start"
   public var titleListening = "Listening..."
   public var subtitleInitial = "Say something like \"iphone case\""
   public var titleInProgress = "Searching for:"
   public var titleError = "Sorry, we didn't quite get that"
   public var subtitleError = "Try repeating your request."
-  public var tryAgainText = "Try Again"
-  public var recordingButtonConstants = RecordingButtonConstants()
+  public var errorHint = "Try Again"
+  public var inputButtonConstants = InputButtonConstants()
   
   
   public var textColor: UIColor = .white
@@ -109,7 +109,7 @@ public class ResultScreenConstants {
   public var backgroundColor: UIColor = UIColor(red: 51/255, green: 74/255, blue: 97/255, alpha: 1)
 }
 
-public class RecordingButtonConstants {
+public class InputButtonConstants {
   public var pulseColor = UIColor(red: 51/255, green: 74/255, blue: 97/255, alpha: 1)
   public var pulseDuration: CGFloat = 4
   public var pulseRadius: CGFloat = 100

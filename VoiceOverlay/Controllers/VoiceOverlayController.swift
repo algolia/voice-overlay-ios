@@ -22,7 +22,7 @@ import Speech
     var speechResultScreenHandler: SpeechResultScreenHandler?
   
     public var settings: VoiceUISettings = VoiceUISettings()
-    var recordingViewController: RecordingViewController? = RecordingViewController()
+    var inputViewController: InputViewController? = InputViewController()
   
     public var datasource: Any? = nil
   
@@ -87,24 +87,24 @@ import Speech
     }
     
   fileprivate func showRecordingScreen(_ view: UIViewController) {
-        recordingViewController = RecordingViewController()
-        guard let recordingViewController = recordingViewController else { return }
-        recordingViewController.delegate = delegate
-        recordingViewController.speechTextHandler = speechTextHandler
-        recordingViewController.speechErrorHandler = speechErrorHandler
-        recordingViewController.speechResultScreenHandler = speechResultScreenHandler
-        recordingViewController.speechController = SpeechController()
-        recordingViewController.constants = settings.layout.recordingScreen
-        recordingViewController.settings = settings
+        inputViewController = InputViewController()
+        guard let inputViewController = inputViewController else { return }
+        inputViewController.delegate = delegate
+        inputViewController.speechTextHandler = speechTextHandler
+        inputViewController.speechErrorHandler = speechErrorHandler
+        inputViewController.speechResultScreenHandler = speechResultScreenHandler
+        inputViewController.speechController = SpeechController()
+        inputViewController.constants = settings.layout.inputScreen
+        inputViewController.settings = settings
     
-        recordingViewController.dismissHandler = { [unowned self] (retry) in
-          self.recordingViewController = nil
+        inputViewController.dismissHandler = { [unowned self] (retry) in
+          self.inputViewController = nil
           if retry {
             self.showRecordingScreen(view)
           }
         }
 
-        view.present(recordingViewController, animated: true)
+        view.present(inputViewController, animated: true)
     }
 }
 

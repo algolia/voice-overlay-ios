@@ -36,8 +36,8 @@ class PermissionViewController: UIViewController {
         ViewHelpers.setConstraintsForTitleLabel(titleLabel, margins, constants.title, constants.textColor)
         ViewHelpers.setConstraintsForSubtitleLabel(subtitleLabel, titleLabel, margins, constants.subtitle, constants.textColor)
         ViewHelpers.setConstraintsForCloseView(closeView, margins, backgroundColor: constants.backgroundColor)
-        ViewHelpers.setConstraintsForFirstButton(allowMicrophoneAccessButton, margins, constants.allowMicrophoneAccessText, constants.textColor)
-        ViewHelpers.setConstraintsForSecondButton(rejectMicrophoneAccessButton, allowMicrophoneAccessButton, margins, constants.rejectMicrophoneAccessText, constants.textColor)
+        ViewHelpers.setConstraintsForFirstButton(allowMicrophoneAccessButton, margins, constants.allowText, constants.textColor)
+        ViewHelpers.setConstraintsForSecondButton(rejectMicrophoneAccessButton, allowMicrophoneAccessButton, margins, constants.rejectText, constants.textColor)
         
         allowMicrophoneAccessButton.addTarget(self, action: #selector(allowMicrophoneTapped), for: .touchUpInside)
         rejectMicrophoneAccessButton.addTarget(self, action: #selector(rejectMicrophoneTapped), for: .touchUpInside)
