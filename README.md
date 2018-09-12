@@ -39,7 +39,7 @@ github "algolia/voice-overlay-ios"
 
 <img src="./Resources/infoplist.png" width="700">
 
-2- Start the Voice Overlay and listen to the text output
+2- Start the Voice Overlay and listen to the text output:
 
 ```swift
 import InstantSearchVoiceOverlay
@@ -64,32 +64,24 @@ class ViewController: UIViewController {
 You can customize your voice overlay by modifying the `settings` property of the voiceOverlayController:
 
 ```swift
-/// Specifies whether the overlay directly starts recording (true), or if it requires the user to click the mic (false).
+/// Specifies whether the overlay directly starts recording (true), or if it requires the user to click the mic (false). Defaults to true.
 voiceOverlayController.settings.autoStart = true
 
-/// Specifies whether the overlay stops recording after the user stops talking for `autoStopTimeout` seconds (true), or if it requires the user to click the mic (false).
+/// Specifies whether the overlay stops recording after the user stops talking for `autoStopTimeout` seconds (true), or if it requires the user to click the mic (false). Defaults to true.
 voiceOverlayController.settings.autoStop = true
 
-/// When autoStop is set to true, autoStopTimeout determines the amount of silence time of the user that causes the recording to stop.
+/// When autoStop is set to true, autoStopTimeout determines the amount of silence time of the user that causes the recording to stop. Defaults to 2
 voiceOverlayController.settings.autoStopTimeout = 2
 
-/// Whether or not to show a result screen after the recording is finished.
-voiceOverlayController.settings.showResultScreen = false
-
-/// Timeout for showing the result screen in case no resultScreenText is provided on time.
-voiceOverlayController.settings.showResultScreenTimeout = 2
-
-/// Time for showing the result screen with the provided resultScreenText.
-voiceOverlayController.settings.showResultScreenTime = 4
-
-/// The processed result screen text that should be appear in the result screen.
-voiceOverlayController.settings.resultScreenText = NSAttributedString(string: myString, attributes: myAttributes)
-
 /// The layout and style of all screens of the voice overlay.
-voiceOverlayController.settings.layout
-// Change the title of the recording screen when the recording is ongoing.
+voiceOverlayController.settings.layout.<someScreen>.<someConstant>
+
+// Use XCode autocomplete to see all possible screens and constants that are customisable.
+// Examples:
+
+/// Change the title of the recording screen when the recording is ongoing.
 voiceOverlayController.settings.layout.recordingScreen.titleListening = "my custom title"
-// Change the background color of the permission screen
+/// Change the background color of the permission screen
 voiceOverlayController.settings.layout.permissionScreen.backgroundColor = UIColor.red
 ```
 
@@ -120,11 +112,26 @@ When there are missing permissions, the voice overlay will guide the user to the
 
 When there are errors, the voice overlay will detect them and let the user try again.
 
-## Result Screen
+## Result Screen (Optional)
 
 <img src="./Resources/voiceoverlay_result_screen.gif" width="200">
 
-The result screen appears when `showResultScreen` is set to true. The widget provides a `resultScreenHandler` for when the result screen is dismissed without the "Start again" button being clicked. The handler provides the text that has been set in `resultScreenText` beforehand.
+The result screen appears when `showResultScreen` is set to true.
+
+```swift
+/// Whether or not to show a result screen after the recording is finished.
+voiceOverlayController.settings.showResultScreen = true
+
+/// Timeout for showing the result screen in case no resultScreenText is provided on time.
+voiceOverlayController.settings.showResultScreenTimeout = 2
+
+/// Time for showing the result screen with the provided resultScreenText.
+voiceOverlayController.settings.showResultScreenTime = 4
+
+/// The processed result screen text that should be appear in the result screen.
+voiceOverlayController.settings.resultScreenText = NSAttributedString(string: myString, attributes: myAttributes)
+```
+The widget provides a `resultScreenHandler` for when the result screen is dismissed (provided the "Start again" button is not clicked). The handler provides the text that has been set in `resultScreenText` beforehand.
 
 ```swift
 voiceOverlayController.start(on: self, textHandler: { (text, final) in

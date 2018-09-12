@@ -13,13 +13,13 @@ import UIKit
 /// Customisation Settings for the Voice Overlay
 public class VoiceUISettings {
   
-  /// Specifies whether the overlay directly starts recording (true), or if it requires the user to click the mic (false).
+  /// Specifies whether the overlay directly starts recording (true), or if it requires the user to click the mic (false). Defaults to true.
   public var autoStart = true
   
-  /// Specifies whether the overlay stops recording after the user stops talking for `autoStopTimeout` seconds (true), or if it requires the user to click the mic (false).
+  /// Specifies whether the overlay stops recording after the user stops talking for `autoStopTimeout` seconds (true), or if it requires the user to click the mic (false). Defaults to true.
   public var autoStop = true
   
-  /// When autoStop is set to true, autoStopTimeout determines the amount of silence time of the user that causes the recording to stop.
+  /// When autoStop is set to true, autoStopTimeout determines the amount of silence time of the user that causes the recording to stop. Defaults to 2 seconds.
   public var autoStopTimeout: TimeInterval = 2
   
   /// Whether or not to show a result screen after the recording is finished.
