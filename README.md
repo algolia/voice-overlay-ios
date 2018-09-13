@@ -4,22 +4,16 @@ A beautiful customizable voice overlay widget that records the user's voice inpu
 
 # Overview
 
-<table border="0">
-  <tr>
-    <th>
-      <img src="./Resources/permission.png" width="220"/>
-    </th>
-    <th>
-      <img src="./Resources/listening.png" width="220"/>
-    </th>
-    <th>
-      <img src="./Resources/searchingfor.png" width="220"/>
-    </th>
-    <th>
-      <img src="./Resources/nopermission.png" width="220"/>
-    </th>
-      </tr>
-</table>
+<p float="left">
+  <img src="./Resources/permission.png" width="210" />
+  &nbsp; &nbsp;
+  <img src="./Resources/listening.png" width="210" />
+  &nbsp; &nbsp;
+  <img src="./Resources/searchingfor.png" width="210" />
+  &nbsp; &nbsp;
+  <img src="./Resources/nopermission.png" width="210" />
+  &nbsp; &nbsp;
+</p>
 
 # Demo
 
