@@ -4,7 +4,7 @@ A beautiful customizable voice overlay widget that records the user's voice inpu
 
 # Overview
 
-<table>
+<table border="0">
   <tr>
     <th>
       <img src="./Resources/permission.png" width="220"/>
