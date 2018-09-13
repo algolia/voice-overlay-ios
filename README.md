@@ -5,13 +5,13 @@ A beautiful customizable voice overlay widget that records the user's voice inpu
 # Overview
 
 <p float="left">
-  <img src="./Resources/permission.png" width="210" />
+  <img src="./Resources/permission.png" width="205" />
   &nbsp; &nbsp;
-  <img src="./Resources/listening.png" width="210" />
+  <img src="./Resources/listening.png" width="205" />
   &nbsp; &nbsp;
-  <img src="./Resources/searchingfor.png" width="210" />
+  <img src="./Resources/searchingfor.png" width="205" />
   &nbsp; &nbsp;
-  <img src="./Resources/nopermission.png" width="210" />
+  <img src="./Resources/nopermission.png" width="205" />
   &nbsp; &nbsp;
 </p>
 
