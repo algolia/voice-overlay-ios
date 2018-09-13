@@ -125,15 +125,11 @@ func recording(text: String?, final: Bool?, error: Error?) {
 }
 ```
 
-## How It Handles Errors and No Permissions
-
-<img src="./Resources/voiceoverlay_permission_denied.gif" width="200">
+## How it handles when Permissions are missing
 
 When there are missing permissions, the voice overlay will guide the user to the correct section of the settings app.
 
-<img src="./Resources/voiceoverlay_speech_error.gif" width="200">
-
-When there are errors, the voice overlay will detect them and let the user try again.
+<img src="./Resources/nopermission.gif" width="210">
 
 ## Result Screen (Beta)
 
