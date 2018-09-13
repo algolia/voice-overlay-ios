@@ -62,7 +62,8 @@ class ViewController: UIViewController, VoiceOverlayDelegate {
     voiceOverlayController.settings.autoStart = true
     voiceOverlayController.settings.autoStop = true
     voiceOverlayController.settings.showResultScreen = false
-    //voiceOverlayController.settings.layout.recordingScreen.titleListening = "custom title when listening"
+    
+//    voiceOverlayController.settings.layout.inputScreen.subtitleBulletList = ["Suggestion1", "Suggestion2"]
     
   }
   
