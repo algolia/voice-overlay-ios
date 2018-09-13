@@ -2,9 +2,26 @@
 
 A beautiful customizable voice overlay widget that records the user's voice input.
 
+# Overview
+
+<p float="left">
+  <img src="./Resources/permission.png" width="205" />
+  &nbsp; &nbsp;
+  <img src="./Resources/listening.png" width="205" />
+  &nbsp; &nbsp;
+  <img src="./Resources/searchingfor.png" width="205" />
+  &nbsp; &nbsp;
+  <img src="./Resources/nopermission.png" width="205" />
+  &nbsp; &nbsp;
+</p>
+
 # Demo
 
-<img src="./Resources/voiceoverlay_speech_happy_path.gif" width="200">
+You can clone and run the Demo project by doing `pod install` and then running the project
+
+<!-- <img src="./Resources/voiceoverlay_speech_happy_path.gif" width="205"> -->
+
+<img src="./Resources/demo.gif" width="250">
 
 # Installation
 
@@ -73,7 +90,7 @@ voiceOverlayController.settings.autoStart = true
 voiceOverlayController.settings.autoStop = true
 
 /// When autoStop is set to true, autoStopTimeout determines the amount of
-/// silence time of the user that causes the recording to stop. Defaults to 2
+/// silence time of the user that causes the recording to stop. Defaults to 2.
 voiceOverlayController.settings.autoStopTimeout = 2
 
 /// The layout and style of all screens of the voice overlay.
@@ -82,10 +99,13 @@ voiceOverlayController.settings.layout.<someScreen>.<someConstant>
 // Use XCode autocomplete to see all possible screens and constants that are customisable.
 // Examples:
 
-/// Change the title of the recording screen when the recording is ongoing.
-voiceOverlayController.settings.layout.recordingScreen.titleListening = "my custom title"
-/// Change the background color of the permission screen
+/// The voice suggestions that appear in bullet points
+voiceOverlayController.settings.layout.inputScreen.subtitleBulletList = ["Suggestion1", "Sug2"]
+/// Change the title of the input screen when the recording is ongoing.
+voiceOverlayController.settings.layout.inputScreen.titleListening = "my custom title"
+/// Change the background color of the permission screen.
 voiceOverlayController.settings.layout.permissionScreen.backgroundColor = UIColor.red
+/// And many more...
 ```
 
 
@@ -115,7 +135,7 @@ When there are missing permissions, the voice overlay will guide the user to the
 
 When there are errors, the voice overlay will detect them and let the user try again.
 
-## Result Screen (Optional)
+## Result Screen (Beta)
 
 <img src="./Resources/voiceoverlay_result_screen.gif" width="200">
 
