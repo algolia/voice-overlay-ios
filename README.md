@@ -2,7 +2,28 @@
 
 A beautiful customizable voice overlay widget that records the user's voice input.
 
+# Overview
+
+<table>
+  <tr>
+    <th>
+      <img src="./Resources/permission.png" width="220"/>
+    </th>
+    <th>
+      <img src="./Resources/listening.png" width="220"/>
+    </th>
+    <th>
+      <img src="./Resources/searchingfor.png" width="220"/>
+    </th>
+    <th>
+      <img src="./Resources/nopermission.png" width="220"/>
+    </th>
+      </tr>
+</table>
+
 # Demo
+
+You can clone and run the Demo project by doing `pod install` and then running the project
 
 <img src="./Resources/voiceoverlay_speech_happy_path.gif" width="200">
 
