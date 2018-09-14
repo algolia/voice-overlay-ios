@@ -39,7 +39,7 @@ You can clone and run the Demo project by doing `pod install` and then running t
 it, simply add the following line to your Podfile:
 
 ```ruby
-pod 'InstantSearchVoiceOverlay'
+pod 'InstantSearchVoiceOverlay', '~> 1.0.0-beta'
 ```
 
 ### Carthage
