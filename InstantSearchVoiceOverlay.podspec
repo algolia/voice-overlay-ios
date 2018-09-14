@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
     s.name             = "InstantSearchVoiceOverlay"
     s.module_name      = 'InstantSearchVoiceOverlay'
-    s.version          = "1.0.0"
+    s.version          = "1.0.0-beta1"
     s.summary          = "A beautiful voice overlay widget that records the user's voice input"
     s.homepage         = "https://github.com/algolia/voice-overlay-ios"
     s.license          = { type: 'MIT', file: 'LICENSE.md' }
