@@ -13,14 +13,14 @@ Made by [Algolia](https://www.algolia.com/)
 # Overview
 
 <p float="left">
-  <img src="./Resources/permission.png" width="205" />
-  &nbsp; &nbsp;
-  <img src="./Resources/listeninginitial.png" width="205" />
-  &nbsp; &nbsp;
-  <img src="./Resources/ripple.gif" width="205" />
-  &nbsp; &nbsp;
-  <img src="./Resources/nopermission.png" width="205" />
-  &nbsp; &nbsp;
+  <img src="./Resources/permission.png" width="200" />
+  &nbsp;
+  <img src="./Resources/listeninginitial.png" width="200" />
+  &nbsp;
+  <img src="./Resources/ripple.gif" width="200" />
+  &nbsp;
+  <img src="./Resources/nopermission.png" width="200" />
+  &nbsp;
 </p>
 
 # Demo
