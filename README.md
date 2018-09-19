@@ -1,14 +1,12 @@
-![InstantSearch iOS](./Resources/banner_voice_overlay.png)
+![Voice Overlay for iOS](./Resources/banner_voice_overlay.png)
 
 <p align="center">
 <img src="https://img.shields.io/badge/platform-iOS-blue.svg?style=flat" alt="Platform iOS" />
 <a href="https://developer.apple.com/swift"><img src="https://img.shields.io/badge/swift4-compatible-4BC51D.svg?style=flat" alt="Swift 4 compatible" /></a>
 <a href="https://github.com/Carthage/Carthage"><img src="https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat" alt="Carthage compatible" /></a>
 <a href="https://cocoapods.org/pods/InstantSearchVoiceOverlay"><img src="https://img.shields.io/cocoapods/v/InstantSearchVoiceOverlay.svg" alt="CocoaPods compatible" /></a>
-<a href="https://raw.githubusercontent.com/xmartlabs/Eureka/master/LICENSE"><img src="http://img.shields.io/badge/license-MIT-blue.svg?style=flat" alt="License: MIT" /></a>
+<a href="LICENSE.md"><img src="http://img.shields.io/badge/license-MIT-blue.svg?style=flat" alt="License: MIT" /></a>
 </p>
-
-Made by [Algolia](https://www.algolia.com/)
 
 # Overview
 
@@ -36,7 +34,7 @@ You can clone and run the Demo project by doing `pod install` and then running t
 #### CocoaPods
 
 `InstantSearchVoiceOverlay` is available through [CocoaPods](http://cocoapods.org). To install
-it, simply add the following line to your Podfile:
+it, add the following line to your Podfile:
 
 ```ruby
 pod 'InstantSearchVoiceOverlay', '~> 1.0.0-beta'
@@ -46,7 +44,7 @@ pod 'InstantSearchVoiceOverlay', '~> 1.0.0-beta'
 
 [Carthage](https://github.com/Carthage/Carthage) is a simple, decentralized dependency manager for Cocoa.
 
-To install InstantSearchVoiceOverlay, simply add the following line to your Cartfile:
+To install InstantSearchVoiceOverlay, add the following line to your Cartfile:
 
 ```ruby
 github "algolia/voice-overlay-ios"
@@ -54,14 +52,14 @@ github "algolia/voice-overlay-ios"
 
 # Usage
 
-1- In `Info.plist`, add these 2 string properties along with the description
+1. In `Info.plist`, add these 2 string properties along with the description
 
 - `Privacy - Microphone Usage Description` with a description like: `Need the mic for audio to text`
 - `Privacy - Speech Recognition Usage Description` some description like: `Need the speech recognition capabilities for searching tags`
 
 <img src="./Resources/infoplist.png" width="700">
 
-2- Start the Voice Overlay and listen to the text output:
+2. Start the Voice Overlay and listen to the text output:
 
 ```swift
 import InstantSearchVoiceOverlay
@@ -195,4 +193,4 @@ voiceOverlayController.start(on: self, textHandler: { (text, final) in
 
 ## License
 
-InstantSearchVoiceOverlay is available under the MIT license. See the LICENSE file for more info.
+InstantSearchVoiceOverlay is available under the MIT license. See the [LICENSE file](./LICENSE.md) for more info.
