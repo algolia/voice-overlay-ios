@@ -49,7 +49,7 @@ pod 'InstantSearchVoiceOverlay', '~> 1.0.0-beta'
 To install InstantSearchVoiceOverlay, add the following line to your Cartfile:
 
 ```ruby
-github "algolia/voice-overlay-ios"
+github "algolia/voice-overlay-ios" ~> 1.0.0-beta
 ```
 
 # Usage
