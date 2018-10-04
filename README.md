@@ -12,6 +12,8 @@
 
 **Voice overlay** helps you turn your user's **voice** into **text**, providing a **polished UX** while handling for you the **necessary permissions**.
 
+It uses internally the native `SFSpeechRecognizer` in order to perform the speech to text conversion.
+
 <p float="left">
   <img src="./Resources/permission.png" width="200" />
   &nbsp;
