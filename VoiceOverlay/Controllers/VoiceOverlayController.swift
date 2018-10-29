@@ -11,6 +11,7 @@ import UIKit
 import Speech
 
 /// Controller that takes care of launching a voice overlay and providing handlers to listen to text and error events.
+@available(iOS 10.0, *)
 @objc public class VoiceOverlayController: NSObject {
     
     let permissionViewController = PermissionViewController()

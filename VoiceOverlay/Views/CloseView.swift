@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 
+@available(iOS 10.0, *)
 public class CloseView: UIView
 {
     override public func draw(_ rect: CGRect)

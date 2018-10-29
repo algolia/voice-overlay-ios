@@ -11,6 +11,7 @@ import CoreGraphics
 import UIKit
 
 // we have to have this class or else when using autolayout, the gradient won't redraw itself.
+@available(iOS 10.0, *)
 public class FirstPermissionButton: UIButton {
     
     var startColor: UIColor = .white

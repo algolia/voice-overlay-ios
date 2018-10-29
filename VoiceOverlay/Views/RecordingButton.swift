@@ -9,6 +9,7 @@
 import UIKit
 import AVFoundation
 
+@available(iOS 10.0, *)
 @IBDesignable
 public class RecordingButton: UIButton {
   
@@ -101,6 +102,7 @@ enum RecordingStatus {
     case startRecording, endRecording, error
 }
 
+@available(iOS 10.0, *)
 extension RecordingButton {
     func setimage(_ isRecording: Bool) {
         let imageName = isRecording ? "mic-lg-active" : "mic-lg-inactive"
