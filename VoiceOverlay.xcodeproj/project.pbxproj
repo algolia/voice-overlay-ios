@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1DD20F5A21773D5E008DC1D7 /* Recordable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD20F5921773D5E008DC1D7 /* Recordable.swift */; };
 		E236003520F4EA4300F42359 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E236003420F4EA4300F42359 /* ResultViewController.swift */; };
 		E264699F20E512C600ABD287 /* NoPermissionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E264699E20E512C600ABD287 /* NoPermissionViewController.swift */; };
 		E27D294B20E0F0C900B83D4C /* VoiceOverlay.h in Headers */ = {isa = PBXBuildFile; fileRef = E27D294920E0F0C900B83D4C /* VoiceOverlay.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -27,6 +28,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1DD20F5921773D5E008DC1D7 /* Recordable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Recordable.swift; sourceTree = "<group>"; };
 		E236003420F4EA4300F42359 /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
 		E264699E20E512C600ABD287 /* NoPermissionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoPermissionViewController.swift; sourceTree = "<group>"; };
 		E27D294620E0F0C900B83D4C /* InstantSearchVoiceOverlay.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = InstantSearchVoiceOverlay.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -59,6 +61,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1DD20F5821773D5E008DC1D7 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				1DD20F5921773D5E008DC1D7 /* Recordable.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
 		E27D293C20E0F0C900B83D4C = {
 			isa = PBXGroup;
 			children = (
@@ -78,6 +88,7 @@
 		E27D294820E0F0C900B83D4C /* VoiceOverlay */ = {
 			isa = PBXGroup;
 			children = (
+				1DD20F5821773D5E008DC1D7 /* Protocols */,
 				E29EEC8820E3B1AB00415FCF /* Sound */,
 				E29EEC5C20E11AE900415FCF /* Controllers */,
 				E29EEC5B20E11AE400415FCF /* Views */,
@@ -224,6 +235,7 @@
 				E27D295A20E0F20D00B83D4C /* PermissionViewController.swift in Sources */,
 				E27D295820E0F20D00B83D4C /* CloseView.swift in Sources */,
 				E27D295920E0F20D00B83D4C /* AllowPermissionButton.swift in Sources */,
+				1DD20F5A21773D5E008DC1D7 /* Recordable.swift in Sources */,
 				E264699F20E512C600ABD287 /* NoPermissionViewController.swift in Sources */,
 				E29EEC6220E143AE00415FCF /* SpeechController.swift in Sources */,
 				E236003520F4EA4300F42359 /* ResultViewController.swift in Sources */,

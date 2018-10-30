@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "E27D294520E0F0C900B83D4C"
-               BuildableName = "VoiceOverlay.framework"
+               BuildableName = "InstantSearchVoiceOverlay.framework"
                BlueprintName = "VoiceOverlay"
                ReferencedContainer = "container:VoiceOverlay.xcodeproj">
             </BuildableReference>
@@ -46,7 +46,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E27D294520E0F0C900B83D4C"
-            BuildableName = "VoiceOverlay.framework"
+            BuildableName = "InstantSearchVoiceOverlay.framework"
             BlueprintName = "VoiceOverlay"
             ReferencedContainer = "container:VoiceOverlay.xcodeproj">
          </BuildableReference>
@@ -64,7 +64,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E27D294520E0F0C900B83D4C"
-            BuildableName = "VoiceOverlay.framework"
+            BuildableName = "InstantSearchVoiceOverlay.framework"
             BlueprintName = "VoiceOverlay"
             ReferencedContainer = "container:VoiceOverlay.xcodeproj">
          </BuildableReference>

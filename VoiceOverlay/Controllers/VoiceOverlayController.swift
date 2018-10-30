@@ -10,12 +10,14 @@ import Foundation
 import UIKit
 import Speech
 
+public typealias RecordableHandler = () -> Recordable
+
 /// Controller that takes care of launching a voice overlay and providing handlers to listen to text and error events.
 @objc public class VoiceOverlayController: NSObject {
     
     let permissionViewController = PermissionViewController()
     let noPermissionViewController = NoPermissionViewController()
-    let speechController = SpeechController()
+    let recordableHandler: RecordableHandler
     public weak var delegate: VoiceOverlayDelegate?
     var speechTextHandler: SpeechTextHandler?
     var speechErrorHandler: SpeechErrorHandler?
@@ -27,7 +29,15 @@ import Speech
     public var datasource: Any? = nil
   
     public override init() {
-        super.init()
+      self.recordableHandler = {
+        return SpeechController()
+      }
+      super.init()
+    }
+  
+    public init(speechControllerHandler: @escaping RecordableHandler) {
+      self.recordableHandler = speechControllerHandler
+      super.init()
     }
     
     @objc public func start(on view: UIViewController, textHandler: @escaping SpeechTextHandler, errorHandler: @escaping SpeechErrorHandler, resultScreenHandler: SpeechResultScreenHandler? = nil) {
@@ -76,7 +86,7 @@ import Speech
     }
     
     fileprivate func showPermissionScreen(_ view: UIViewController) {
-        permissionViewController.speechController = speechController
+        permissionViewController.speechController = recordableHandler()
         permissionViewController.constants = settings.layout.permissionScreen
         view.present(permissionViewController, animated: true)
     }
@@ -93,7 +103,7 @@ import Speech
         inputViewController.speechTextHandler = speechTextHandler
         inputViewController.speechErrorHandler = speechErrorHandler
         inputViewController.speechResultScreenHandler = speechResultScreenHandler
-        inputViewController.speechController = SpeechController()
+        inputViewController.speechController = recordableHandler()
         inputViewController.constants = settings.layout.inputScreen
         inputViewController.settings = settings
     
