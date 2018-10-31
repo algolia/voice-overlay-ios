@@ -10,7 +10,7 @@ import UIKit
 
 class InputViewController: UIViewController {
   
-  var speechController: SpeechController?
+  var speechController: Recordable?
   
   var speechTextHandler: SpeechTextHandler?
   var speechErrorHandler: SpeechErrorHandler?
@@ -28,6 +28,7 @@ class InputViewController: UIViewController {
   var autoStopTimer: Timer = Timer()
   
   var speechText: String?
+  var customData: Any?
   var speechError: Error?
   
   var constants: InputScreenConstants!
@@ -127,7 +128,7 @@ class InputViewController: UIViewController {
       self.delegate?.recording(text: self.speechText, final: true, error: self.speechError)
       
       if let speechText = self.speechText {
-        self.speechTextHandler?(speechText, true)
+        self.speechTextHandler?(speechText, true, self.customData)
       } else {
         self.speechErrorHandler?(self.speechError)
       }
@@ -148,10 +149,11 @@ class InputViewController: UIViewController {
     // TODO: Playing sound is crashing. probably because we re not stopping play, or interfering with speech controller, or setActive true/false in playSound
     //recordingButton.playSound(with: isRecording ? .startRecording : .endRecording)
     
-    speechController?.startRecording(textHandler: {[weak self] (text, final) in
+    speechController?.startRecording(textHandler: {[weak self] (text, final, customData) in
       guard let strongSelf = self else { return }
       
       strongSelf.speechText = text
+      strongSelf.customData = customData
       strongSelf.speechError = nil
       strongSelf.subtitleLabel.text = text
       strongSelf.subtitleBulletLabel.text = ""
@@ -164,7 +166,7 @@ class InputViewController: UIViewController {
       } else {
         if strongSelf.isRecording {
           strongSelf.delegate?.recording(text: text, final: final, error: nil)
-          strongSelf.speechTextHandler?(text, final)
+          strongSelf.speechTextHandler?(text, final, customData)
         }
       }
 
@@ -179,6 +181,7 @@ class InputViewController: UIViewController {
         guard let strongSelf = self else { return }
         
         strongSelf.speechText = nil
+        strongSelf.customData = nil
         strongSelf.speechError = error
         strongSelf.delegate?.recording(text: nil, final: nil, error: error)
         strongSelf.speechErrorHandler?(error)

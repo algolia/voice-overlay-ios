@@ -12,7 +12,7 @@ import AVFoundation
 class PermissionViewController: UIViewController {
     
     var dismissHandler: (() -> ())? = nil
-    var speechController: SpeechController!
+    var speechController: Recordable!
   
     var constants: PermissionScreenConstants!
     let titleLabel = UILabel()

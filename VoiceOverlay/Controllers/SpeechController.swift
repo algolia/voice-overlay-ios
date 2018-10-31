@@ -9,7 +9,7 @@ import UIKit
 import Speech
 import AVFoundation
 
-public typealias SpeechTextHandler = (String, Bool) -> Void
+public typealias SpeechTextHandler = (String, Bool, Any?) -> Void
 public typealias SpeechResultScreenHandler = (String) -> Void
 public typealias SpeechErrorHandler = (Error?) -> Void
 
@@ -20,7 +20,7 @@ public typealias SpeechErrorHandler = (Error?) -> Void
 /// let speechController = SpeechController(locale: Locale(identifier: "fr_FR"))
 /// Do not forget to add `NSSpeechRecognitionUsageDescription` and `NSMicrophoneUsageDescription` to your Info.plist
 @available(iOS 10.0, *)
-@objc public class SpeechController: NSObject, SFSpeechRecognizerDelegate {
+@objc public class SpeechController: NSObject, SFSpeechRecognizerDelegate, Recordable {
   private static let AUDIO_BUFFER_SIZE: UInt32 = 1024
   private let speechRecognizer: SFSpeechRecognizer
   private var speechRequest: SFSpeechAudioBufferRecognitionRequest?
@@ -119,7 +119,7 @@ public typealias SpeechErrorHandler = (Error?) -> Void
       if let r = result {
         let transcription = r.bestTranscription
         let isFinal = r.isFinal
-        textHandler(transcription.formattedString, isFinal)
+        textHandler(transcription.formattedString, isFinal, nil)
       } else {
         errorHandler(error)
       }
