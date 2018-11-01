@@ -109,7 +109,7 @@ class InputViewController: UIViewController {
     self.speechErrorHandler = nil
     self.speechResultScreenHandler = nil
     speechController?.stopRecording()
-    dismissMe(animated: true) {
+    dismissMe(animated: true) { [weak self] in
       self.dismissHandler?(false)
     }
   }
@@ -139,7 +139,7 @@ class InputViewController: UIViewController {
 //          resultViewController = ResultViewController()
 //          setup(resultViewController!)
         } else {
-          dismissMe(animated: true) {
+          dismissMe(animated: true) {  [weak self] in
             self.dismissHandler?(false)
           }
         }
