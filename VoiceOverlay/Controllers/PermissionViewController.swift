@@ -9,6 +9,7 @@
 import UIKit
 import AVFoundation
 
+@available(iOS 10.0, *)
 class PermissionViewController: UIViewController {
     
     var dismissHandler: (() -> ())? = nil

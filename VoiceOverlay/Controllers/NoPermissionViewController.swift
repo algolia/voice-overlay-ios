@@ -8,6 +8,7 @@
 
 import UIKit
 
+@available(iOS 10.0, *)
 public class NoPermissionViewController: UIViewController {
     
     var dismissHandler: (() -> ())? = nil

@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 
+@available(iOS 10.0, *)
 class ViewHelpers {
     static func setConstraintsForTitleLabel(_ titleLabel: UILabel, _ margins: UILayoutGuide, _ text: String, _ textColor: UIColor) {
         setDefaultSideConstraints(to: titleLabel, in: margins)

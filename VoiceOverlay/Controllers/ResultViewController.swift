@@ -8,8 +8,7 @@
 
 import UIKit
 
-import UIKit
-
+@available(iOS 10.0, *)
 public class ResultViewController: UIViewController {
   
   public var constants: ResultScreenConstants!
