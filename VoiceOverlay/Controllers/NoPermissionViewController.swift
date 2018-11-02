@@ -66,7 +66,7 @@ public class NoPermissionViewController: UIViewController {
     
     @objc func doneWithSettingsTapped() {
         dismissMe(animated: true) { [weak self] in
-            self.dismissHandler?()
+            self?.dismissHandler?()
         }
     }
     
