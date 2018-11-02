@@ -69,7 +69,7 @@ class ViewController: UIViewController, VoiceOverlayDelegate {
   
   @objc func buttonTapped() {
     // First way to listen to recording through callbacks
-    voiceOverlayController.start(on: self, textHandler: { (text, final) in
+    voiceOverlayController.start(on: self, textHandler: { (text, final, extraInfo) in
       print("callback: getting \(String(describing: text))")
       print("callback: is it final? \(String(describing: final))")
       
