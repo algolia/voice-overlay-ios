@@ -50,8 +50,8 @@ class PermissionViewController: UIViewController {
     @objc func allowMicrophoneTapped() {
         
         speechController.requestAuthorization { _ in
-            AVAudioSession.sharedInstance().requestRecordPermission({ (isGranted) in
-                self.dismissMe(animated: true) { [weak self] in
+            AVAudioSession.sharedInstance().requestRecordPermission({ [weak self] (isGranted) in
+                self?.dismissMe(animated: true) { [weak self] in
                     self?.dismissHandler?()
                 }
             })
