@@ -128,6 +128,8 @@ var voiceOverlayController: VoiceOverlayController {
 }
 ```
 
+In Swift 4, you can use `Locale.current.languageCode` to get current locale.
+
 ## Delegate
 Optionally, to listen to text and error events, you can conform to the method of the `VoiceOverlayDelegate` protocol.
 
