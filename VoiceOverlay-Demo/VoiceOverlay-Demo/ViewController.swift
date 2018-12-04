@@ -8,6 +8,7 @@
 
 import UIKit
 import InstantSearchVoiceOverlay
+import Speech
 
 class ViewController: UIViewController, VoiceOverlayDelegate {
   
@@ -18,7 +19,7 @@ class ViewController: UIViewController, VoiceOverlayDelegate {
   override func viewDidLoad() {
     super.viewDidLoad()
     // Do any additional setup after loading the view, typically from a nib.
-    
+
     let margins = view.layoutMarginsGuide
     
     button.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
@@ -62,8 +63,18 @@ class ViewController: UIViewController, VoiceOverlayDelegate {
     voiceOverlayController.settings.autoStart = true
     voiceOverlayController.settings.autoStop = true
     voiceOverlayController.settings.showResultScreen = false
+
+    voiceOverlayController.settings.layout.inputScreen.subtitleInitial = ""
+    voiceOverlayController.settings.layout.inputScreen.subtitleBullet = ""
+    voiceOverlayController.settings.layout.inputScreen.subtitleBulletList = []
     
 //    voiceOverlayController.settings.layout.inputScreen.subtitleBulletList = ["Suggestion1", "Suggestion2"]
+    let string = "Hello, World!"
+    let utterance = AVSpeechUtterance(string: string)
+    utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
+
+    let synth = AVSpeechSynthesizer()
+    synth.speak(utterance)
     
   }
   
@@ -74,6 +85,13 @@ class ViewController: UIViewController, VoiceOverlayDelegate {
       print("callback: is it final? \(String(describing: final))")
       
       if final {
+        let string = "Hello, World!"
+        let utterance = AVSpeechUtterance(string: string)
+        utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
+
+        let synth = AVSpeechSynthesizer()
+        synth.speak(utterance)
+
         // here can process the result to post in a result screen
         Timer.scheduledTimer(withTimeInterval: 1.5, repeats: false, block: { (_) in
           let myString = text
