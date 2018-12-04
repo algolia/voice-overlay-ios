@@ -115,9 +115,9 @@ voiceOverlayController.settings.layout.permissionScreen.backgroundColor = UIColo
 /// And many more...
 ```
 
-### Changing Locale 
+### Changing Locale or SpeechController
 
-You can change locale when initializing your voiceOverlayController like so:
+You can change locale or SpeechController when initializing your voiceOverlayController like so:
 
 ``` swift
 var voiceOverlayController: VoiceOverlayController {
@@ -128,7 +128,9 @@ var voiceOverlayController: VoiceOverlayController {
 }
 ```
 
-In Swift 4, you can use `Locale.current.languageCode` to get current locale.
+You can create your own custom SpeechController class by implementing the `Recordable` protocol.
+
+Note that in Swift 4, you can use `Locale.current.languageCode` to get current locale.
 
 ## Delegate
 Optionally, to listen to text and error events, you can conform to the method of the `VoiceOverlayDelegate` protocol.
