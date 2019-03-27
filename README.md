@@ -120,12 +120,12 @@ voiceOverlayController.settings.layout.permissionScreen.backgroundColor = UIColo
 You can change locale or SpeechController when initializing your voiceOverlayController like so:
 
 ``` swift
-var voiceOverlayController: VoiceOverlayController {
-    let recordableHandler = {
-        return SpeechController(locale: Locale(identifier: "en_US"))
-    }
-    return VoiceOverlayController(speechControllerHandler: recordableHandler)
-}
+lazy var voiceOverlayController: VoiceOverlayController = {
+  let recordableHandler = {
+    return SpeechController(locale: Locale(identifier: "en_US"))
+  }
+  return VoiceOverlayController(speechControllerHandler: recordableHandler)
+}()
 ```
 
 You can create your own custom SpeechController class by implementing the `Recordable` protocol.
