@@ -41,7 +41,7 @@ You can clone and run the Demo project by doing `pod install` and then running t
 it, add the following line to your Podfile:
 
 ```ruby
-pod 'InstantSearchVoiceOverlay', '~> 1.0.0-beta'
+pod 'InstantSearchVoiceOverlay', '~> 1.0.0'
 ```
 
 ### Carthage
@@ -51,7 +51,7 @@ pod 'InstantSearchVoiceOverlay', '~> 1.0.0-beta'
 To install InstantSearchVoiceOverlay, add the following line to your Cartfile:
 
 ```ruby
-github "algolia/voice-overlay-ios" ~> 1.0.0-beta
+github "algolia/voice-overlay-ios" ~> 1.0.0
 ```
 
 # Usage
