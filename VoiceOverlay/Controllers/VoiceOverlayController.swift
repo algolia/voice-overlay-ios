@@ -58,6 +58,10 @@ public typealias RecordableHandler = () -> Recordable
             }
         }
     }
+
+    @objc public func dismiss() {
+      self.inputViewController?.dismiss(animated: true, completion: nil)
+    }
     
     fileprivate func checkPermissionsAndRedirectToCorrectScreen(_ view: UIViewController) {
         
@@ -70,7 +74,9 @@ public typealias RecordableHandler = () -> Recordable
             showNoPermissionScreen(view)
         case AVAudioSession.RecordPermission.undetermined:
             showPermissionScreen(view)
-        }
+        @unknown default:
+          break
+      }
     }
     
     fileprivate func checkSpeechAuthorizationStatusAndRedirectToCorrectScreen(_ view: UIViewController) {
@@ -83,6 +89,8 @@ public typealias RecordableHandler = () -> Recordable
             showNoPermissionScreen(view)
         case .notDetermined:
             showPermissionScreen(view)
+        @unknown default:
+          break
         }
     }
     
@@ -108,10 +116,10 @@ public typealias RecordableHandler = () -> Recordable
         inputViewController.constants = settings.layout.inputScreen
         inputViewController.settings = settings
     
-        inputViewController.dismissHandler = { [unowned self] (retry) in
-          self.inputViewController = nil
+        inputViewController.dismissHandler = { [weak self] (retry) in
+          self?.inputViewController = nil
           if retry {
-            self.showRecordingScreen(view)
+            self?.showRecordingScreen(view)
           }
         }
 

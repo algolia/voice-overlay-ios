@@ -186,7 +186,7 @@
 				TargetAttributes = {
 					E27D294520E0F0C900B83D4C = {
 						CreatedOnToolsVersion = 10.0;
-						LastSwiftMigration = 1000;
+						LastSwiftMigration = 1020;
 					};
 				};
 			};
@@ -388,7 +388,7 @@
 				PRODUCT_NAME = InstantSearchVoiceOverlay;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -415,7 +415,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.algolia.VoiceOverlay;
 				PRODUCT_NAME = InstantSearchVoiceOverlay;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

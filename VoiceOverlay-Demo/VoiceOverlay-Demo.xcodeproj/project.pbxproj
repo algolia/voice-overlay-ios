@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -122,6 +122,7 @@
 				TargetAttributes = {
 					E27D296520E0F2C700B83D4C = {
 						CreatedOnToolsVersion = 10.0;
+						LastSwiftMigration = 1020;
 					};
 				};
 			};
@@ -162,13 +163,12 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-VoiceOverlay-Demo/Pods-VoiceOverlay-Demo-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/InstantSearchVoiceOverlay/InstantSearchVoiceOverlay.framework",
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-VoiceOverlay-Demo/Pods-VoiceOverlay-Demo-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/InstantSearchVoiceOverlay.framework",
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-VoiceOverlay-Demo/Pods-VoiceOverlay-Demo-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -356,7 +356,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.algolia.VoiceOverlay-Demo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -376,7 +376,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.algolia.VoiceOverlay-Demo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

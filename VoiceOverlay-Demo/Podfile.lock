@@ -1,5 +1,5 @@
 PODS:
-  - InstantSearchVoiceOverlay (1.0.0-beta2)
+  - InstantSearchVoiceOverlay (1.0.0)
 
 DEPENDENCIES:
   - InstantSearchVoiceOverlay (from `../`)
@@ -9,8 +9,8 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  InstantSearchVoiceOverlay: c8fceafa7adac3b0d62e34aab4ad76a6da4fd4b3
+  InstantSearchVoiceOverlay: b34c48dcbf3191c0441642ba4f37547dbc77ffc7
 
 PODFILE CHECKSUM: d68dce0b4f4c21b51c6684bb4e7f024b590eb253
 
-COCOAPODS: 1.6.0.beta.2
+COCOAPODS: 1.7.3
