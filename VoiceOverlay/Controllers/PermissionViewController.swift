@@ -51,8 +51,10 @@ class PermissionViewController: UIViewController {
         
         speechController.requestAuthorization { _ in
             AVAudioSession.sharedInstance().requestRecordPermission({ (isGranted) in
-                self.dismissMe(animated: true) {
-                    self.dismissHandler?()
+                DispatchQueue.main.async {                                                     
+                    self.dismissMe(animated: true) {
+                        self.dismissHandler?()
+                    }
                 }
             })
         }
