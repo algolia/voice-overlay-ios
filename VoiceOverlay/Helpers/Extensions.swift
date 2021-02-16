@@ -12,15 +12,9 @@ import UIKit
 extension UIViewController {
   public func dismissMe(animated: Bool, completion: (()->())? = nil) {
     DispatchQueue.main.async {
-      var count = 0
-      if let c = self.navigationController?.viewControllers.count {
-        count = c
-      }
-      if count > 1 {
+      if let navigationStackCount = self.navigationController?.viewControllers.count, navigationStackCount > 1 {
         self.navigationController?.popViewController(animated: animated)
-        if let handler = completion {
-          handler()
-        }
+        completion?()
       } else {
         self.dismiss(animated: animated, completion: completion)
       }

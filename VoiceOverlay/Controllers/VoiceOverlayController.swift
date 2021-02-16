@@ -67,12 +67,12 @@ public typealias RecordableHandler = () -> Recordable
 
     // Audio/Record permissions
     switch AVAudioSession.sharedInstance().recordPermission {
-    case AVAudioSession.RecordPermission.granted:
+    case .granted:
       // If audio/record permission is granted, we need to check for the speech permission next
       checkSpeechAuthorizationStatusAndRedirectToCorrectScreen(view)
-    case AVAudioSession.RecordPermission.denied:
+    case .denied:
       showNoPermissionScreen(view)
-    case AVAudioSession.RecordPermission.undetermined:
+    case .undetermined:
       showPermissionScreen(view)
     @unknown default:
       break
