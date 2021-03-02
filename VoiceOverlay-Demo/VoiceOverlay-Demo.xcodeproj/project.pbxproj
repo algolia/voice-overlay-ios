@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AF4C4FCD25EED2D600D9B530 /* InstantSearchVoiceOverlay in Frameworks */ = {isa = PBXBuildFile; productRef = AF4C4FCC25EED2D600D9B530 /* InstantSearchVoiceOverlay */; };
 		E27D296A20E0F2C700B83D4C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E27D296920E0F2C700B83D4C /* AppDelegate.swift */; };
 		E27D296C20E0F2C700B83D4C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E27D296B20E0F2C700B83D4C /* ViewController.swift */; };
 		E27D296F20E0F2C700B83D4C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E27D296D20E0F2C700B83D4C /* Main.storyboard */; };
@@ -29,6 +30,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AF4C4FCD25EED2D600D9B530 /* InstantSearchVoiceOverlay in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -80,6 +82,9 @@
 			dependencies = (
 			);
 			name = "VoiceOverlay-Demo";
+			packageProductDependencies = (
+				AF4C4FCC25EED2D600D9B530 /* InstantSearchVoiceOverlay */,
+			);
 			productName = "VoiceOverlay-Demo";
 			productReference = E27D296620E0F2C700B83D4C /* VoiceOverlay-Demo.app */;
 			productType = "com.apple.product-type.application";
@@ -109,6 +114,9 @@
 				Base,
 			);
 			mainGroup = E27D295D20E0F2C700B83D4C;
+			packageReferences = (
+				AF4C4FCB25EED2D600D9B530 /* XCRemoteSwiftPackageReference "voice-overlay-ios" */,
+			);
 			productRefGroup = E27D296720E0F2C700B83D4C /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -337,6 +345,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		AF4C4FCB25EED2D600D9B530 /* XCRemoteSwiftPackageReference "voice-overlay-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "file:///Users/vladislavfitc/Workspace/voice-overlay-ios";
+			requirement = {
+				branch = feat/revamp;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		AF4C4FCC25EED2D600D9B530 /* InstantSearchVoiceOverlay */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AF4C4FCB25EED2D600D9B530 /* XCRemoteSwiftPackageReference "voice-overlay-ios" */;
+			productName = InstantSearchVoiceOverlay;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = E27D295E20E0F2C700B83D4C /* Project object */;
 }
