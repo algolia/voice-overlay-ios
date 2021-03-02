@@ -10,7 +10,7 @@ Pod::Spec.new do |s|
     s.social_media_url = 'https://twitter.com/algolia'
     s.platforms = { :ios => "10.0" }
     s.requires_arc = true
-    s.swift_version = '5.3'
+    s.swift_versions = ['5.3']
     s.source_files = [
         'Sources/InstantSearchVoiceOverlay/**/*.{swift}'
     ]
