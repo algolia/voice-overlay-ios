@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "InstantSearchVoiceOverlay",
+        "repositoryURL": "/Users/vladislavfitc/Workspace/voice-overlay-ios",
+        "state": {
+          "branch": "feat/revamp",
+          "revision": "3e09bb7a522e7ad90d17040429ec874911429b3d",
+          "version": null
+        }
+      }
+    ]
+  },
+  "version": 1
+}

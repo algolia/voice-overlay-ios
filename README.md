@@ -35,13 +35,31 @@ You can clone and run the Demo project by doing `pod install` and then running t
 
 # Installation
 
+### Swift Package Manager
+
+The Swift Package Manager is a tool for managing the distribution of Swift code. It’s integrated with the Swift build system to automate the process of downloading, compiling, and linking dependencies. 
+
+To use SwiftPM, you should use Xcode 11+ to open your project. Click `File` -> `Swift Packages` -> `Add Package Dependency`, enter [InstantSearch VoiceOverlay repo's URL](https://github.com/algolia/voice-overlay-ios).
+
+If you're a framework author and use VoiceOverlay as a dependency, update your `Package.swift` file:
+
+```swift
+let package = Package(
+    // 1.1.0 ..< 2.0.0
+    dependencies: [
+        .package(url: "https://github.com/algolia/voice-overlay-ios", from: "1.1.0")
+    ],
+    // ...
+)
+```
+
 #### CocoaPods
 
 `InstantSearchVoiceOverlay` is available through [CocoaPods](http://cocoapods.org). To install
 it, add the following line to your Podfile:
 
 ```ruby
-pod 'InstantSearchVoiceOverlay', '~> 1.0.0'
+pod 'InstantSearchVoiceOverlay', '~> 1.1.0'
 ```
 
 ### Carthage
@@ -51,7 +69,7 @@ pod 'InstantSearchVoiceOverlay', '~> 1.0.0'
 To install InstantSearchVoiceOverlay, add the following line to your Cartfile:
 
 ```ruby
-github "algolia/voice-overlay-ios" ~> 1.0.0
+github "algolia/voice-overlay-ios" ~> 1.1.0
 ```
 
 # Usage

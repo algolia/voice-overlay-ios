@@ -3,11 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0DE1596B3D3F438D9687E82A /* Pods_VoiceOverlay_Demo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C4B2BB039BFF3CB485C10A0 /* Pods_VoiceOverlay_Demo.framework */; };
+		AF4C4FCD25EED2D600D9B530 /* InstantSearchVoiceOverlay in Frameworks */ = {isa = PBXBuildFile; productRef = AF4C4FCC25EED2D600D9B530 /* InstantSearchVoiceOverlay */; };
 		E27D296A20E0F2C700B83D4C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E27D296920E0F2C700B83D4C /* AppDelegate.swift */; };
 		E27D296C20E0F2C700B83D4C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E27D296B20E0F2C700B83D4C /* ViewController.swift */; };
 		E27D296F20E0F2C700B83D4C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E27D296D20E0F2C700B83D4C /* Main.storyboard */; };
@@ -16,9 +16,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1C4B2BB039BFF3CB485C10A0 /* Pods_VoiceOverlay_Demo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VoiceOverlay_Demo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		2240AB6E10169DA84016CD8F /* Pods-VoiceOverlay-Demo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VoiceOverlay-Demo.release.xcconfig"; path = "Pods/Target Support Files/Pods-VoiceOverlay-Demo/Pods-VoiceOverlay-Demo.release.xcconfig"; sourceTree = "<group>"; };
-		ABE1265CF5CA0C4D9CCFA2CF /* Pods-VoiceOverlay-Demo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VoiceOverlay-Demo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-VoiceOverlay-Demo/Pods-VoiceOverlay-Demo.debug.xcconfig"; sourceTree = "<group>"; };
 		E27D296620E0F2C700B83D4C /* VoiceOverlay-Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "VoiceOverlay-Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E27D296920E0F2C700B83D4C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E27D296B20E0F2C700B83D4C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -33,28 +30,18 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0DE1596B3D3F438D9687E82A /* Pods_VoiceOverlay_Demo.framework in Frameworks */,
+				AF4C4FCD25EED2D600D9B530 /* InstantSearchVoiceOverlay in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		59E799AFA1843BC8D39F4028 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				1C4B2BB039BFF3CB485C10A0 /* Pods_VoiceOverlay_Demo.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		E27D295D20E0F2C700B83D4C = {
 			isa = PBXGroup;
 			children = (
 				E27D296820E0F2C700B83D4C /* VoiceOverlay-Demo */,
 				E27D296720E0F2C700B83D4C /* Products */,
-				EC7C042F9731F23ECB611588 /* Pods */,
-				59E799AFA1843BC8D39F4028 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -79,15 +66,6 @@
 			path = "VoiceOverlay-Demo";
 			sourceTree = "<group>";
 		};
-		EC7C042F9731F23ECB611588 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				ABE1265CF5CA0C4D9CCFA2CF /* Pods-VoiceOverlay-Demo.debug.xcconfig */,
-				2240AB6E10169DA84016CD8F /* Pods-VoiceOverlay-Demo.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -95,17 +73,18 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E27D297820E0F2C900B83D4C /* Build configuration list for PBXNativeTarget "VoiceOverlay-Demo" */;
 			buildPhases = (
-				EF647425DA698BC38CEA1617 /* [CP] Check Pods Manifest.lock */,
 				E27D296220E0F2C700B83D4C /* Sources */,
 				E27D296320E0F2C700B83D4C /* Frameworks */,
 				E27D296420E0F2C700B83D4C /* Resources */,
-				8532AB0E2ACD1ADDB6E88F37 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = "VoiceOverlay-Demo";
+			packageProductDependencies = (
+				AF4C4FCC25EED2D600D9B530 /* InstantSearchVoiceOverlay */,
+			);
 			productName = "VoiceOverlay-Demo";
 			productReference = E27D296620E0F2C700B83D4C /* VoiceOverlay-Demo.app */;
 			productType = "com.apple.product-type.application";
@@ -135,6 +114,9 @@
 				Base,
 			);
 			mainGroup = E27D295D20E0F2C700B83D4C;
+			packageReferences = (
+				AF4C4FCB25EED2D600D9B530 /* XCRemoteSwiftPackageReference "voice-overlay-ios" */,
+			);
 			productRefGroup = E27D296720E0F2C700B83D4C /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -156,44 +138,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		8532AB0E2ACD1ADDB6E88F37 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-VoiceOverlay-Demo/Pods-VoiceOverlay-Demo-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-VoiceOverlay-Demo/Pods-VoiceOverlay-Demo-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-VoiceOverlay-Demo/Pods-VoiceOverlay-Demo-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		EF647425DA698BC38CEA1617 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-VoiceOverlay-Demo-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		E27D296220E0F2C700B83D4C /* Sources */ = {
@@ -343,7 +287,6 @@
 		};
 		E27D297920E0F2C900B83D4C /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = ABE1265CF5CA0C4D9CCFA2CF /* Pods-VoiceOverlay-Demo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -363,7 +306,6 @@
 		};
 		E27D297A20E0F2C900B83D4C /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2240AB6E10169DA84016CD8F /* Pods-VoiceOverlay-Demo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -403,6 +345,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		AF4C4FCB25EED2D600D9B530 /* XCRemoteSwiftPackageReference "voice-overlay-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "file:///Users/vladislavfitc/Workspace/voice-overlay-ios";
+			requirement = {
+				branch = feat/revamp;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		AF4C4FCC25EED2D600D9B530 /* InstantSearchVoiceOverlay */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AF4C4FCB25EED2D600D9B530 /* XCRemoteSwiftPackageReference "voice-overlay-ios" */;
+			productName = InstantSearchVoiceOverlay;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = E27D295E20E0F2C700B83D4C /* Project object */;
 }

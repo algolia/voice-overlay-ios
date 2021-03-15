@@ -38,7 +38,8 @@ playground.xcworkspace
 # Add this line if you want to avoid checking in source code from Swift Package Manager dependencies.
 # Packages/
 .build/
-
+.swiftpm/
+ 
 # CocoaPods
 #
 # We recommend against adding the Pods directory to your .gitignore. However
