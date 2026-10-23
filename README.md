@@ -92,7 +92,7 @@ class ViewController: UIViewController {
     
     @objc func voiceButtonTapped() {
         
-        voiceOverlayController.start(on: self, textHandler: { (text, final) in
+        voiceOverlayController.start(on: self, textHandler: { (text, final, _) in
             print("voice output: \(String(describing: text))")
             print("voice output: is it final? \(String(describing: final))")
         }, errorHandler: { (error) in
@@ -194,7 +194,7 @@ voiceOverlayController.settings.resultScreenText = NSAttributedString(string: my
 The widget provides a `resultScreenHandler` for when the result screen is dismissed (provided the "Start again" button is not clicked). The handler provides the text that has been set in `resultScreenText` beforehand.
 
 ```swift
-voiceOverlayController.start(on: self, textHandler: { (text, final) in
+voiceOverlayController.start(on: self, textHandler: { (text, final, _) in
     print("getting \(String(describing: text))")
     print("is it final? \(String(describing: final))")
 
